@@ -1,0 +1,45 @@
+/* .card-list_section {
+  background-color: #fff;
+} */
+
+.card-list_header {
+  padding: 20px 20px;
+  width: 98%;
+  height: 100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #ddd;
+}
+
+.card-list_header p span {
+  font-size: 40px;
+  margin: 0 5px;
+  cursor: pointer;
+  color: #555;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  line-height: 19px;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.card-list_header p span:hover svg {
+  background: #222;
+  fill: white;
+}
+
+.card-list_container {
+  width: 95%;
+  height: 500px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  overflow-y: hidden;
+}
+
+.card-list_container::-webkit-scrollbar {
+  display: none;
+}

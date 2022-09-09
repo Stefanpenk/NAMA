@@ -1,0 +1,45 @@
+.search {
+  margin: 5rem 20rem 1rem;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-container i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.input-container {
+  width: 100%;
+}
+
+.icon {
+  margin-left: 5px;
+  min-width: 40px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+input {
+  padding: 1rem 3rem;
+  width: 100%;
+  border: none;
+  background-color: #629a35;
+  font-size: 1.5rem;
+  color: white;
+  border-radius: 1rem;
+  outline: none;
+}
+
+.search svg {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(100%, -50%);
+  color: white;
+}
