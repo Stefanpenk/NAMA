@@ -1,36 +1,26 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import Category from "../../components/Category/Category.component";
-import CuisinesCard from "../../components/CuisinesCard/Cuisines-card.component";
-import { PopularRecipe } from "../home/home.component";
-
 import "./cuisines.styles.css";
 
+import { Responses } from "../meals/meals.component";
+import { PopularRecipee } from "../meals/meals.component";
+
 const Cuisines = () => {
-  const [cuisine, setCuisine] = useState<PopularRecipe[]>([]);
-  let params = useParams();
+  const [meals, setMeals] = useState<PopularRecipee[]>([]);
+  const [inputValue, setInputValue] = useState("");
+  const [ingredients, setIngredients] = useState<string[]>([]);
+  const [intolerances, setIntolerances] = useState<string[]>([]);
+  const [diets, setDiets] = useState<string[]>([]);
+  const [submit, setSubmit] = useState<boolean>(true);
 
-  const getCuisine = async (name: string) => {
-    const data = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${name}`
-    );
-    const recipes = await data.json();
-    setCuisine(recipes.results);
-  };
+  const number = 3;
 
-  useEffect(() => {
-    getCuisine(params.type ?? "");
-  }, [params.type]);
+  const params = useParams();
 
   return (
-    <section className="cuisine">
-      <Category />
-      <div className="cuisine-cards">
-        {cuisine.map((item) => {
-          return <CuisinesCard item={item} key={item.id} />;
-        })}
-      </div>
+    <section className="section-meals">
+      <div className="cuisine-cards">cuisine</div>
     </section>
   );
 };

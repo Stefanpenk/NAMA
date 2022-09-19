@@ -3,28 +3,19 @@ import CardList from "../../components/CardList/CardList.component";
 import { useEffect, useState } from "react";
 
 import { getData } from "../../utils/data.utils";
-import Category from "../../components/Category/Category.component";
 import HeroSection from "../../components/HeroSection/hero-section.component";
 
 import "./home.styles.css";
 
-export type Response = {
-  recipes: PopularRecipe[];
-};
+import { PopularRecipee } from "../meals/meals.component";
 
-export type PopularRecipe = {
-  id: number;
-  title: string;
-  image: string;
-  vegeterian: boolean;
-  vegan: boolean;
-  dairyFree: boolean;
-  glutenFree: boolean;
+export type Response = {
+  recipes: PopularRecipee[];
 };
 
 const Home = () => {
-  const [popular, setPopular] = useState<PopularRecipe[]>([]);
-  const [deserts, setDeserts] = useState<PopularRecipe[]>([]);
+  const [popular, setPopular] = useState<PopularRecipee[]>([]);
+  const [deserts, setDeserts] = useState<PopularRecipee[]>([]);
 
   const getPopular = async () => {
     const check = localStorage.getItem("popular");
@@ -58,13 +49,12 @@ const Home = () => {
     getPopular();
     getDeserts();
   }, []);
-  // console.log(popular);
+  console.log(popular);
 
   return (
     <div className="wrapper">
       <HeroSection />
       <div className="sections-container">
-        <Category />
         <CardList popular={popular} title="Popular Pikcks" />
         <CardList popular={deserts} title="Something Sweet" />
       </div>

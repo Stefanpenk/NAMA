@@ -1,12 +1,12 @@
-import Card from "../Card/Card.component";
+import MealCard from "../MealCard/MealCard";
 
-import { PopularRecipe } from "../../routes/home/home.component";
+import { PopularRecipee } from "../../routes/meals/meals.component";
 
 import "./cardlist.styles.css";
 import { useRef } from "react";
 
 type CardListProps = {
-  popular: PopularRecipe[];
+  popular: PopularRecipee[];
   title: string;
 };
 
@@ -59,8 +59,8 @@ const CardList = ({ popular, title }: CardListProps) => {
         </p>
       </div>
       <div className="card-list_container" ref={listRef}>
-        {popular.map((recipe) => {
-          return <Card recipe={recipe} key={recipe.id} />;
+        {popular.map((item) => {
+          return <MealCard item={item} key={item.id} />;
         })}
       </div>
     </section>

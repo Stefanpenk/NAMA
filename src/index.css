@@ -1,8 +1,28 @@
+/* font-family: 'Lato', sans-serif; */
+/* font-family: 'Montserrat', sans-serif; */
+
+:root {
+  --primary-color: #a4b0a0;
+  --second-color: #111;
+  --third-color: #fff;
+  --vegan-color: #48823b;
+  --vegeterian-color: #48aaa0;
+  --glutenfree-color: #f1954a;
+  --diaryfree-color: #5ebce4;
+  --nav-bgc: rgba(0, 0, 0, 0.2);
+  --nav-link-color: #fff;
+}
+
+#root {
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 body {
@@ -22,4 +42,9 @@ code {
 a {
   text-decoration: none;
   color: black;
+}
+
+li {
+  text-decoration: none;
+  list-style: none;
 }

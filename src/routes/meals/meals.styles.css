@@ -1,0 +1,168 @@
+.section-meals {
+  padding-top: 70px;
+  width: 100vw;
+  max-width: 1440px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.meals-types {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.meals-type {
+  margin: 10px;
+  padding: 10px;
+  width: 75px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.meals-type span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.meals-type:hover {
+  background-color: var(--primary-color);
+}
+
+.meals-type:hover span {
+  opacity: 100%;
+  color: var(--third-color);
+}
+
+.meals-type svg {
+  fill: var(--primary-color);
+  opacity: 100%;
+}
+
+.meals-type:hover svg {
+  opacity: 0%;
+}
+
+.meals-form {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.input-container {
+  width: 20vw;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-right: 10px;
+}
+
+.input-container form {
+  width: 100%;
+}
+
+.input-container i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.icon {
+  margin-left: 1px;
+  min-width: 40px;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+.search svg {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(100%, -50%);
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.5rem 2rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 10px;
+}
+
+.search-input:focus {
+  background-color: var(--primary-color);
+  color: var(--third-color);
+}
+
+.label-icons {
+  margin-right: 2px;
+}
+
+.label-icons svg {
+  width: 30px;
+  fill: var(--primary-color);
+}
+
+.input-icons {
+  margin-right: 10px;
+}
+
+.selectedProducts {
+  display: flex;
+  justify-content: center;
+}
+
+.selectedProduct {
+  display: flex;
+  margin: 8px;
+  padding: 2px 10px;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  border-radius: 15px;
+  color: var(--third-color);
+  pointer-events: none;
+}
+
+.selectedProduct:hover {
+  background-color: #eee;
+}
+
+.selectedProduct p {
+  padding: 2px;
+  font-size: 20px;
+}
+
+.selectedProduct-button {
+  margin: 0 10px;
+  background-color: transparent;
+  border: none;
+  color: var(--third-color);
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.selectedProduct > .selectedProduct-button {
+  pointer-events: auto;
+}
+
+.meals-type.active {
+  background-color: var(--primary-color);
+}
+
+.meals-type.active svg {
+  fill: var(--third-color);
+}

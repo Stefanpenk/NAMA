@@ -1,7 +1,7 @@
 video {
   object-fit: cover;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1440px;
   height: 100%;
   position: fixed;
   z-index: -1;
@@ -33,11 +33,28 @@ video {
 }
 
 .hero_text > h3 {
-  font-size: 48px;
+  margin-top: 20px;
+  font-size: 40px;
   text-align: center;
 }
 
 .hero_text > p {
-  margin-top: 8px;
-  font-size: 32px;
+  margin-top: 20px;
+  font-size: 40px;
+  font-weight: 300;
+}
+
+.button-solid {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: var(--primary-color);
+  font-size: 20px;
+  color: #fff;
+  border-radius: 20px;
+  border: 1px solid var(--primary-color);
+  cursor: pointer;
+}
+
+.button-solid:hover {
+  background-color: transparent;
 }

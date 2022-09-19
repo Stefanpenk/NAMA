@@ -3,6 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import React from "react";
 
 import App from "./App";
+import { SearchBarProvider } from "./context/SearchBar.context";
 
 import "./index.css";
 
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <SearchBarProvider>
+        <App />
+      </SearchBarProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

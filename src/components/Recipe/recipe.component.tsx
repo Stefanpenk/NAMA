@@ -1,4 +1,3 @@
-import { getValue } from "@testing-library/user-event/dist/utils";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -18,6 +17,7 @@ function Recipe() {
   const [details, setDetails] = useState<{ [key: string]: any }>({});
   const [activeTab, setActiveTab] = useState("instructions");
   const [ingredients, setIngredients] = useState<IngredientProps[]>([]);
+  const [diets, setDiets] = useState([]);
   let params = useParams();
 
   const fetchDetails = async () => {
@@ -27,6 +27,8 @@ function Recipe() {
     const detailData = await data.json();
     setDetails(detailData);
     setIngredients(detailData.extendedIngredients);
+    setDiets(detailData.diets);
+    console.log(detailData);
   };
 
   useEffect(() => {
@@ -60,6 +62,7 @@ function Recipe() {
           <div>
             <p dangerouslySetInnerHTML={{ __html: details.summary }}></p>
             <p>{details.instructions}</p>
+            <p>{diets.join(" | ")}</p>
           </div>
         )}
         {activeTab === "ingredients" && (
