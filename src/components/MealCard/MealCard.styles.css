@@ -11,6 +11,12 @@
   overflow: hidden;
 }
 
+.meal-card a {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .sections-container .meal-card {
   min-width: calc(92% / 3);
   margin-right: calc(8% / 2 / 3);

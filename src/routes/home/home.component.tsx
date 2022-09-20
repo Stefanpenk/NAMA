@@ -49,13 +49,13 @@ const Home = () => {
     getPopular();
     getDeserts();
   }, []);
-  console.log(popular);
+  // console.log(popular);
 
   return (
     <div className="wrapper">
       <HeroSection />
       <div className="sections-container">
-        <CardList popular={popular} title="Popular Pikcks" />
+        <CardList popular={popular} title="Popular Picks" />
         <CardList popular={deserts} title="Something Sweet" />
       </div>
     </div>

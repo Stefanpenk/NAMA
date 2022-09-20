@@ -52,14 +52,14 @@ const Navigation = () => {
           </NavLink>
           <NavLink
             className="nav-link"
-            to="/cuisines/all"
+            to="/cuisines/american"
             onClick={handleChangeNavColor}
           >
             <span>CUISINES</span>
           </NavLink>
           <NavLink
             className="nav-link"
-            to="/products"
+            to="/recipe/all"
             onClick={handleChangeNavColor}
           >
             <span>PRODUCTS</span>

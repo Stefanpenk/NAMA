@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { PopularRecipee } from "../../routes/meals/meals.component";
 
 import { ReactComponent as Vegeterian } from "../../assets/vegeterian.svg";
@@ -19,17 +21,22 @@ const MealCard = ({ item }: CardProps) => {
 
   return (
     <div key={item.id} className="meal-card">
-      <h4 className="meal-title">{item.title}</h4>
-      <p className="meal-time">preparation time: {item.readyInMinutes}min</p>
-      <div className="image-container">
-        <img src={item.image} alt={item.title} />
-      </div>
-      <div className="icons-container">
-        <Vegeterian style={vegetarian} className="meal-icon" />
-        <Vegan style={vegan} className="meal-icon" />
-        <DairyFree style={dairy} className="meal-icon" />
-        <GlutenFree style={gluten} className="meal-icon" />
-      </div>
+      <Link to={"/recipe/" + item.id}>
+        <h4 className="meal-title">{item.title}</h4>
+        <p className="meal-time">preparation time: {item.readyInMinutes}min</p>
+        <div className="image-container">
+          <img
+            src={item.image ? item.image : "/images/noImage.jpg"}
+            alt={item.title}
+          />
+        </div>
+        <div className="icons-container">
+          <Vegeterian style={vegetarian} className="meal-icon" />
+          <Vegan style={vegan} className="meal-icon" />
+          <DairyFree style={dairy} className="meal-icon" />
+          <GlutenFree style={gluten} className="meal-icon" />
+        </div>
+      </Link>
     </div>
   );
 };

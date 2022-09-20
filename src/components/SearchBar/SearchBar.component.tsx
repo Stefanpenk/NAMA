@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react";
-import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 import { ReactComponent as Vegeterian } from "../../assets/vegeterian.svg";
@@ -7,61 +6,100 @@ import { ReactComponent as Vegan } from "../../assets/vegan.svg";
 import { ReactComponent as DairyFree } from "../../assets/diaryfree.svg";
 import { ReactComponent as GlutenFree } from "../../assets/glutenfree.svg";
 
-import { ReactComponent as Breakfast } from "../../assets/breakfast.svg";
-import { ReactComponent as Lunch } from "../../assets/lunch.svg";
-import { ReactComponent as Dinner } from "../../assets/dinner.svg";
-import { ReactComponent as Dessert } from "../../assets/dessert.svg";
-
 import { getData } from "../../utils/data.utils";
 
 import { Responses } from "../../routes/meals/meals.component";
-import { PopularRecipee } from "../../routes/meals/meals.component";
 
 import { SearchBarContext } from "../../context/SearchBar.context";
 
-function SearchBar() {
+import ChangeParamsButton from "../ChangeParamsButton/ChangeParamsButton.component";
+import Checkbox from "../Checkbox/CheckBox.component";
+
+interface SearchBarProps {
+  Button1: any;
+  Button2: any;
+  Button3: any;
+  Button4: any;
+  title1: string;
+  title2: string;
+  title3: string;
+  title4: string;
+  to1: string;
+  to2: string;
+  to3: string;
+  to4: string;
+}
+
+function SearchBar({
+  Button1,
+  Button2,
+  Button3,
+  Button4,
+  title1,
+  title2,
+  title3,
+  title4,
+  to1,
+  to2,
+  to3,
+  to4,
+}: SearchBarProps) {
   const { meals, setMeals } = useContext(SearchBarContext);
-  // const [meals, setMeals] = useState<PopularRecipee[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [ingredients, setIngredients] = useState<string[]>([]);
   const [intolerances, setIntolerances] = useState<string[]>([]);
   const [diets, setDiets] = useState<string[]>([]);
   const [submit, setSubmit] = useState<boolean>(true);
 
-  const number = 3;
+  let meal: string = "";
+  let cuisine: string = "";
 
-  const { meal } = useParams();
+  const number = 3;
+  const val = useParams();
+  const params = () => {
+    if (Object.keys(val)[0] === "meal") {
+      meal = `${val.meal}`;
+      cuisine = "";
+    } else if (Object.keys(val)[0] === "cuisine") {
+      meal = "";
+      cuisine = `${val.cuisine}`;
+    } else return;
+  };
 
   const getMeals = async (
     type: string,
     ingredients: string,
     diets: string,
-    intolerances: string
+    intolerances: string,
+    cuisine: string
   ) => {
-    // const check = localStorage.getItem("breakfast");
+    /*   const check = localStorage.getItem("breakfast");
 
-    // if (check) {
-    //   setMeals(JSON.parse(check));
-    // } else {
-    //   const api = await getData<Responses>(
-    //     `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=${number}&addRecipeInformation=true&cuisine=&diet=${diets}&type=${type}&intolerances=${intolerances}&includeIngredients=${ingredients}`
-    //   );
-    //   localStorage.setItem("breakfast", JSON.stringify(api.results));
-    //   setMeals(api.results);
-    // }
+    if (check) {
+      setMeals(JSON.parse(check));
+    } else {
+      const api = await getData<Responses>(
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=${number}&addRecipeInformation=true&cuisine=${cuisine}&diet=${diets}&type=${type}&intolerances=${intolerances}&includeIngredients=${ingredients}`
+      );
+      localStorage.setItem("breakfast", JSON.stringify(api.results));
+      setMeals(api.results);
+    } */
 
     const api = await getData<Responses>(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=${number}&addRecipeInformation=true&cuisine=&diet=${diets}&type=${type}&intolerances=${intolerances}&includeIngredients=${ingredients}`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=${number}&addRecipeInformation=true&cuisine=${cuisine}&diet=${diets}&type=${type}&intolerances=${intolerances}&includeIngredients=${ingredients}`
     );
-    // setMeals(api.results);
     setMeals(api.results);
   };
 
-  // console.log(meals);
-
   useEffect(() => {
-    getMeals(meal!, ingredients.join(), diets.join(), intolerances.join());
-    // console.log(meals);
+    params();
+    getMeals(
+      meal!,
+      ingredients.join(),
+      diets.join(),
+      intolerances.join(),
+      cuisine
+    );
   }, [submit]);
 
   const handleSubmit = () => {
@@ -75,16 +113,17 @@ function SearchBar() {
   const handleSubmitValue = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const value = inputValue;
-    if (ingredients.indexOf(value) === -1) {
+    if (
+      ingredients.indexOf(value) === -1 ||
+      value === "" ||
+      !(typeof value === "string")
+    ) {
       setIngredients((curProducts) => [...curProducts, value]);
     }
     setInputValue("");
   };
 
   const handleChangeInput = (e: React.FormEvent<HTMLInputElement>) => {
-    // console.log(e.currentTarget.classList.contains("intolerances"));
-    // console.log(e.currentTarget.classList.contains("diet"));
-    // console.log(e.currentTarget.checked);
     const value = e.currentTarget.getAttribute("name");
     const classList = e.currentTarget.classList;
 
@@ -120,38 +159,30 @@ function SearchBar() {
   return (
     <div className="searchBar">
       <div className="meals-types">
-        <NavLink
-          to={"/meals/breakfast"}
-          className="meals-type"
-          onClick={handleSubmit}
-        >
-          <Breakfast />
-          <span>Breakfast</span>
-        </NavLink>
-        <NavLink
-          to={"/meals/lunch"}
-          className="meals-type"
-          onClick={handleSubmit}
-        >
-          <Lunch />
-          <span>Lunch</span>
-        </NavLink>
-        <NavLink
-          to={"/meals/dinner"}
-          className="meals-type"
-          onClick={handleSubmit}
-        >
-          <Dinner />
-          <span>Dinner</span>
-        </NavLink>
-        <NavLink
-          to={"/meals/dessert"}
-          className="meals-type"
-          onClick={handleSubmit}
-        >
-          <Dessert />
-          <span>Dessert</span>
-        </NavLink>
+        <ChangeParamsButton
+          handleSubmit={handleSubmit}
+          svg={Button1}
+          title={title1}
+          to={to1}
+        />
+        <ChangeParamsButton
+          handleSubmit={handleSubmit}
+          svg={Button2}
+          title={title2}
+          to={to2}
+        />
+        <ChangeParamsButton
+          handleSubmit={handleSubmit}
+          svg={Button3}
+          title={title3}
+          to={to3}
+        />
+        <ChangeParamsButton
+          handleSubmit={handleSubmit}
+          svg={Button4}
+          title={title4}
+          to={to4}
+        />
       </div>
       <div className="meals-form">
         <div className="input-container">
@@ -166,44 +197,28 @@ function SearchBar() {
             />
           </form>
         </div>
-        <label htmlFor="vegan" className="label-icons">
-          <Vegan />
-        </label>
-        <input
-          type="checkbox"
+        <Checkbox
           name="vegan"
-          id="vegan"
-          className="input-icons diet"
+          svg={<Vegan />}
+          className="diet"
           onChange={handleChangeInput}
         />
-        <label htmlFor="vegeterian" className="label-icons">
-          <Vegeterian />
-        </label>
-        <input
-          type="checkbox"
+        <Checkbox
           name="vegetarian"
-          id="vegetarian"
-          className="input-icons diet"
+          svg={<Vegeterian />}
+          className="diet"
           onChange={handleChangeInput}
         />
-        <label htmlFor="glutenFree" className="label-icons">
-          <GlutenFree />
-        </label>
-        <input
-          type="checkbox"
+        <Checkbox
           name="Gluten"
-          id="glutenFree"
-          className="input-icons intolerances"
+          svg={<GlutenFree />}
+          className="intolerances"
           onChange={handleChangeInput}
         />
-        <label htmlFor="dairyFree" className="label-icons">
-          <DairyFree />
-        </label>
-        <input
-          type="checkbox"
+        <Checkbox
           name="Dairy"
-          id="dairyFree"
-          className="input-icons intolerances"
+          svg={<DairyFree />}
+          className="intolerances"
           onChange={handleChangeInput}
         />
         <button className="submit-form button-frame" onClick={handleSubmit}>
