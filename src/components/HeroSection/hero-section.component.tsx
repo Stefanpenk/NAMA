@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import "./hero-section.styles.css";
 
 const HeroSection = () => {
@@ -8,7 +10,9 @@ const HeroSection = () => {
         <h1>DON'T THROW AWAY FOOD</h1>
         <h3>There is plenty recipes you can use them for</h3>
         <p>What are you waiting for?</p>
-        <button className="button-solid">LET'S START</button>
+        <button className="button-solid">
+          <Link to={"/learn"}> LET'S START</Link>
+        </button>
       </div>
     </div>
   );

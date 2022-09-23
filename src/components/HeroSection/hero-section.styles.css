@@ -53,8 +53,13 @@ video {
   border-radius: 20px;
   border: 1px solid var(--primary-color);
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .button-solid:hover {
   background-color: transparent;
+}
+
+.button-solid a {
+  color: var(--third-color);
 }

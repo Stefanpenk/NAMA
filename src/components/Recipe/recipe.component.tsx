@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
-import "./recipe.styles.css";
-
-import recipe from "./recipe.json";
+import { useParams, useNavigate } from "react-router-dom";
 
 import { ReactComponent as Instruction } from "../../assets/instruction-icon.svg";
 import { ReactComponent as Ingredients } from "../../assets/ingredients-icon.svg";
@@ -11,111 +7,78 @@ import { ReactComponent as Save } from "../../assets/save-icon.svg";
 import { ReactComponent as Time } from "../../assets/time-icon.svg";
 import { ReactComponent as Back } from "../../assets/back-icon.svg";
 
-type Recipe = {
-  id: number;
-  title: string;
-};
-
-type IngredientProps = {
-  id: number;
-  original: string;
-};
-
-type StepProps = {
-  number: number;
-  step: string;
-};
+import "./recipe.styles.css";
 
 type DetailsProps = {
   title: string;
+  diets: string[];
   image: string;
-  extendedIngredients: [];
-  analyzedInstructions: [
-    {
-      steps: [step: string];
-    }
-  ];
+  readyInMinutes: number;
+  extendedIngredients: { id: number; original: string }[];
+  analyzedInstructions: {
+    name: string;
+    steps: { number: number; step: string }[];
+  }[];
+  summary: string;
 };
 
 const Recipe = () => {
   const [activeTab, setActiveTab] = useState("instructions");
-  const [details, setDetails] = useState<{ [key: string]: any }>({});
-  // const [ingredients, setIngredients] = useState<IngredientProps[]>([]);
-  const [diets, setDiets] = useState<string[]>([]);
-  const [steps, setSteps] = useState<StepProps[]>([]);
+  const [details, setDetails] = useState<DetailsProps>({
+    title: "",
+    diets: [],
+    image: "",
+    readyInMinutes: 0,
+    extendedIngredients: [{ id: 0, original: "" }],
+    analyzedInstructions: [{ name: "", steps: [{ number: 0, step: "" }] }],
+    summary: "",
+  });
 
-  // const ingredientsText: boolean|JSX.Element  = () => {
-  //   return (
-  //     activeTab === "ingredients" && (
-  //       <div className="recipe-detail">
-  //         <h6 className="recipe-detail-title">Ingredients</h6>
-  //         <ul className="recipe-ingredients">
-  //           {details.extendedIngredients.map((ingredient: IngredientProps) => {
-  //             return (
-  //               <li className="recipe-ingredient" key={ingredient.id}>
-  //                 {ingredient.original}
-  //               </li>
-  //             );
-  //           })}
-  //         </ul>
-  //       </div>
-  //     )
-  //   );
-  // };
+  const navigate = useNavigate();
 
-  // let params = useParams();
+  let params = useParams();
 
-  // const fetchDetails = async () => {
-  //   const check = localStorage.getItem("recipe");
+  const handleGoBack = () => {
+    navigate(-1);
+  };
 
-  //   if (check) {
-  //     setDetails(JSON.parse(check));
-  //   } else {
-  //     const data = await fetch(
-  //       `https://api.spoonacular.com/recipes/${params.search}/information?apiKey=${process.env.REACT_APP_API_KEY}`
-  //     );
-  //     const detailData = await data.json();
-  //     setDetails(detailData);
-  //     localStorage.setItem("recipe", JSON.stringify(detailData));
-  //     setDetails(detailData);
-  //   }
+  const fetchDetails = async () => {
+    /*    const check = localStorage.getItem("recipe");
 
-  //   /* const data = await fetch(
-  //     `https://api.spoonacular.com/recipes/${params.search}/information?apiKey=${process.env.REACT_APP_API_KEY}`
-  //   );
-  //   const detailData = await data.json();
-  //   setDetails(detailData);
-  //   // setIngredients(detailData.extendedIngredients);
-  //   // setDiets(detailData.diets);
-  //   console.log(detailData); */
-  // };
+    if (check) {
+      setDetails(JSON.parse(check));
+    } else {
+      const data = await fetch(
+        `https://api.spoonacular.com/recipes/${params.search}/information?apiKey=${process.env.REACT_APP_API_KEY}`
+      );
+      const detailData = await data.json();
+      setDetails(detailData);
+      localStorage.setItem("recipe", JSON.stringify(detailData));
+      setDetails(detailData);
+    } */
 
-  // useEffect(() => {
-  //   // fetchDetails();
-  // }, [params.search]);
-
-  const fetchData = async () => {
-    const data = recipe;
-    setDetails(data);
-    setDiets(data.diets);
-    setSteps(data.analyzedInstructions[0].steps);
+    const data = await fetch(
+      `https://api.spoonacular.com/recipes/${params.search}/information?apiKey=${process.env.REACT_APP_API_KEY}`
+    );
+    const detailData = await data.json();
+    setDetails(detailData);
+    console.log(detailData);
   };
 
   useEffect(() => {
-    fetchData();
-    // setDiets(details.diets);
-  }, []);
+    fetchDetails();
+  }, [params.search]);
 
   return (
     <section className="recipe-section">
       <div className="recipe-wrapper">
         <h4 className="recipe-title">{details.title}</h4>
-        <h5 className="recipe-subtitle">{diets.join(" | ")}</h5>
+        <h5 className="recipe-subtitle">{details.diets.join(" | ")}</h5>
         <div className="recipe-rest">
           <div className="recipe-img-container">
             <img
               className="recipe-img"
-              src={details.image}
+              src={details.image ? details.image : "/images/noImage.jpg"}
               alt={details.title}
             />
           </div>
@@ -124,34 +87,36 @@ const Recipe = () => {
             <div className="recipe-detail">
               <h6 className="recipe-detail-title">Ingredients</h6>
               <ul className="recipe-ingredients">
-                {details.extendedIngredients.map(
-                  (ingredient: IngredientProps) => {
-                    return (
-                      <li className="recipe-ingredient" key={ingredient.id}>
-                        {ingredient.original}
-                      </li>
-                    );
-                  }
-                )}
+                {details.extendedIngredients.map((ingredient) => {
+                  return (
+                    <li className="recipe-ingredient" key={ingredient.id}>
+                      {ingredient.original}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           )}
           {activeTab === "instructions" && (
             <div className="recipe-detail">
               <h6 className="recipe-detail-title">Instruction</h6>
-              {/* <p dangerouslySetInnerHTML={{ __html: details.summary }}></p> */}
-              {/* <p
-                className="recipe-instruction"
-                dangerouslySetInnerHTML={{ __html: details.instructions }}
-              ></p> */}
               <ul className="recipe-steps">
-                {steps.map((step: StepProps) => {
-                  return (
-                    <li key={step.number} className="recipe-step">
-                      {step.step}
-                    </li>
-                  );
-                })}
+                {details.analyzedInstructions.length === 0 ? (
+                  <li
+                    dangerouslySetInnerHTML={{ __html: details.summary }}
+                  ></li>
+                ) : (
+                  details.analyzedInstructions.map((instruction) => {
+                    return (
+                      <li>
+                        <li className="instructionName">{instruction.name}</li>
+                        {instruction.steps.map((step) => {
+                          return <li key={step.number}>{step.step}</li>;
+                        })}
+                      </li>
+                    );
+                  })
+                )}
               </ul>
             </div>
           )}
@@ -186,7 +151,7 @@ const Recipe = () => {
             <button className="recipe-button">
               <Save />
             </button>
-            <button className="recipe-button">
+            <button className="recipe-button" onClick={handleGoBack}>
               <Back />
             </button>
           </div>

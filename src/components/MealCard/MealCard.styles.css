@@ -3,8 +3,8 @@
   width: 30%;
   margin: 15px calc(10% / 6);
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  /* flex-direction: column;
+  align-items: center; */
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   border-radius: 10px;
@@ -15,6 +15,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .sections-container .meal-card {
@@ -40,11 +41,15 @@
 }
 
 .meal-title {
+  width: fit-content;
+  height: 25px;
+  display: flex;
   margin-top: 10px;
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
   font-weight: 400;
   text-align: center;
+  overflow: hidden;
 }
 
 .meal-time {

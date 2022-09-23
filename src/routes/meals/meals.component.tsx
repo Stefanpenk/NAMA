@@ -31,7 +31,7 @@ const Meals = () => {
   const { meals } = useContext(SearchBarContext);
 
   return (
-    <section className="section-meals">
+    <section className="section-meals nav-padding">
       <SearchBar
         Button1={<Breakfast />}
         Button2={<Lunch />}

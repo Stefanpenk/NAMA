@@ -1,6 +1,6 @@
 .navigation {
   margin: 0 auto;
-  height: 70px;
+  height: var(--nav-height);
   width: 100%;
   max-width: 1440px;
   display: flex;

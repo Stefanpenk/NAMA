@@ -11,6 +11,8 @@
   --diaryfree-color: #5ebce4;
   --nav-bgc: rgba(0, 0, 0, 0.2);
   --nav-link-color: #fff;
+
+  --nav-height: 70px;
 }
 
 #root {
@@ -47,4 +49,14 @@ a {
 li {
   text-decoration: none;
   list-style: none;
+}
+
+svg {
+  transition: 0.2s;
+}
+
+.nav-padding {
+  padding-top: var(--nav-height);
+  max-width: 1440px;
+  margin: 0 auto;
 }
