@@ -1,9 +1,13 @@
+import { useRef } from "react";
+
 import MealCard from "../MealCard/MealCard";
+
+import { ReactComponent as ArrowLeft } from "../../assets/arrow-left.svg";
+import { ReactComponent as ArrowRight } from "../../assets/arrow-right.svg";
 
 import { PopularRecipee } from "../../routes/meals/meals.component";
 
 import "./cardlist.styles.css";
-import { useRef } from "react";
 
 type CardListProps = {
   popular: PopularRecipee[];
@@ -36,25 +40,13 @@ const CardList = ({ popular, title }: CardListProps) => {
   return (
     <section className="card-list_section">
       <div className="card-list_header">
-        <h3>{title}</h3>
+        <h3 className="card-list_title">{title}</h3>
         <p>
           <span onClick={handleScrollLeft}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 48 48"
-              preserveAspectRatio="none"
-            >
-              <path d="M20 44 0 24 20 4l2.8 2.85L5.65 24 22.8 41.15Z" />
-            </svg>
+            <ArrowLeft />
           </span>
           <span onClick={handleScrollRight}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 48 48"
-              preserveAspectRatio="none"
-            >
-              <path d="m15.2 43.9-2.8-2.85L29.55 23.9 12.4 6.75l2.8-2.85 20 20Z" />
-            </svg>
+            <ArrowRight />
           </span>
         </p>
       </div>

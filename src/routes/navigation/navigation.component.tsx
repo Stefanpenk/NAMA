@@ -11,12 +11,12 @@ const Navigation = () => {
   const params = useParams();
 
   useEffect(() => {
-    console.log(window.location.pathname);
+    // console.log(window.location.pathname);
     if (window.location.pathname === "/") {
       style.setProperty("--nav-bgc", "rgba(0, 0, 0, 0.2)");
       style.setProperty("--nav-link-color", "#fff");
     } else {
-      style.setProperty("--nav-bgc", "transparent");
+      style.setProperty("--nav-bgc", "rgba(255, 255, 255, 0.686)");
       style.setProperty("--nav-link-color", "#111");
     }
   }, [params]);

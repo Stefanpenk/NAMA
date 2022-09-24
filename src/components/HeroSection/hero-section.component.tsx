@@ -11,7 +11,7 @@ const HeroSection = () => {
         <h3>There is plenty recipes you can use them for</h3>
         <p>What are you waiting for?</p>
         <button className="button-solid">
-          <Link to={"/learn"}> LET'S START</Link>
+          <Link to={"/about"}> LET'S START</Link>
         </button>
       </div>
     </div>

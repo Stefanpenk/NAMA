@@ -6,7 +6,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.card-list_title {
+  font-size: 30px;
+  font-weight: 300;
 }
 
 .card-list_header p span {
@@ -21,9 +26,13 @@
   text-align: center;
   border-radius: 3px;
 }
+.card-list_header p span svg {
+  border-radius: 4px;
+  fill: var(--primary-color);
+}
 
 .card-list_header p span:hover svg {
-  background: #222;
+  background: var(--primary-color);
   fill: white;
 }
 

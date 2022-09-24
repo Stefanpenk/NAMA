@@ -1,0 +1,37 @@
+.button-next {
+  width: 100%;
+  position: relative;
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: 1px solid var(--primary-color);
+  border-radius: 15px;
+}
+
+.button-next:hover {
+  background-color: var(--primary-color);
+  transition: 0.2s;
+}
+
+.button-next-svg {
+  fill: var(--primary-color);
+}
+
+.button-next:hover .button-next-svg {
+  fill: var(--third-color);
+  opacity: 0%;
+}
+
+.button-next .button-next-text {
+  width: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  fill: var(--third-color);
+  stroke: none;
+  opacity: 0;
+}
+
+.button-next:hover .button-next-text {
+  opacity: 100%;
+}
