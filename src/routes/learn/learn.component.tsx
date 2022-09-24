@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+
+import Button from "../../components/Button/Button.component";
 
 import { ReactComponent as Up } from "../../assets/up-arrow-icon.svg";
 import { ReactComponent as Down } from "../../assets/down-arrow-icon.svg";
-import { ReactComponent as Next } from "../../assets/next-arrow-icon.svg";
 
 import learn from "../../assets/learn.json";
 
@@ -15,8 +15,6 @@ type tipsProps = {
   description: string;
   imgUrl: string;
 };
-
-let initNumber = 0;
 
 function Learn() {
   const [tips, setTips] = useState<tipsProps[]>([
@@ -39,10 +37,6 @@ function Learn() {
     number === tips.length - 1
       ? setNumber(0)
       : setNumber((prevState) => prevState + 1);
-  };
-
-  const handleNextPage = () => {
-    console.log("clicked");
   };
 
   return (
@@ -82,11 +76,7 @@ function Learn() {
               className="learn-nav-arrows"
               onClick={handleChangeSlidePlus}
             />
-            <div className="learn-nav-next">
-              <Link to={"/meals/breakfast"}>
-                <Next className="learn-nav-next-svg" />
-              </Link>
-            </div>
+            <Button to="/meals/breakfast" />
           </div>
         </li>
       </ul>
