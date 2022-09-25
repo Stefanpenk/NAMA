@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/zero-waste-kitchen/static/css/main.c866ad94.css",
+    "main.js": "/zero-waste-kitchen/static/js/main.cc6d0453.js",
+    "static/media/dessert.svg": "/zero-waste-kitchen/static/media/dessert.4077cbd49d62d28d72eb48937d8228f4.svg",
+    "static/media/lunch.svg": "/zero-waste-kitchen/static/media/lunch.800de946d31ec46e8c73751c2795a5de.svg",
+    "static/media/breakfast.svg": "/zero-waste-kitchen/static/media/breakfast.a60fdb09ac12bf949be7fb87ad147260.svg",
+    "static/media/dinner.svg": "/zero-waste-kitchen/static/media/dinner.b836ae12acfb3a2edd256b42d21acb67.svg",
+    "static/media/shop-logo.svg": "/zero-waste-kitchen/static/media/shop-logo.c6667ba3960339335f0b8da0c6b49571.svg",
+    "static/media/meals-text.svg": "/zero-waste-kitchen/static/media/meals-text.26c4eec2ff20600c23e844ade253ce70.svg",
+    "static/media/japanese.svg": "/zero-waste-kitchen/static/media/japanese.a2d23c5a306e89ba75c2dcfb80d4d620.svg",
+    "static/media/thai.svg": "/zero-waste-kitchen/static/media/thai.6f33ab14c33a38c68833b828c6f1a013.svg",
+    "static/media/american.svg": "/zero-waste-kitchen/static/media/american.99a58383981eecdeb4afc9f19b21ff9c.svg",
+    "static/media/italian.svg": "/zero-waste-kitchen/static/media/italian.034ac6eac84f801335b5052b6444a37a.svg",
+    "static/media/vegeterian.svg": "/zero-waste-kitchen/static/media/vegeterian.4b2a39d05a931e2dfc5e81d461b17ff3.svg",
+    "static/media/learn-text.svg": "/zero-waste-kitchen/static/media/learn-text.82276ef91824bf3e330d349b373d3ccf.svg",
+    "static/media/diaryfree.svg": "/zero-waste-kitchen/static/media/diaryfree.4622f6b1225685d9cdd7698f9a13381b.svg",
+    "static/media/glutenfree.svg": "/zero-waste-kitchen/static/media/glutenfree.f1f37079a36a9b84271cb9fe9377f23a.svg",
+    "static/media/vegan.svg": "/zero-waste-kitchen/static/media/vegan.ab795dd087bbeae9bd1b78f469ba7190.svg",
+    "static/media/ingredients-icon.svg": "/zero-waste-kitchen/static/media/ingredients-icon.fd430b781499d830c688e450463d2c32.svg",
+    "static/media/instruction-icon.svg": "/zero-waste-kitchen/static/media/instruction-icon.937c7086193085d8c3e80e56d07e1d20.svg",
+    "index.html": "/zero-waste-kitchen/index.html",
+    "static/media/email.svg": "/zero-waste-kitchen/static/media/email.b0f8afb4146a09f3cf1baf621151b417.svg",
+    "static/media/instagram.svg": "/zero-waste-kitchen/static/media/instagram.c6ed83a5d172ddc1b7eba94b0b5244db.svg",
+    "static/media/time-icon.svg": "/zero-waste-kitchen/static/media/time-icon.ad0adfadd3755a5c3d1d47d773d4198a.svg",
+    "static/media/save-icon.svg": "/zero-waste-kitchen/static/media/save-icon.1a6fe8a12dcfcda83098a0a1fc9497d1.svg",
+    "static/media/back-icon.svg": "/zero-waste-kitchen/static/media/back-icon.1de337d054d265c646bf824d6c9bc5e9.svg",
+    "static/media/facebook.svg": "/zero-waste-kitchen/static/media/facebook.1d3e582aca8625d879ae4a0f8b19bcbb.svg",
+    "static/media/arrow-right.svg": "/zero-waste-kitchen/static/media/arrow-right.ea4ad2f4a98e138dd176d7868ecaee47.svg",
+    "static/media/next-arrow-icon.svg": "/zero-waste-kitchen/static/media/next-arrow-icon.371a194dfa6a0494512b05b7e4863f0b.svg",
+    "static/media/arrow-left.svg": "/zero-waste-kitchen/static/media/arrow-left.25b05bc4e80fcab9f979bb8677fece6f.svg",
+    "static/media/up-arrow-icon.svg": "/zero-waste-kitchen/static/media/up-arrow-icon.1ffb048d081a3bbb97eb68a566f4381b.svg",
+    "static/media/down-arrow-icon.svg": "/zero-waste-kitchen/static/media/down-arrow-icon.213d483c0c5e25b8080f3fb4eca26ae1.svg",
+    "main.c866ad94.css.map": "/zero-waste-kitchen/static/css/main.c866ad94.css.map",
+    "main.cc6d0453.js.map": "/zero-waste-kitchen/static/js/main.cc6d0453.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c866ad94.css",
+    "static/js/main.cc6d0453.js"
+  ]
+}
