@@ -12,22 +12,19 @@ const Authentication = () => {
   const { saveToken } = useToken();
   const redirectPath = location.state?.path || "/";
 
-  async function loginUser(credentials: { user: string; password: string }) {
-    return fetch("http://localhost:8000/login", {
+  async function loginUser(user: string, password: string) {
+    return fetch("http://localhost:8080/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(credentials),
+      body: JSON.stringify({ user: user, password: password }),
     }).then((data) => data.json());
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const token = await loginUser({
-      user,
-      password,
-    });
+    const token = await loginUser(user, password);
     saveToken(token);
     navigate(redirectPath, { replace: true });
   };
