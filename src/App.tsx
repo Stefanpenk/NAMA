@@ -8,6 +8,8 @@ import Cuisines from "./routes/cuisines/cuisines.component";
 import Recipe from "./components/Recipe/recipe.component";
 import Meals from "./routes/meals/meals.component";
 import Learn from "./routes/learn/learn.component";
+import Profile from "./routes/profile/profile.component";
+import RequireAuth from "./components/RequireAuth/RequireAuth.component";
 
 const App = () => {
   return (
@@ -21,6 +23,14 @@ const App = () => {
         <Route path="/cuisines/:cuisine" element={<Cuisines />} />
         <Route path="/recipe/:id" element={<Recipe />} />
         <Route path="/learn" element={<Learn />} />
+        <Route
+          path="/profile"
+          element={
+            <RequireAuth>
+              <Profile />
+            </RequireAuth>
+          }
+        />
       </Route>
     </Routes>
   );

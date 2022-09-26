@@ -4,6 +4,8 @@ import React from "react";
 
 import App from "./App";
 import { SearchBarProvider } from "./context/SearchBar.context";
+import { AuthProvider } from "./context/Auth.context";
+import { TokenProvider } from "./context/Token.context";
 
 import "./index.css";
 
@@ -13,9 +15,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <SearchBarProvider>
-        <App />
-      </SearchBarProvider>
+      <TokenProvider>
+        <AuthProvider>
+          <SearchBarProvider>
+            <App />
+          </SearchBarProvider>
+        </AuthProvider>
+      </TokenProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

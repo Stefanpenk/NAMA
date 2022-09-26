@@ -1,14 +1,27 @@
 import { Fragment, useEffect } from "react";
-import { Outlet, NavLink, useParams } from "react-router-dom";
+import { Outlet, NavLink, useParams, useNavigate } from "react-router-dom";
 
 import { ReactComponent as Logo } from "../../assets/shop-logo.svg";
+
+import { token } from "../../utils/token";
+import { removeToken } from "../../utils/token";
 
 import "./navigation.styles.css";
 
 const Navigation = () => {
   const style = document.documentElement.style;
 
+  const navigate = useNavigate();
+
   const params = useParams();
+
+  // const token = useToken();
+  const auth = token();
+
+  const handleLogout = () => {
+    removeToken();
+    navigate("/");
+  };
 
   useEffect(() => {
     // console.log(window.location.pathname);
@@ -40,9 +53,18 @@ const Navigation = () => {
           <NavLink className="nav-link" to="/cuisines/american">
             <span>CUISINES</span>
           </NavLink>
-          <NavLink className="nav-link align-self" to="/auth">
-            <button className="button-frame">SIGN IN</button>
+          <NavLink className="nav-link" to="/profile">
+            <span>PROFILE</span>
           </NavLink>
+          {auth ? (
+            <button className="nav-link align-self" onClick={handleLogout}>
+              <span className="button-frame">SIGN OUT</span>
+            </button>
+          ) : (
+            <NavLink className="nav-link align-self" to="/auth">
+              <button className="button-frame">SIGN IN</button>{" "}
+            </NavLink>
+          )}
         </div>
       </div>
       <Outlet />

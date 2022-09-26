@@ -40,6 +40,8 @@
   font-size: 20px;
   text-align: center;
   transition: all 0.2s ease-out;
+  background-color: transparent;
+  border: none;
 }
 
 .align-self {
