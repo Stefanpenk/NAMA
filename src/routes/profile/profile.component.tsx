@@ -1,11 +1,9 @@
-// import { useToken } from "../../context/Token.context";
-import { token } from "../../utils/token";
-import { removeToken } from "../../utils/token";
+import useToken from "../../hooks/useToken";
 import { useNavigate } from "react-router-dom";
 import "./profile.styles.css";
 
 const Profile = () => {
-  const auth = token();
+  const { token, removeToken } = useToken();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -15,7 +13,7 @@ const Profile = () => {
 
   return (
     <section className="section-profile nav-padding">
-      <h2>Welcome Stefan {auth}</h2>
+      <h2>Welcome Stefan {token}</h2>
       <button onClick={handleLogout}>Logout</button>
     </section>
   );
