@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import useToken from "../../hooks/useToken";
+import { FavRecipesContext } from "../../context/MyRecipes.context";
 
 import { ReactComponent as Instruction } from "../../assets/instruction-icon.svg";
 import { ReactComponent as Ingredients } from "../../assets/ingredients-icon.svg";
@@ -33,6 +35,8 @@ const Recipe = () => {
     analyzedInstructions: [{ name: "", steps: [{ number: 0, step: "" }] }],
     summary: "",
   });
+  const { username } = useToken();
+  const { favRecipes, saveRecipes } = useContext(FavRecipesContext);
 
   const navigate = useNavigate();
 
@@ -43,20 +47,6 @@ const Recipe = () => {
   };
 
   const fetchDetails = async () => {
-    /*    const check = localStorage.getItem("recipe");
-
-    if (check) {
-      setDetails(JSON.parse(check));
-    } else {
-      const data = await fetch(
-        `https://api.spoonacular.com/recipes/${params.search}/information?apiKey=${process.env.REACT_APP_API_KEY}`
-      );
-      const detailData = await data.json();
-      setDetails(detailData);
-      localStorage.setItem("recipe", JSON.stringify(detailData));
-      setDetails(detailData);
-    } */
-
     const apiKey = "951fa37490bb4c928435c0d4c7950238";
     // 48d4912f994842029db529317a2efa6e
 
@@ -65,7 +55,23 @@ const Recipe = () => {
     );
     const detailData = await data.json();
     setDetails(detailData);
-    console.log(detailData);
+    // console.log(detailData);
+  };
+
+  const handleSave = () => {
+    const newData = details;
+    async function sendData(user: string, newData: DetailsProps) {
+      return fetch("http://localhost:8080/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user: user, newData: newData }),
+      })
+        .then((data) => data.json())
+        .then((recipe) => saveRecipes(recipe));
+    }
+    sendData(username, newData);
   };
 
   useEffect(() => {
@@ -85,7 +91,6 @@ const Recipe = () => {
               alt={details.title}
             />
           </div>
-          {/* {ingredientsText} */}
           {activeTab === "ingredients" && (
             <div className="recipe-detail">
               <h6 className="recipe-detail-title">Ingredients</h6>
@@ -109,12 +114,19 @@ const Recipe = () => {
                     dangerouslySetInnerHTML={{ __html: details.summary }}
                   ></li>
                 ) : (
-                  details.analyzedInstructions.map((instruction) => {
+                  details.analyzedInstructions.map((instruction, index) => {
                     return (
-                      <li>
-                        <li className="instructionName">{instruction.name}</li>
+                      <li key={index}>
+                        <div
+                          className="instructionName"
+                          key={
+                            instruction.name === "" ? "myid" : instruction.name
+                          }
+                        >
+                          {instruction.name}
+                        </div>
                         {instruction.steps.map((step) => {
-                          return <li key={step.number}>{step.step}</li>;
+                          return <div key={step.step}>{step.step}</div>;
                         })}
                       </li>
                     );
@@ -152,7 +164,7 @@ const Recipe = () => {
               </div>
             </button>
             <button className="recipe-button">
-              <Save />
+              <Save onClick={handleSave} />
             </button>
             <button className="recipe-button" onClick={handleGoBack}>
               <Back />
