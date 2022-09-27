@@ -28,24 +28,24 @@ const About = () => {
         <Button className="about" to="/learn" />
         <div className="about-contact-container">
           <h3 className="about-contact-title">Contact us:</h3>
-          <p className="about-contact">
+          <div className="about-contact">
             <div className="about-icon-container">
               <Instagram />
             </div>
             Instagram
-          </p>
-          <p className="about-contact">
+          </div>
+          <div className="about-contact">
             <div className="about-icon-container white">
               <Facebook className="color" />
             </div>
             Facebook
-          </p>
-          <p className="about-contact">
+          </div>
+          <div className="about-contact">
             <div className="about-icon-container">
               <Email />
             </div>
             Email
-          </p>
+          </div>
         </div>
       </div>
     </section>

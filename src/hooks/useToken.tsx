@@ -13,11 +13,12 @@ export const TokenProvider = ({ children }: any) => {
   };
 
   const [token, setToken] = useState<string | null>(getToken());
+  const [name, setName] = useState<string | null>(null);
 
-  const saveToken = (userToken: { token: string }) => {
+  const saveToken = (userToken: { token: string; name: string }) => {
     localStorage.setItem("token", JSON.stringify(userToken));
     setToken(userToken.token);
-    console.log(token);
+    setName(userToken.name);
   };
 
   const removeToken = () => {
@@ -27,10 +28,11 @@ export const TokenProvider = ({ children }: any) => {
       setToken(null);
     }
     console.log(token);
+    console.log(name);
   };
 
   return (
-    <TokenContext.Provider value={{ token, saveToken, removeToken }}>
+    <TokenContext.Provider value={{ token, saveToken, removeToken, name }}>
       {children}
     </TokenContext.Provider>
   );
