@@ -2,9 +2,13 @@
   width: 100%;
   position: relative;
   margin-top: 10px;
-  padding: 10px 15px;
+  padding: 15px 0;
   border: 1px solid var(--primary-color);
   border-radius: 15px;
+}
+
+.button-next a {
+  width: 100%;
 }
 
 .button-next:hover {
@@ -13,6 +17,7 @@
 }
 
 .button-next-svg {
+  width: 100%;
   fill: var(--primary-color);
 }
 

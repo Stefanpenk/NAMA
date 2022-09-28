@@ -5,7 +5,7 @@ import "./hero-section.styles.css";
 const HeroSection = () => {
   return (
     <div className="hero-container">
-      <video src="/videos/Cooking-11323.mp4" autoPlay loop muted />
+      <video src="/videos/Cooking-11323.webm" autoPlay loop muted />
       <div className="hero_text">
         <h1>DON'T THROW AWAY FOOD</h1>
         <h3>There is plenty recipes you can use them for</h3>

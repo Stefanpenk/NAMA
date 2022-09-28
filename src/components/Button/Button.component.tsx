@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 
-import { ReactComponent as Next } from "../../assets/next-arrow-icon.svg";
+import { ReactComponent as Next } from "../../assets/next-text.svg";
 import { ReactComponent as MealsText } from "../../assets/meals-text.svg";
 import { ReactComponent as Learn } from "../../assets/learn-text.svg";
 
 import "./Button.styles.css";
-import { text } from "stream/consumers";
 
 const Button = ({ className = "", to = "" }) => {
   const textSvg = () => {

@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { PopularRecipee } from "../routes/meals/meals.component";
+import { DetailsProps } from "../types/types";
 
 export const SearchBarContext = createContext<any>({
   meals: [],
@@ -7,7 +7,7 @@ export const SearchBarContext = createContext<any>({
 });
 
 export const SearchBarProvider = ({ children }: any) => {
-  const [meals, setMeals] = useState<PopularRecipee[]>([]);
+  const [meals, setMeals] = useState<DetailsProps[]>([]);
 
   const value = { meals, setMeals };
 

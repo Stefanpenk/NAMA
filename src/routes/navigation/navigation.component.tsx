@@ -10,8 +10,6 @@ import "./navigation.styles.css";
 const Navigation = () => {
   const { token, removeToken } = useToken();
 
-  const style = document.documentElement.style;
-
   const params = useParams();
 
   const handleLogout = () => {
@@ -19,7 +17,7 @@ const Navigation = () => {
   };
 
   useEffect(() => {
-    // console.log(window.location.pathname);
+    const style = document.documentElement.style;
     if (window.location.pathname === "/") {
       style.setProperty("--nav-bgc", "rgba(0, 0, 0, 0.2)");
       style.setProperty("--nav-link-color", "#fff");

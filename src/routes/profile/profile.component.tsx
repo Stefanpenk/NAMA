@@ -1,16 +1,14 @@
 import useToken from "../../hooks/useToken";
+
+import MealCard from "../../components/MealCard/MealCard";
+
 import { useNavigate } from "react-router-dom";
+
 import "./profile.styles.css";
-import { FavRecipesContext } from "../../context/MyRecipes.context";
-import { useContext } from "react";
-import { link } from "fs";
 
 const Profile = () => {
-  const { removeToken, name, username } = useToken();
+  const { removeToken, token } = useToken();
   const navigate = useNavigate();
-  const { favRecipes } = useContext(FavRecipesContext);
-
-  console.log(favRecipes);
 
   const handleLogout = () => {
     removeToken();
@@ -19,16 +17,18 @@ const Profile = () => {
 
   return (
     <section className="section-profile nav-padding">
-      <h2>Welcome {name}</h2>
-      <button onClick={handleLogout}>Logout</button>
-      <div>
-        <h5>Your favourite recipes</h5>
-        <ul>
-          {favRecipes.map((recipe: any) => {
-            return <li key={recipe.id}>{recipe.title}</li>;
+      <h3 className="profile-title">Welcome {token.name}</h3>
+      <div className="profile-fav-container">
+        <h5 className="profile-fav-title">Your favourite recipes:</h5>
+        <div className="profile-fav-recipes meals-list">
+          {token.recipes.map((recipe: any) => {
+            return <MealCard item={recipe} />;
           })}
-        </ul>
+        </div>
       </div>
+      <button className="profile-logout-button" onClick={handleLogout}>
+        Logout
+      </button>
     </section>
   );
 };

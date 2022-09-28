@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { PopularRecipee } from "../../routes/meals/meals.component";
+import { CardProps } from "../../types/types";
 
 import { ReactComponent as Vegeterian } from "../../assets/vegeterian.svg";
 import { ReactComponent as Vegan } from "../../assets/vegan.svg";
@@ -8,10 +8,6 @@ import { ReactComponent as DairyFree } from "../../assets/diaryfree.svg";
 import { ReactComponent as GlutenFree } from "../../assets/glutenfree.svg";
 
 import "./MealCard.styles.css";
-
-type CardProps = {
-  item: PopularRecipee;
-};
 
 const MealCard = ({ item }: CardProps) => {
   const vegetarian = item.vegetarian === true ? { fill: "#A4B0A0" } : {};

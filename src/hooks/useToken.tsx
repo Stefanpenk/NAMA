@@ -1,4 +1,5 @@
 import { useState, useContext, createContext } from "react";
+import { TokenProps } from "../types/types";
 
 const TokenContext = createContext(null as any);
 
@@ -8,41 +9,15 @@ export const TokenProvider = ({ children }: any) => {
     if (check) {
       const tokenString: string = localStorage.getItem("token")!;
       const userToken = JSON.parse(tokenString);
-      return userToken?.token;
+      return userToken;
     } else return null;
   };
 
-  const getName = () => {
-    const check = localStorage.getItem("token");
-    if (check) {
-      const tokenString: string = localStorage.getItem("token")!;
-      const userToken = JSON.parse(tokenString);
-      return userToken?.name;
-    } else return null;
-  };
+  const [token, setToken] = useState<TokenProps | null>(getToken());
 
-  const getUsername = () => {
-    const check = localStorage.getItem("token");
-    if (check) {
-      const tokenString: string = localStorage.getItem("token")!;
-      const userToken = JSON.parse(tokenString);
-      return userToken?.username;
-    } else return null;
-  };
-
-  const [token, setToken] = useState<string | null>(getToken());
-  const [name, setName] = useState<string | null>(getName());
-  const [username, setUsername] = useState<string | null>(getUsername());
-
-  const saveToken = (userToken: {
-    token: string;
-    name: string;
-    username: string;
-  }) => {
+  const saveToken = (userToken: TokenProps | null) => {
     localStorage.setItem("token", JSON.stringify(userToken));
-    setToken(userToken.token);
-    setName(userToken.name);
-    setUsername(userToken.username);
+    setToken(userToken);
   };
 
   const removeToken = () => {
@@ -54,9 +29,7 @@ export const TokenProvider = ({ children }: any) => {
   };
 
   return (
-    <TokenContext.Provider
-      value={{ token, saveToken, removeToken, name, username }}
-    >
+    <TokenContext.Provider value={{ token, saveToken, removeToken }}>
       {children}
     </TokenContext.Provider>
   );

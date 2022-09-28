@@ -1,11 +1,8 @@
 import MealCard from "../MealCard/MealCard";
-import { PopularRecipee } from "../../routes/meals/meals.component";
+
+import { MealListProps } from "../../types/types";
 
 import "./Mealslist.styles.css";
-
-type MealListProps = {
-  meals: PopularRecipee[];
-};
 
 const Mealslist = ({ meals }: MealListProps) => {
   return (

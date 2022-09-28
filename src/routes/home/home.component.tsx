@@ -1,21 +1,18 @@
-import CardList from "../../components/CardList/CardList.component";
-
 import { useEffect, useState } from "react";
 
-import { getData } from "../../utils/data.utils";
+import CardList from "../../components/CardList/CardList.component";
 import HeroSection from "../../components/HeroSection/hero-section.component";
+
+import { getData } from "../../utils/data.utils";
+
+import { DetailsProps } from "../../types/types";
+import { Response } from "../../types/types";
 
 import "./home.styles.css";
 
-import { PopularRecipee } from "../meals/meals.component";
-
-export type Response = {
-  recipes: PopularRecipee[];
-};
-
 const Home = () => {
-  const [popular, setPopular] = useState<PopularRecipee[]>([]);
-  const [deserts, setDeserts] = useState<PopularRecipee[]>([]);
+  const [popular, setPopular] = useState<DetailsProps[]>([]);
+  const [deserts, setDeserts] = useState<DetailsProps[]>([]);
 
   const getPopular = async () => {
     const check = localStorage.getItem("popular");

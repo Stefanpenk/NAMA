@@ -5,14 +5,9 @@ import MealCard from "../MealCard/MealCard";
 import { ReactComponent as ArrowLeft } from "../../assets/arrow-left.svg";
 import { ReactComponent as ArrowRight } from "../../assets/arrow-right.svg";
 
-import { PopularRecipee } from "../../routes/meals/meals.component";
+import { CardListProps } from "../../types/types";
 
 import "./cardlist.styles.css";
-
-type CardListProps = {
-  popular: PopularRecipee[];
-  title: string;
-};
 
 const CardList = ({ popular, title }: CardListProps) => {
   const listRef = useRef<HTMLInputElement>(null);

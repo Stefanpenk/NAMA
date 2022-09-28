@@ -12,21 +12,6 @@ import { ReactComponent as Dessert } from "../../assets/dessert.svg";
 
 import "./meals.styles.css";
 
-export type Responses = {
-  results: PopularRecipee[];
-};
-
-export type PopularRecipee = {
-  id: number;
-  title: string;
-  image: string;
-  vegetarian: boolean;
-  vegan: boolean;
-  dairyFree: boolean;
-  glutenFree: boolean;
-  readyInMinutes: number;
-};
-
 const Meals = () => {
   const { meals } = useContext(SearchBarContext);
 

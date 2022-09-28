@@ -1,61 +1,31 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useToken from "../../hooks/useToken";
-import { FavRecipesContext } from "../../context/MyRecipes.context";
+import RecipeNav from "../RecipeNav/recipeNav.component";
 
-import { ReactComponent as Instruction } from "../../assets/instruction-icon.svg";
-import { ReactComponent as Ingredients } from "../../assets/ingredients-icon.svg";
-import { ReactComponent as Save } from "../../assets/save-icon.svg";
-import { ReactComponent as Time } from "../../assets/time-icon.svg";
-import { ReactComponent as Back } from "../../assets/back-icon.svg";
+import { DetailsProps } from "../../types/types";
 
 import "./recipe.styles.css";
 
-type DetailsProps = {
-  title: string;
-  diets: string[];
-  image: string;
-  readyInMinutes: number;
-  extendedIngredients: { id: number; original: string }[];
-  analyzedInstructions: {
-    name: string;
-    steps: { number: number; step: string }[];
-  }[];
-  summary: string;
-};
-
 const Recipe = () => {
+  const { saveToken } = useToken();
+  let params = useParams();
+  const navigate = useNavigate();
+  const { token } = useToken();
   const [activeTab, setActiveTab] = useState("instructions");
   const [details, setDetails] = useState<DetailsProps>({
     title: "",
     diets: [],
     image: "",
     readyInMinutes: 0,
+    id: 0,
     extendedIngredients: [{ id: 0, original: "" }],
     analyzedInstructions: [{ name: "", steps: [{ number: 0, step: "" }] }],
     summary: "",
   });
-  const { username } = useToken();
-  const { favRecipes, saveRecipes } = useContext(FavRecipesContext);
-
-  const navigate = useNavigate();
-
-  let params = useParams();
 
   const handleGoBack = () => {
     navigate(-1);
-  };
-
-  const fetchDetails = async () => {
-    const apiKey = "951fa37490bb4c928435c0d4c7950238";
-    // 48d4912f994842029db529317a2efa6e
-
-    const data = await fetch(
-      `https://api.spoonacular.com/recipes/${params.search}/information?apiKey=${apiKey}`
-    );
-    const detailData = await data.json();
-    setDetails(detailData);
-    // console.log(detailData);
   };
 
   const handleSave = () => {
@@ -69,12 +39,22 @@ const Recipe = () => {
         body: JSON.stringify({ user: user, newData: newData }),
       })
         .then((data) => data.json())
-        .then((recipe) => saveRecipes(recipe));
+        .then((token) => saveToken(token));
     }
-    sendData(username, newData);
+    sendData(token.username, newData);
   };
 
   useEffect(() => {
+    const fetchDetails = async () => {
+      const apiKey = "951fa37490bb4c928435c0d4c7950238";
+      // 48d4912f994842029db529317a2efa6e
+
+      const data = await fetch(
+        `https://api.spoonacular.com/recipes/${params.search}/information?apiKey=${apiKey}`
+      );
+      const detailData = await data.json();
+      setDetails(detailData);
+    };
     fetchDetails();
   }, [params.search]);
 
@@ -135,41 +115,14 @@ const Recipe = () => {
               </ul>
             </div>
           )}
-          <div className="recipe-navigation">
-            <button
-              className={`recipe-button ${
-                activeTab === "instructions" ? "active" : ""
-              }`}
-              onClick={() => {
-                setActiveTab("instructions");
-              }}
-            >
-              <Instruction />
-            </button>
-            <button
-              className={`recipe-button ${
-                activeTab === "ingredients" ? "active" : ""
-              }`}
-              onClick={() => {
-                setActiveTab("ingredients");
-              }}
-            >
-              <Ingredients />
-            </button>
-            <button className="recipe-button">
-              <Time className="svg-time" />
-              <div className="recipe-button-time">
-                <p>{details.readyInMinutes}</p>
-                <p className="recipe-button-min">min</p>
-              </div>
-            </button>
-            <button className="recipe-button">
-              <Save onClick={handleSave} />
-            </button>
-            <button className="recipe-button" onClick={handleGoBack}>
-              <Back />
-            </button>
-          </div>
+          <RecipeNav
+            handleSave={handleSave}
+            handleGoBack={handleGoBack}
+            readyInMinutes={details.readyInMinutes}
+            id={details.id}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
         </div>
       </div>
     </section>

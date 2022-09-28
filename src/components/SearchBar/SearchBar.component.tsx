@@ -8,27 +8,14 @@ import { ReactComponent as GlutenFree } from "../../assets/glutenfree.svg";
 
 import { getData } from "../../utils/data.utils";
 
-import { Responses } from "../../routes/meals/meals.component";
+import { Responses } from "../../types/types";
 
 import { SearchBarContext } from "../../context/SearchBar.context";
 
 import ChangeParamsButton from "../ChangeParamsButton/ChangeParamsButton.component";
 import Checkbox from "../Checkbox/CheckBox.component";
 
-interface SearchBarProps {
-  Button1: any;
-  Button2: any;
-  Button3: any;
-  Button4: any;
-  title1: string;
-  title2: string;
-  title3: string;
-  title4: string;
-  to1: string;
-  to2: string;
-  to3: string;
-  to4: string;
-}
+import { SearchBarProps } from "../../types/types";
 
 function SearchBar({
   Button1,
@@ -66,32 +53,19 @@ function SearchBar({
     } else return;
   };
 
-  const getMeals = async (
-    type: string,
-    ingredients: string,
-    diets: string,
-    intolerances: string,
-    cuisine: string
-  ) => {
-    /*   const check = localStorage.getItem("breakfast");
-
-    if (check) {
-      setMeals(JSON.parse(check));
-    } else {
+  useEffect(() => {
+    const getMeals = async (
+      type: string,
+      ingredients: string,
+      diets: string,
+      intolerances: string,
+      cuisine: string
+    ) => {
       const api = await getData<Responses>(
         `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=${number}&addRecipeInformation=true&cuisine=${cuisine}&diet=${diets}&type=${type}&intolerances=${intolerances}&includeIngredients=${ingredients}`
       );
-      localStorage.setItem("breakfast", JSON.stringify(api.results));
       setMeals(api.results);
-    } */
-
-    const api = await getData<Responses>(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=${number}&addRecipeInformation=true&cuisine=${cuisine}&diet=${diets}&type=${type}&intolerances=${intolerances}&includeIngredients=${ingredients}`
-    );
-    setMeals(api.results);
-  };
-
-  useEffect(() => {
+    };
     params();
     getMeals(
       meal!,

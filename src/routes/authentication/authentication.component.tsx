@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import useToken from "../../hooks/useToken";
+import { ReactComponent as Logo } from "../../assets/shop-logo.svg";
 
 import "./authentications.styles.css";
 
@@ -38,24 +39,34 @@ const Authentication = () => {
   };
 
   return (
-    <section className="section-auth nav-padding">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="loginInput">Username:</label>
-        <input
-          id="loginInput"
-          type="text"
-          placeholder="login"
-          onChange={handleLoginInput}
-        />
-        <label htmlFor="loginInput">Password:</label>
-        <input
-          id="passwordInput"
-          type="text"
-          placeholder="password"
-          onChange={handlePasswordInput}
-        />
-        <button type="submit">Submit</button>
-      </form>
+    <section className="section-auth">
+      <div className="auth-login-container nav-padding">
+        <Logo className="auth-logo" />
+        <h3 className="auth-title">Welcome Back</h3>
+        <form className="auth-form" onSubmit={handleSubmit}>
+          {/* <label htmlFor="loginInput">Username:</label> */}
+          <input
+            id="loginInput"
+            type="text"
+            placeholder="username"
+            onChange={handleLoginInput}
+          />
+          {/* <label htmlFor="loginInput">Password:</label> */}
+          <input
+            id="passwordInput"
+            type="text"
+            placeholder="password"
+            onChange={handlePasswordInput}
+          />
+          <button className="auth-button" type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
+      <div
+        className="auth-img-container"
+        style={{ backgroundImage: `url("./images/about-section(1).jpg")` }}
+      ></div>
     </section>
   );
 };
