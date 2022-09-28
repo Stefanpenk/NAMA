@@ -73,7 +73,5 @@
 
 .auth-button:hover {
   border: 2px solid var(--primary-color);
-  background-color: var(--third-color);
-  color: var(--primary-color);
-  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px 1px rgba(164, 176, 160, 0.5);
 }

@@ -51,7 +51,7 @@ const Home = () => {
   return (
     <div className="wrapper">
       <HeroSection />
-      <div className="sections-container">
+      <div className="sections-container nav-padding">
         <CardList popular={popular} title="Popular Picks" />
         <CardList popular={deserts} title="Something Sweet" />
       </div>
