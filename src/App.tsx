@@ -7,7 +7,6 @@ import Authentication from "./routes/authentication/authentication.component";
 import Cuisines from "./routes/cuisines/cuisines.component";
 import Recipe from "./components/Recipe/recipe.component";
 import Meals from "./routes/meals/meals.component";
-import Learn from "./routes/learn/learn.component";
 import Profile from "./routes/profile/profile.component";
 import RequireAuth from "./components/RequireAuth/RequireAuth.component";
 import Admin from "./routes/admin/admin.component";
@@ -25,7 +24,6 @@ const App = () => {
         <Route path="/auth" element={<Authentication />} />
         <Route path="/cuisines/:cuisine" element={<Cuisines />} />
         <Route path="/recipe/:id" element={<Recipe />} />
-        <Route path="/learn" element={<Learn />} />
         <Route path="/blog" element={<Blog />} />
         <Route
           path="/admin"

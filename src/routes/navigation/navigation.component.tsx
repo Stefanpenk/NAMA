@@ -22,7 +22,7 @@ const Navigation = () => {
       style.setProperty("--nav-bgc", "rgba(0, 0, 0, 0.2)");
       style.setProperty("--nav-link-color", "#fff");
     } else {
-      style.setProperty("--nav-bgc", "rgba(255, 255, 255, 0.686)");
+      style.setProperty("--nav-bgc", "rgba(255, 255, 255, 0.819)");
       style.setProperty("--nav-link-color", "#111");
     }
   }, [params]);
@@ -36,9 +36,6 @@ const Navigation = () => {
         <div className="nav-left">
           <NavLink className="nav-link" to="/about">
             <span>ABOUT</span>
-          </NavLink>
-          <NavLink className="nav-link" to="/learn">
-            <span>LEARN</span>
           </NavLink>
           <NavLink className="nav-link" to="/blog">
             <span>BLOG</span>

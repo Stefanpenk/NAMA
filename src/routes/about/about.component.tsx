@@ -8,14 +8,14 @@ import { ReactComponent as Email } from "../../assets/email.svg";
 
 const About = () => {
   return (
-    <section className="about-section nav-padding">
+    <section className="about-section">
       <div className="about-img-container">
         <img
           src={process.env.PUBLIC_URL + "/images/about-section(2).jpg"}
           alt=""
         />
       </div>
-      <div className="about-info-container">
+      <div className="about-info-container nav-padding">
         <h3 className="about-title">Our Mission</h3>
         <p className="about-text">
           Our aim is to make your journey towards living a Zero Waste Lifestyle
@@ -28,7 +28,7 @@ const About = () => {
         <p className="about-text">
           It's about making sustainable living achievable, fun, and accessible!
         </p>
-        <Button className="about" to="/learn" />
+        <Button className="about" to="/blog" />
         <div className="about-contact-container">
           <h3 className="about-contact-title">Contact us:</h3>
           <div className="about-contact">

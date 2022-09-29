@@ -1,78 +1,42 @@
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import useToken from "../../hooks/useToken";
+
 import { ReactComponent as Logo } from "../../assets/shop-logo.svg";
+
+import Login from "../../components/Login/login.component";
+import Register from "../../components/Register/register.component";
 
 import "./authentications.styles.css";
 
 const Authentication = () => {
-  const { saveToken } = useToken();
-  const [user, setUser] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
-  const location: any = useLocation();
-  const redirectPath = location.state?.path || "/";
+  const [register, setRegister] = useState(false);
 
-  async function loginUser(user: string, password: string) {
-    return fetch("http://localhost:8080/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ user: user, password: password }),
-    }).then((data) => data.json());
-  }
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const token = await loginUser(user, password);
-    if (Object.keys(token).find((key) => key === "error")) {
-      const value = Object.values(token).join();
-      setError(value);
-    } else {
-      saveToken(token);
-      navigate(redirectPath, { replace: true });
-    }
-  };
-
-  const handleLoginInput = (e: React.FormEvent<HTMLInputElement>) => {
-    setError("");
-    setUser(e.currentTarget.value);
-  };
-
-  const handlePasswordInput = (e: React.FormEvent<HTMLInputElement>) => {
-    setError("");
-    setPassword(e.currentTarget.value);
+  const handleSwitchForms = () => {
+    setRegister(!register);
   };
 
   return (
     <section className="section-auth">
       <div className="auth-login-container nav-padding">
         <Logo className="auth-logo" />
-        <h3 className="auth-title">Welcome Back</h3>
-        <form className="auth-form" onSubmit={handleSubmit}>
-          {/* <label htmlFor="loginInput">Username:</label> */}
-          <input
-            id="loginInput"
-            type="text"
-            placeholder="username"
-            required
-            onChange={handleLoginInput}
-          />
-          {/* <label htmlFor="loginInput">Password:</label> */}
-          <input
-            id="passwordInput"
-            type="text"
-            placeholder="password"
-            required
-            onChange={handlePasswordInput}
-          />
-          <button className="auth-button" type="submit">
-            Submit
+        <h3 className="auth-title">
+          {register ? "Create your account" : "Welcome Back"}
+        </h3>
+        {register ? (
+          <Register handleSwitchForms={handleSwitchForms} />
+        ) : (
+          <Login />
+        )}
+        <div className="switch-container">
+          <p className="switch-text">
+            {register ? "Already registered?" : "Don't hava an account?"}
+          </p>
+          <button
+            className="switch-button auth-button"
+            onClick={handleSwitchForms}
+          >
+            {register ? "Sign In" : "Sign Up"}
           </button>
-        </form>
-        <div className="auth-error">{error}</div>
+        </div>
       </div>
       <div
         className="auth-img-container"
