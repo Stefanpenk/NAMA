@@ -10,7 +10,10 @@ const About = () => {
   return (
     <section className="about-section nav-padding">
       <div className="about-img-container">
-        <img src="./images/about-section(2).jpg" alt="" />
+        <img
+          src={process.env.PUBLIC_URL + "/images/about-section(2).jpg"}
+          alt=""
+        />
       </div>
       <div className="about-info-container">
         <h3 className="about-title">Our Mission</h3>

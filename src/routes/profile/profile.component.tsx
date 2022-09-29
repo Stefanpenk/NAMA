@@ -4,6 +4,8 @@ import MealCard from "../../components/MealCard/MealCard";
 
 import { useNavigate } from "react-router-dom";
 
+import { DetailsProps } from "../../types/types";
+
 import "./profile.styles.css";
 
 const Profile = () => {
@@ -21,7 +23,7 @@ const Profile = () => {
       <div className="profile-fav-container">
         <h5 className="profile-fav-title">Your favourite recipes:</h5>
         <div className="profile-fav-recipes meals-list">
-          {token.recipes.map((recipe: any) => {
+          {token.recipes.map((recipe: DetailsProps) => {
             return <MealCard item={recipe} />;
           })}
         </div>

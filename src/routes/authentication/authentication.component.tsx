@@ -6,11 +6,11 @@ import { ReactComponent as Logo } from "../../assets/shop-logo.svg";
 import "./authentications.styles.css";
 
 const Authentication = () => {
+  const { saveToken } = useToken();
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const location: any = useLocation();
-  const { saveToken } = useToken();
   const redirectPath = location.state?.path || "/";
 
   async function loginUser(user: string, password: string) {
@@ -65,7 +65,9 @@ const Authentication = () => {
       </div>
       <div
         className="auth-img-container"
-        style={{ backgroundImage: `url("./images/about-section(1).jpg")` }}
+        style={{
+          backgroundImage: `url('${process.env.PUBLIC_URL}/images/about-section(1).jpg')`,
+        }}
       ></div>
     </section>
   );

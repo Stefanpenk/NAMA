@@ -10,6 +10,8 @@ import Meals from "./routes/meals/meals.component";
 import Learn from "./routes/learn/learn.component";
 import Profile from "./routes/profile/profile.component";
 import RequireAuth from "./components/RequireAuth/RequireAuth.component";
+import Admin from "./routes/admin/admin.component";
+import RequireAdminAuth from "./components/RequireAdminAuth/RequireAdminAuth.component";
 
 const App = () => {
   return (
@@ -23,6 +25,14 @@ const App = () => {
         <Route path="/cuisines/:cuisine" element={<Cuisines />} />
         <Route path="/recipe/:id" element={<Recipe />} />
         <Route path="/learn" element={<Learn />} />
+        <Route
+          path="/admin"
+          element={
+            <RequireAdminAuth>
+              <Admin />
+            </RequireAdminAuth>
+          }
+        />
         <Route
           path="/profile"
           element={
