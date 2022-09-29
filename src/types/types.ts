@@ -67,3 +67,14 @@ export interface SearchBarProps {
 export type Responses = {
   results: DetailsProps[];
 };
+
+export type BlogProps = {
+  id: string;
+  title: string;
+  text: string;
+  imgUrl: string;
+  date: string;
+  rating: [{ user: string; number: number }];
+  author: string;
+  authorImg: string;
+};

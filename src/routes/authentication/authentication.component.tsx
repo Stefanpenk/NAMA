@@ -9,6 +9,7 @@ const Authentication = () => {
   const { saveToken } = useToken();
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const location: any = useLocation();
   const redirectPath = location.state?.path || "/";
@@ -26,15 +27,22 @@ const Authentication = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const token = await loginUser(user, password);
-    saveToken(token);
-    navigate(redirectPath, { replace: true });
+    if (Object.keys(token).find((key) => key === "error")) {
+      const value = Object.values(token).join();
+      setError(value);
+    } else {
+      saveToken(token);
+      navigate(redirectPath, { replace: true });
+    }
   };
 
   const handleLoginInput = (e: React.FormEvent<HTMLInputElement>) => {
+    setError("");
     setUser(e.currentTarget.value);
   };
 
   const handlePasswordInput = (e: React.FormEvent<HTMLInputElement>) => {
+    setError("");
     setPassword(e.currentTarget.value);
   };
 
@@ -49,6 +57,7 @@ const Authentication = () => {
             id="loginInput"
             type="text"
             placeholder="username"
+            required
             onChange={handleLoginInput}
           />
           {/* <label htmlFor="loginInput">Password:</label> */}
@@ -56,12 +65,14 @@ const Authentication = () => {
             id="passwordInput"
             type="text"
             placeholder="password"
+            required
             onChange={handlePasswordInput}
           />
           <button className="auth-button" type="submit">
             Submit
           </button>
         </form>
+        <div className="auth-error">{error}</div>
       </div>
       <div
         className="auth-img-container"

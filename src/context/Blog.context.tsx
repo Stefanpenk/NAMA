@@ -1,21 +1,22 @@
 import { createContext, useState, useEffect } from "react";
 import { getData } from "../utils/data.utils";
-
-type BlogProps = {
-  id: string;
-  title: string;
-  text: string;
-  imgUrl: string;
-  date: string;
-  rating: [{ user: string; number: number }];
-  author: string;
-  authorImg: string;
-};
+import { BlogProps } from "../types/types";
 
 export const BlogContext = createContext(null as any);
 
 export const BlogContextProvider = ({ children }: any) => {
-  const [blog, setBlog] = useState<BlogProps[]>();
+  const [blog, setBlog] = useState<BlogProps[]>([
+    {
+      id: "",
+      title: "",
+      text: "",
+      imgUrl: "",
+      date: "",
+      rating: [{ user: "", number: 0 }],
+      author: "",
+      authorImg: "",
+    },
+  ]);
 
   useEffect(() => {
     const getBlog = async () => {

@@ -40,6 +40,9 @@ const Navigation = () => {
           <NavLink className="nav-link" to="/learn">
             <span>LEARN</span>
           </NavLink>
+          <NavLink className="nav-link" to="/blog">
+            <span>BLOG</span>
+          </NavLink>
           <NavLink className="nav-link" to="/meals/breakfast">
             <span>MEALS</span>
           </NavLink>
