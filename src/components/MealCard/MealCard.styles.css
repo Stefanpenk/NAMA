@@ -1,5 +1,6 @@
 .meal-card {
   /* width: 100%; */
+  position: relative;
   width: 30%;
   margin: 15px calc(10% / 6);
   display: flex;
@@ -12,6 +13,7 @@
 }
 
 .meal-card a {
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -77,11 +79,44 @@
 }
 
 .image-container img {
-  height: 100%;
+  width: 100%;
+  /* height: 100%; */
   object-fit: contain;
   transition: 0.2s;
 }
 
 .meal-card:hover .image-container img {
   height: 105%;
+}
+
+.delete-fav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  padding: 2px;
+  top: 2%;
+  right: 2%;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  background: transparent;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.delete-fav svg {
+  width: 30px;
+  height: 30px;
+  fill: var(--primary-color);
+  transition: 0.2s;
+}
+
+.delete-fav:hover {
+  background-color: var(--primary-color);
+}
+
+.delete-fav:hover svg {
+  fill: var(--third-color);
 }

@@ -17,6 +17,8 @@ import Checkbox from "../Checkbox/CheckBox.component";
 
 import { SearchBarProps } from "../../types/types";
 
+import "./searchBard.styles.css";
+
 function SearchBar({
   Button1,
   Button2,

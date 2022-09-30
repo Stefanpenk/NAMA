@@ -130,6 +130,7 @@
 }
 
 .article-mini-text {
+  margin-bottom: 5px;
   height: 100px;
   overflow: hidden;
   /* overflow-y: scroll; */
@@ -146,7 +147,7 @@
   align-items: center;
   width: 100%;
   flex-grow: 1;
-  background-color: #eee;
+  background-color: var(--primary-color-transparent);
 }
 
 .article-mini-author {

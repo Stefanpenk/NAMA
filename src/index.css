@@ -2,7 +2,8 @@
 /* font-family: 'Montserrat', sans-serif; */
 
 :root {
-  --primary-color: hsl(108, 9%, 66%);
+  --primary-color: rgb(164, 176, 160);
+  --primary-color-transparent: rgba(164, 176, 160, 0.112);
   --second-color: #111;
   --third-color: #fff;
   --vegan-color: #48823b;

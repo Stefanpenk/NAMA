@@ -24,7 +24,7 @@ const Profile = () => {
         <h5 className="profile-fav-title">Your favourite recipes:</h5>
         <div className="profile-fav-recipes meals-list">
           {token.recipes.map((recipe: DetailsProps) => {
-            return <MealCard item={recipe} />;
+            return <MealCard key={recipe.id} item={recipe} />;
           })}
         </div>
       </div>

@@ -1,28 +1,61 @@
 import { Link } from "react-router-dom";
 
 import { CardProps } from "../../types/types";
+import { DetailsProps } from "../../types/types";
 
 import { ReactComponent as Vegeterian } from "../../assets/vegeterian.svg";
 import { ReactComponent as Vegan } from "../../assets/vegan.svg";
 import { ReactComponent as DairyFree } from "../../assets/diaryfree.svg";
 import { ReactComponent as GlutenFree } from "../../assets/glutenfree.svg";
+import { ReactComponent as DeleteButton } from "../../assets/delete-icon.svg";
+import useToken from "../../hooks/useToken";
+import { DeleteFromFavourite } from "../../utils/deleteFromFavourite.utils";
 
 import "./MealCard.styles.css";
 
 const MealCard = ({ item }: CardProps) => {
+  const { token, saveToken } = useToken();
   const vegetarian = item.vegetarian === true ? { fill: "#A4B0A0" } : {};
   const vegan = item.vegan === true ? { fill: "#A4B0A0" } : {};
   const dairy = item.dairyFree === true ? { fill: "#A4B0A0" } : {};
   const gluten = item.glutenFree === true ? { fill: "#A4B0A0" } : {};
 
+  /* const handleDeleteFromFavourite = () => {
+    const deleteData = item;
+    async function sendData(user: string, deleteData: DetailsProps) {
+      return fetch("http://localhost:8080/delete", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user: user, newData: deleteData }),
+      })
+        .then((data) => data.json())
+        .then((token) => saveToken(token));
+    }
+    sendData(token.username, deleteData);
+  }; */
+
+  const handleDeleteFromFavourite = () => {
+    DeleteFromFavourite({
+      item: item,
+      username: token.username,
+      saveToken: saveToken,
+    });
+  };
+
   return (
-    <div key={item.id} className="meal-card">
+    <div className="meal-card">
       <Link to={"/recipe/" + item.id}>
         <h4 className="meal-title">{item.title}</h4>
         <p className="meal-time">preparation time: {item.readyInMinutes}min</p>
         <div className="image-container">
           <img
-            src={item.image ? item.image : "/images/noImage.jpg"}
+            src={
+              item.image
+                ? item.image
+                : `${process.env.PUBLIC_URL}/images/noImage.jpg`
+            }
             alt={item.title}
           />
         </div>
@@ -33,6 +66,11 @@ const MealCard = ({ item }: CardProps) => {
           <GlutenFree style={gluten} className="meal-icon" />
         </div>
       </Link>
+      {window.location.pathname === "/profile" ? (
+        <button className="delete-fav" onClick={handleDeleteFromFavourite}>
+          <DeleteButton />
+        </button>
+      ) : null}
     </div>
   );
 };
