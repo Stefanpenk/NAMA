@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { BlogContext } from "../../context/Blog.context";
 import { BlogProps } from "../../types/types";
 
+import { ReactComponent as ScrollDown } from "../../assets/scroll-down-icon.svg";
+
 import "./blog.styles.css";
 
 const Blog = () => {
@@ -27,19 +29,25 @@ const Blog = () => {
         <div className="blog-intro-info">
           <div className="blog-title">Zero Waste Blog</div>
           <div className="blog-subtitle">How to leave left footprints</div>
-          <div className="blog-text">
+          <p className="blog-text">
             We are lucky to be able to choose what we eat, because many people
             around the world don't have that same choice. Canadian households
             toss out about $1,300 worth of food a year, while Americans waste
             about $2,000 worth annually. If we add restaurants, grocery stores,
             farms, etc. we are wasting – $31 billion in Canada and $165 billion
             in the U.S.
-          </div>
-          <div className="blog-text">
+          </p>
+          <p className="blog-text">
             Fortunately, there are many things we can do at home to reduce food
             waste, and there are tons of zero-waste recipes you can easily make
             in your kitchen with basic tools.
-          </div>
+          </p>
+          <p className="blog-check">
+            Wanna learn more? Check my Blog
+            <span>
+              <ScrollDown />
+            </span>
+          </p>
         </div>
       </div>
       <div className="blog-articles-container">

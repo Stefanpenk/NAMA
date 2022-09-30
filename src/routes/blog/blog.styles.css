@@ -37,6 +37,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.2);
 }
 
 .blog-intro-info {
@@ -64,6 +65,27 @@
 .blog-text {
   margin-top: 20px;
   font-size: 18px;
+  text-align: center;
+}
+
+.blog-check {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 35px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.blog-check span {
+  width: 50px;
+}
+
+.blog-check span svg {
+  fill: var(--primary-color);
 }
 
 .blog-articles-container {
