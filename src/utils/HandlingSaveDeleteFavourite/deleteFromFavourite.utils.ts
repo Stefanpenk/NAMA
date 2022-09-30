@@ -1,5 +1,4 @@
-import { DetailsProps, TokenProps } from "../types/types";
-import { CardProps } from "../types/types";
+import { DetailsProps, TokenProps } from "../../types/types";
 
 type DeleteProps = {
   item: DetailsProps;
@@ -12,7 +11,6 @@ export const DeleteFromFavourite = ({
   username,
   saveToken,
 }: DeleteProps) => {
-  // const { token, saveToken } = useToken();
   const deleteData = item;
   async function sendData(user: string, deleteData: DetailsProps) {
     return fetch("http://localhost:8080/delete", {

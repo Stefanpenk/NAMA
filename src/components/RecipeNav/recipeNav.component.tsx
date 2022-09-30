@@ -1,32 +1,29 @@
-import { RecipeNavProps } from "../../types/types";
+import { useNavigate } from "react-router-dom";
+import useToken from "../../hooks/useToken";
+import { RecipeNavProps, TokenProps } from "../../types/types";
 
 import { ReactComponent as Instruction } from "../../assets/instruction-icon.svg";
 import { ReactComponent as Ingredients } from "../../assets/ingredients-icon.svg";
-import { ReactComponent as Save } from "../../assets/save-icon.svg";
 import { ReactComponent as Time } from "../../assets/time-icon.svg";
 import { ReactComponent as Back } from "../../assets/back-icon.svg";
 
-import { DetailsProps } from "../../types/types";
+import SaveButton from "../SaveButton/SaveButton.component";
+import UnsaveButton from "../UnsaveButton/UnsaveButton.components";
 
-const RecipeNav = ({
-  handleSave,
-  handleGoBack,
-  readyInMinutes,
-  id,
-  activeTab,
-  setActiveTab,
-}: RecipeNavProps) => {
-  const storage: string = localStorage.getItem("token")!;
-  const createData = JSON.parse(storage);
-  const recipes: DetailsProps[] = createData.recipes;
-  const haveId = recipes.find((recipe) => {
-    return recipe.id === id;
-  });
-  const style =
-    haveId === undefined
-      ? {}
-      : { backgroundColor: "red", borderColor: "red", cursor: "not-allowed" };
-  let disable = haveId === undefined ? false : true;
+type useTokenProps = {
+  token: TokenProps;
+  saveToken: () => void;
+};
+
+const RecipeNav = ({ activeTab, setActiveTab, details }: RecipeNavProps) => {
+  const navigate = useNavigate();
+  const { token, saveToken }: useTokenProps = useToken();
+  const { id, readyInMinutes } = details;
+  const check = token.recipes.find((recipe) => recipe.id === id);
+  console.log(check);
+  const handleGoBack = () => {
+    navigate(-1);
+  };
 
   return (
     <div className="recipe-navigation">
@@ -57,14 +54,20 @@ const RecipeNav = ({
           <p className="recipe-button-min">min</p>
         </div>
       </button>
-      <button
-        className="recipe-button"
-        disabled={disable}
-        style={style}
-        onClick={handleSave}
-      >
-        <Save />
-      </button>
+      {check === undefined ? (
+        <SaveButton
+          details={details}
+          username={token.username}
+          saveToken={saveToken}
+        />
+      ) : (
+        <UnsaveButton
+          details={details}
+          username={token.username}
+          saveToken={saveToken}
+        />
+      )}
+
       <button className="recipe-button" onClick={handleGoBack}>
         <Back />
       </button>

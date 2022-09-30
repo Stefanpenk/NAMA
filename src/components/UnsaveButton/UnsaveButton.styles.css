@@ -1,0 +1,14 @@
+.recipe-button.unsave-button {
+  background-color: red;
+  border-color: red;
+  transition: 0.2s;
+}
+
+.recipe-button.unsave-button:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.recipe-button.unsave-button:hover svg {
+  fill: var(--third-color);
+}

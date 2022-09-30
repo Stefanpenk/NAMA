@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 import { CardProps } from "../../types/types";
-import { DetailsProps } from "../../types/types";
 
 import { ReactComponent as Vegeterian } from "../../assets/vegeterian.svg";
 import { ReactComponent as Vegan } from "../../assets/vegan.svg";
@@ -9,7 +8,7 @@ import { ReactComponent as DairyFree } from "../../assets/diaryfree.svg";
 import { ReactComponent as GlutenFree } from "../../assets/glutenfree.svg";
 import { ReactComponent as DeleteButton } from "../../assets/delete-icon.svg";
 import useToken from "../../hooks/useToken";
-import { DeleteFromFavourite } from "../../utils/deleteFromFavourite.utils";
+import { DeleteFromFavourite } from "../../utils/HandlingSaveDeleteFavourite/deleteFromFavourite.utils";
 
 import "./MealCard.styles.css";
 
@@ -19,22 +18,6 @@ const MealCard = ({ item }: CardProps) => {
   const vegan = item.vegan === true ? { fill: "#A4B0A0" } : {};
   const dairy = item.dairyFree === true ? { fill: "#A4B0A0" } : {};
   const gluten = item.glutenFree === true ? { fill: "#A4B0A0" } : {};
-
-  /* const handleDeleteFromFavourite = () => {
-    const deleteData = item;
-    async function sendData(user: string, deleteData: DetailsProps) {
-      return fetch("http://localhost:8080/delete", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ user: user, newData: deleteData }),
-      })
-        .then((data) => data.json())
-        .then((token) => saveToken(token));
-    }
-    sendData(token.username, deleteData);
-  }; */
 
   const handleDeleteFromFavourite = () => {
     DeleteFromFavourite({

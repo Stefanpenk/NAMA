@@ -20,16 +20,14 @@ export type TokenProps = {
   token: string;
   name: string;
   username: string;
-  recipes: DetailsProps;
+  recipes: DetailsProps[];
 };
 
 export type RecipeNavProps = {
-  handleSave: () => void;
-  handleGoBack: () => void;
-  readyInMinutes: number;
-  id: number;
+  handleGoBack?: () => void;
   activeTab: string;
   setActiveTab: (value: string) => void;
+  details: DetailsProps;
 };
 
 export type Response = {
