@@ -1,9 +1,9 @@
 import { useState, useContext, createContext } from "react";
-import { TokenProps } from "../types/types";
+import { TokenProps, Props } from "../types/types";
 
 const TokenContext = createContext(null as any);
 
-export const TokenProvider = ({ children }: any) => {
+export const TokenProvider: React.FC<Props> = ({ children }) => {
   const getToken = () => {
     const check = localStorage.getItem("token");
     if (check) {

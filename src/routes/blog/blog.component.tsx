@@ -1,14 +1,10 @@
-import { useContext } from "react";
-import { BlogContext } from "../../context/Blog.context";
-import { BlogProps } from "../../types/types";
-
 import { ReactComponent as ScrollDown } from "../../assets/scroll-down-icon.svg";
+
+import BlogCard from "../../components/BlogCard/BlogCard.component";
 
 import "./blog.styles.css";
 
 const Blog = () => {
-  const { blog, setBlog } = useContext(BlogContext);
-  console.log(blog);
   return (
     <section className="section-blog">
       <div
@@ -50,36 +46,7 @@ const Blog = () => {
           </p>
         </div>
       </div>
-      <div className="blog-articles-container">
-        {blog.map((article: BlogProps) => {
-          return (
-            <div key={article.id} className="blog-article">
-              <div
-                className="article-mini-img"
-                style={{
-                  backgroundImage: `url(${article.imgUrl})`,
-                }}
-              ></div>
-              <div className="article-mini-info">
-                <div className="article-mini-title">{article.title}</div>
-                <p className="article-mini-text">{article.text}</p>
-              </div>
-              <div className="article-mini-footer">
-                <div className="article-mini-date">{article.date}</div>
-                <div className="article-mini-author">
-                  <div
-                    className="article-mini-author-img"
-                    style={{
-                      backgroundImage: `url(${article.authorImg})`,
-                    }}
-                  ></div>
-                  <span>{article.author}</span>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      <BlogCard />
     </section>
   );
 };
