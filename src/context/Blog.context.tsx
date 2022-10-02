@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from "react";
 import { getData } from "../utils/data.utils";
 import { BlogProps, Props } from "../types/types";
 
-const BlogDefaultValue = {
+export const BlogDefaultValue = {
   id: "",
   title: "",
   text: "",
@@ -11,6 +11,7 @@ const BlogDefaultValue = {
   rating: [{ user: "", number: 0 }],
   author: "",
   authorImg: "",
+  comments: [{ id: "", user: "", date: "", text: "" }],
 };
 
 const BlogContextDefaultValue = {

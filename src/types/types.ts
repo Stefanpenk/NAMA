@@ -75,8 +75,13 @@ export type BlogProps = {
   rating: { user: string; number: number }[];
   author: string;
   authorImg: string;
+  comments: { id: string; user: string; date: string; text: string }[];
 };
 
 export interface Props {
   children: React.ReactNode;
 }
+
+export type ArticleInfoProps = {
+  article: BlogProps;
+};

@@ -47,6 +47,7 @@
 }
 
 .about-contact-container {
+  padding-bottom: 10px;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -57,10 +58,13 @@
 }
 
 .about-contact-title {
+  margin: 10px 50px;
+  padding-bottom: 10px;
   width: 100%;
-  margin: 10px 0;
-  font-size: 20px;
+  font-size: 25px;
   text-align: center;
+  color: var(--primary-color);
+  border-bottom: 1px solid var(--primary-color);
 }
 
 .about-icon-container {

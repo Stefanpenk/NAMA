@@ -42,6 +42,7 @@ const Admin = () => {
           rating: [],
           author: author,
           authorImg: authorImg,
+          comments: [],
         }),
       })
         .then((data) => data.json())

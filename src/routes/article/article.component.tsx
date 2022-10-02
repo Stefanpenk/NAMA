@@ -1,42 +1,72 @@
+import uniqid from "uniqid";
+import { getData } from "../../utils/data.utils";
 import { useParams } from "react-router-dom";
-import { useContext, useState, useEffect } from "react";
+import useToken from "../../hooks/useToken";
+import React, { useContext, useState, useEffect } from "react";
 import { BlogContext } from "../../context/Blog.context";
 import { BlogProps } from "../../types/types";
-import { ReactComponent as Star } from "../../assets/star-icon.svg";
+import { ReactComponent as CommentProfile } from "../../assets/comment-profile-icon.svg";
+
+import { getCurrentDate } from "../../utils/currentdate.utils";
+import { BlogDefaultValue } from "../../context/Blog.context";
+
+import ArticleInfo from "../../components/ArticleInfo/ArticleInfo.component";
 
 import "./article.styles.css";
 
 const Article = () => {
   const params = useParams();
-  const { blog } = useContext(BlogContext);
-  const [article, setArticle] = useState<BlogProps>();
+  const { blog, setBlog } = useContext(BlogContext);
+  const [article, setArticle] = useState<BlogProps>(BlogDefaultValue);
+  const [textareaValue, setTextareaValue] = useState("");
+  const { token } = useToken();
 
   useEffect(() => {
     const getArticle = () => {
       const singleArticle = blog.find((obj) => obj.id === params.id);
-      setArticle(singleArticle);
+      setArticle(
+        singleArticle === undefined ? BlogDefaultValue : singleArticle
+      );
     };
     getArticle();
   }, [blog]);
 
-  const getNumber = () => {
-    const rating = () => {
-      if (article?.rating.length === 0 || article?.rating === undefined) {
-        return [{ user: "string", number: 0 }];
-      } else {
-        return article?.rating;
-      }
-    };
-    const array = rating();
-    const number = array.reduce((a, b) => a + b.number, 0) / array.length;
-    return Math.round((number + Number.EPSILON) * 100) / 100;
+  const handleTextareaValue = (e: React.FormEvent<HTMLTextAreaElement>) => {
+    const value = e.currentTarget.value;
+    setTextareaValue(value);
+    console.log(value);
   };
 
-  const createScore = () => {
-    const score = getNumber();
-    const lastScore = (score / 5) * 100;
-    const styles = { transform: `translate(${lastScore}%)` };
-    return styles;
+  async function sendComment(
+    id: string,
+    user: string,
+    articleId: string,
+    comment: string,
+    date: string
+  ) {
+    return fetch("http://localhost:8080/sendcomment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        articleId: articleId,
+        comment: { id: id, user: user, date: date, text: comment },
+      }),
+    }).then((data) => data.json());
+  }
+
+  const handleSubmitComment = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const id = uniqid();
+    const user = token.username;
+    const articleId = article?.id === undefined ? "0" : article?.id;
+    const comment = textareaValue;
+    const date = getCurrentDate("/");
+    await sendComment(id, user, articleId, comment, date);
+    const api = await getData<any>("http://localhost:8080/blog");
+    setBlog(api.blog);
+    setTextareaValue("");
   };
 
   return (
@@ -44,59 +74,48 @@ const Article = () => {
       <div
         className="article-img"
         style={{
-          backgroundImage: `url(${article?.imgUrl})`,
+          backgroundImage: `url(${article.imgUrl})`,
         }}
-      ></div>
+      />
       <div className="article-wrapper">
-        <div className="article-info">
-          <div
-            className="article-author-img"
-            style={{
-              backgroundImage: `url(${article?.authorImg})`,
-            }}
-          ></div>
-          <div className="article-info-text">
-            <div className="article-author">{article?.author}</div>
-            <div className="article-date">{article?.date}</div>
-          </div>
-          <div className="article-score-container">
-            <div className="article-score-length">
-              <span>{article?.rating.length}</span> People rated this article.
-            </div>
-            <div className="article-score">{getNumber()}</div>
-            <div className="article-score-stars">
-              <div className="article-score-star">
-                <div className="cover" style={createScore()}></div>
-                <Star />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="article-title">{article?.title}</div>
-        <div className="article-text">{article?.text}</div>
+        <ArticleInfo article={article} />
+        <div className="article-title">{article.title}</div>
+        <div className="article-text">{article.text}</div>
         <div className="article-comment-section">
           <div className="comment-counter">
-            <span>5</span>Comments
+            <span>{article.comments.length}</span> Comments
           </div>
           <div className="comments-wrapper">
-            <div className="comment-single">
-              <div className="comment-author">Anonymous</div>
-              <div className="comment-date">2022/09/30</div>
-              <div className="comment-text">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Repellendus repellat ratione velit laboriosam voluptatem.
-                Corrupti, molestiae. Esse reprehenderit, amet velit incidunt,
-                labore sequi nemo blanditiis consectetur sit aspernatur corporis
-                facilis!
-              </div>
+            {article.comments.length === 0
+              ? "There is no comments yet"
+              : article.comments.map((comment) => {
+                  return (
+                    <div key={comment.id} className="comment-single">
+                      <p className="comment-author">
+                        <span className="comment-date">{comment.date}</span>
+                        {comment.user}
+                      </p>
+                      <div className="comment-text">{comment.text}</div>
+                    </div>
+                  );
+                })}
+          </div>
+          <div className="comment-add-wrapper">
+            <div className="comment-icon">
+              <CommentProfile />
             </div>
-            <div className="comment-add-wrapper">
-              <div className="comment-icon"></div>
+            <form className="comment-form" onSubmit={handleSubmitComment}>
               <textarea
                 className="comment-write-text"
                 placeholder="write your comment"
+                onChange={handleTextareaValue}
+                value={textareaValue}
+                required
               ></textarea>
-            </div>
+              <button className="comment-submit-button" type="submit">
+                Submit
+              </button>
+            </form>
           </div>
         </div>
       </div>

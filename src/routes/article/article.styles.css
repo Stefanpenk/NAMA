@@ -41,6 +41,14 @@
 }
 
 .article-score {
+  margin-top: 10px;
+  padding-top: 5px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #ddd;
+}
+
+.article-score-number {
   font-size: 20px;
   font-weight: 700;
 }
@@ -73,16 +81,14 @@
 }
 
 .article-score-stars {
-  display: flex;
-}
-
-.article-score-star {
+  margin-left: 10px;
   position: relative;
   width: 150px;
+  display: flex;
   overflow: hidden;
 }
 
-.article-score-star svg {
+.article-score-stars svg {
   fill: rgb(225, 218, 83);
 }
 
@@ -97,8 +103,112 @@
 }
 
 .article-text {
-  margin: 20px 0 50px;
+  margin-top: 20px;
   padding-bottom: 50px;
   font-size: 20px;
   border-bottom: 1px solid var(--primary-color);
+}
+
+.article-comment-section {
+  margin-top: 20px;
+}
+
+.comment-counter {
+  width: fit-content;
+  margin: 10px;
+  padding: 0 10px 0 0;
+  font-size: 20px;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.comment-counter span {
+  margin: 0 5px 0 10px;
+  font-weight: 800;
+}
+
+.comments-wrapper {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-single {
+  margin-top: 20px;
+  padding: 20px 40px 40px;
+  background-color: var(--primary-color-transparent);
+  border-radius: 10px;
+  box-shadow: 0 0 6px 0.3px rgba(0, 0, 0, 0.1);
+  transition: 0.2s;
+}
+
+.comment-author {
+  padding: 10px 0;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.comment-author .comment-date {
+  font-size: 1rem;
+  font-weight: 300;
+  padding-right: 10px;
+}
+
+.comment-text {
+  font-size: 20px;
+}
+
+.comment-add-wrapper {
+  display: flex;
+  padding: 30px 20px;
+  width: 100%;
+}
+
+.comment-icon {
+  margin-right: 10px;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+}
+
+.comment-icon svg {
+  width: 100%;
+  fill: #fff;
+}
+
+.comment-write-text {
+  padding: 10px;
+  width: 100%;
+  height: 100px;
+  border: none;
+  background-color: #eee;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.comment-write-text:focus {
+  outline-color: var(--primary-color);
+}
+
+.comment-form {
+  flex-grow: 1;
+}
+
+.comment-submit-button {
+  margin: 10px 0;
+  padding: 10px 20px;
+  width: 150px;
+  background-color: var(--primary-color);
+  color: var(--third-color);
+  border: 1px solid var(--primary-color);
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.comment-submit-button:hover {
+  box-shadow: 0 0 10px 1px hsl(105, 9%, 40%);
 }
