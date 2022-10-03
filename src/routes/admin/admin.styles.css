@@ -6,3 +6,22 @@
   align-items: center;
   justify-content: center;
 }
+
+.admin-users-container {
+  margin: 0 auto;
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.admin-users-user {
+  padding: 20px;
+  width: calc(100% / 4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--primary-color-transparent);
+}
