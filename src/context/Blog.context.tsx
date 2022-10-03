@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { getData } from "../utils/data.utils";
-import { BlogProps, Props } from "../types/types";
+import { BlogProps, Props, fetchedBlogData } from "../types/types";
 
 export const BlogDefaultValue = {
   id: "",
@@ -26,7 +26,11 @@ export const BlogContextProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     const getBlog = async () => {
-      const api = await getData<any>("http://localhost:8080/blog");
+      const compareNumbers = (a: BlogProps, b: BlogProps) =>
+        Date.parse(b.date) - Date.parse(a.date);
+
+      const api = await getData<fetchedBlogData>("http://localhost:8080/blog");
+      api.blog.sort(compareNumbers);
       setBlog(api.blog);
     };
     getBlog();

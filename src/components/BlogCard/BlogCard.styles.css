@@ -96,3 +96,15 @@
   color: white;
   padding-top: 100px;
 }
+
+.article-new {
+  padding: 15px 5px;
+  position: absolute;
+  top: 0;
+  left: 30px;
+  font-weight: 700;
+  color: var(--third-color);
+  background-color: rgb(176, 226, 159);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
