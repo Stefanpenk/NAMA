@@ -85,3 +85,11 @@ export interface Props {
 export type ArticleInfoProps = {
   article: BlogProps;
 };
+
+export type useTokenTokenProps = {
+  token: TokenProps;
+};
+
+export type fetchedBlogData = {
+  blog: BlogProps[];
+};
