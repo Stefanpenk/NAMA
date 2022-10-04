@@ -16,6 +16,8 @@ type usersProps = {
   name: string;
 };
 
+const defaultUsersValue = [{ token: "", user: "", name: "" }];
+
 const Admin = () => {
   const { blog, setBlog } = useContext(BlogContext);
   const [title, setTitle] = useState("");
@@ -23,9 +25,7 @@ const Admin = () => {
   const [authorImg, setAuthorImg] = useState("");
   const [imgUrl, setimgUrl] = useState("");
   const [text, setText] = useState("");
-  const [users, setUsers] = useState<usersProps[]>([
-    { token: "", user: "", name: "" },
-  ]);
+  const [users, setUsers] = useState<usersProps[]>(defaultUsersValue);
   const [response, setResponse] = useState("");
 
   const handleGetUsers = () => {
@@ -116,7 +116,7 @@ const Admin = () => {
         .then((data) => data.json())
         .then((json) => {
           setResponse(json.response);
-          setTimeout(() => setResponse(""), 5000);
+          setTimeout(() => setResponse(""), 3000);
         });
     }
     await deleteUser(user);
@@ -124,8 +124,25 @@ const Admin = () => {
   };
   console.log(response);
 
-  const handleChangeRank = () => {
-    console.log("works");
+  const handleChangeRank = async (user: string) => {
+    async function deleteUser(user: string) {
+      return fetch("http://localhost:8080/changerank", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user: user,
+        }),
+      })
+        .then((data) => data.json())
+        .then((json) => {
+          setResponse(json.response);
+          setTimeout(() => setResponse(""), 3000);
+        });
+    }
+    await deleteUser(user);
+    handleGetUsers();
   };
 
   useEffect(() => {
@@ -194,7 +211,10 @@ const Admin = () => {
                 </div>
                 <h5 className="user-name">{name}</h5>
                 <p className="user-username">{user}</p>
-                <button className="user-token" onClick={handleChangeRank}>
+                <button
+                  className="user-token"
+                  onClick={() => handleChangeRank(user)}
+                >
                   {token === "admin" ? "admin" : "user"}
                 </button>
                 {token !== "admin" && (
