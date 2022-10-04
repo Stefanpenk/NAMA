@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import uniqid from "uniqid";
 import { getCurrentDate } from "../../utils/currentdate.utils";
 import { useContext } from "react";
@@ -6,6 +6,9 @@ import { BlogContext } from "../../context/Blog.context";
 
 import "./admin.styles.css";
 import { getData } from "../../utils/data.utils";
+import { ReactComponent as DeleteButton } from "../../assets/delete-icon.svg";
+import { ReactComponent as AdminProfile } from "../../assets/admin-profile-icon.svg";
+import { ReactComponent as UserProfile } from "../../assets/comment-profile-icon.svg";
 
 type usersProps = {
   token: string;
@@ -23,6 +26,13 @@ const Admin = () => {
   const [users, setUsers] = useState<usersProps[]>([
     { token: "", user: "", name: "" },
   ]);
+  const [response, setResponse] = useState("");
+
+  const handleGetUsers = () => {
+    fetch("http://localhost:8080/getusers")
+      .then((data) => data.json())
+      .then((json) => setUsers(json.users));
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -92,11 +102,36 @@ const Admin = () => {
     setText(e.target.value);
   };
 
-  const handleGetUsers = () => {
-    fetch("http://localhost:8080/getusers")
-      .then((data) => data.json())
-      .then((json) => setUsers(json.users));
+  const handleDeleteUser = async (user: string) => {
+    async function deleteUser(user: string) {
+      return fetch("http://localhost:8080/deleteuser", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user: user,
+        }),
+      })
+        .then((data) => data.json())
+        .then((json) => {
+          setResponse(json.response);
+          setTimeout(() => setResponse(""), 5000);
+        });
+    }
+    await deleteUser(user);
+    handleGetUsers();
   };
+  console.log(response);
+
+  const handleChangeRank = () => {
+    console.log("works");
+  };
+
+  useEffect(() => {
+    handleGetUsers();
+  }, []);
+
   console.log(users);
   return (
     <section className="section-admin nav-padding">
@@ -138,8 +173,6 @@ const Admin = () => {
           <textarea
             id="textTextarea"
             name="textArea"
-            rows={5}
-            cols={33}
             required
             placeholder="text"
             value={text}
@@ -150,15 +183,33 @@ const Admin = () => {
           </button>
         </form>
       </div>
-      <div className="admin-users-container">
-        {users.map((user) => (
-          <div key={user.name} className="admin-users-user">
-            <h5>{user.name}</h5>
-            <p>{user.user}</p>
-            <p>{user.token}</p>
-          </div>
-        ))}
-        <button onClick={handleGetUsers} className="auth-button"></button>
+      <div className="admin-users-section">
+        <div className="admin-users-container">
+          {users.map((singleUser) => {
+            const { name, token, user } = singleUser;
+            return (
+              <div key={name} className="admin-users-user">
+                <div className="user-profile-container">
+                  {token === "admin" ? <AdminProfile /> : <UserProfile />}
+                </div>
+                <h5 className="user-name">{name}</h5>
+                <p className="user-username">{user}</p>
+                <button className="user-token" onClick={handleChangeRank}>
+                  {token === "admin" ? "admin" : "user"}
+                </button>
+                {token !== "admin" && (
+                  <button
+                    className="delete-fav"
+                    onClick={() => handleDeleteUser(user)}
+                  >
+                    <DeleteButton />
+                  </button>
+                )}
+              </div>
+            );
+          })}
+        </div>
+        <p className="admin-users-response">{response}</p>
       </div>
     </section>
   );
