@@ -93,3 +93,20 @@ export type useTokenTokenProps = {
 export type fetchedBlogData = {
   blog: BlogProps[];
 };
+
+export interface NavButtonProps {
+  active: string;
+  svg: any;
+  dataPage: string;
+  setPage: (value: string) => void;
+}
+
+export type AdminBlogCard = {
+  id: string;
+  title: string;
+  text: string;
+  date: string;
+  author: string;
+  authorImg: string;
+  imgUrl: string;
+};

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { BlogContext } from "../../context/Blog.context";
-import { BlogProps } from "../../types/types";
 import "./BlogCard.styles.css";
 
 const BlogCard = () => {

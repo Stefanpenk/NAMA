@@ -1,235 +1,56 @@
-import { useState, useEffect } from "react";
-import uniqid from "uniqid";
-import { getCurrentDate } from "../../utils/currentdate.utils";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { BlogContext } from "../../context/Blog.context";
 
+import AddBlog from "../../components/Admin/AddBlog/AddBlog.component";
+import Users from "../../components/Admin/Users/Users.component";
+import Blogs from "../../components/Admin/Blogs/Blogs.component";
+import Archive from "../../components/Admin/Archive/Archive.component";
+import NavButton from "../../components/Admin/NavButton/NavButton.components";
+
+import { ReactComponent as UsersIcon } from "../../assets/users-icon.svg";
+import { ReactComponent as BlogIcon } from "../../assets/blog-icon.svg";
+import { ReactComponent as AddBlogIcon } from "../../assets/add-blog-icon.svg";
+import { ReactComponent as ArchiveIcon } from "../../assets/archive-icon.svg";
+
 import "./admin.styles.css";
-import { getData } from "../../utils/data.utils";
-import { ReactComponent as DeleteButton } from "../../assets/delete-icon.svg";
-import { ReactComponent as AdminProfile } from "../../assets/admin-profile-icon.svg";
-import { ReactComponent as UserProfile } from "../../assets/comment-profile-icon.svg";
-
-type usersProps = {
-  token: string;
-  user: string;
-  name: string;
-};
-
-const defaultUsersValue = [{ token: "", user: "", name: "" }];
 
 const Admin = () => {
   const { blog, setBlog } = useContext(BlogContext);
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [authorImg, setAuthorImg] = useState("");
-  const [imgUrl, setimgUrl] = useState("");
-  const [text, setText] = useState("");
-  const [users, setUsers] = useState<usersProps[]>(defaultUsersValue);
-  const [response, setResponse] = useState("");
+  const [page, setPage] = useState("1");
 
-  const handleGetUsers = () => {
-    fetch("http://localhost:8080/getusers")
-      .then((data) => data.json())
-      .then((json) => setUsers(json.users));
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const id = uniqid();
-    const date = getCurrentDate("/");
-
-    async function sendData(
-      id: string,
-      title: string,
-      text: string,
-      imgUrl: string,
-      date: string,
-      author: string,
-      authorImg: string
-    ) {
-      return fetch("http://localhost:8080/addblog", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: id,
-          title: title,
-          text: text,
-          imgUrl: imgUrl,
-          date: date,
-          rating: [],
-          author: author,
-          authorImg: authorImg,
-          comments: [],
-        }),
-      })
-        .then((data) => data.json())
-        .then((result) => setBlog(result.blog));
-    }
-    sendData(id, title, text, imgUrl, date, author, authorImg);
-
-    setTitle("");
-    setAuthor("");
-    setAuthorImg("");
-    setimgUrl("");
-    setText("");
-  };
-
-  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
-    const id = e.currentTarget.id;
-    const value = e.currentTarget.value;
-    switch (id) {
-      case "titleInput":
-        setTitle(value);
-        break;
-      case "authorInput":
-        setAuthor(value);
-        break;
-      case "authorImgInput":
-        setAuthorImg(value);
-        break;
-      case "imgUrlInput":
-        setimgUrl(value);
-        break;
-      default:
-        console.log(`don't know ${id}`);
-    }
-  };
-
-  const handleTextarea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setText(e.target.value);
-  };
-
-  const handleDeleteUser = async (user: string) => {
-    async function deleteUser(user: string) {
-      return fetch("http://localhost:8080/deleteuser", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user: user,
-        }),
-      })
-        .then((data) => data.json())
-        .then((json) => {
-          setResponse(json.response);
-          setTimeout(() => setResponse(""), 3000);
-        });
-    }
-    await deleteUser(user);
-    handleGetUsers();
-  };
-  console.log(response);
-
-  const handleChangeRank = async (user: string) => {
-    async function deleteUser(user: string) {
-      return fetch("http://localhost:8080/changerank", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user: user,
-        }),
-      })
-        .then((data) => data.json())
-        .then((json) => {
-          setResponse(json.response);
-          setTimeout(() => setResponse(""), 3000);
-        });
-    }
-    await deleteUser(user);
-    handleGetUsers();
-  };
-
-  useEffect(() => {
-    handleGetUsers();
-  }, []);
-
-  console.log(users);
   return (
     <section className="section-admin nav-padding">
-      <div className="admin-blog-form-container">
-        <h3 className="auth-title">Some thoughts to share for today?</h3>
-        <form className="auth-form" onSubmit={handleSubmit}>
-          <input
-            id="titleInput"
-            type="text"
-            placeholder="title"
-            required
-            value={title}
-            onChange={handleInput}
-          />
-          <input
-            id="authorInput"
-            type="text"
-            placeholder="author"
-            required
-            value={author}
-            onChange={handleInput}
-          />
-          <input
-            id="authorImgInput"
-            type="text"
-            placeholder="author image"
-            required
-            value={authorImg}
-            onChange={handleInput}
-          />
-          <input
-            id="imgUrlInput"
-            type="text"
-            placeholder="imgUrl"
-            required
-            value={imgUrl}
-            onChange={handleInput}
-          />
-          <textarea
-            id="textTextarea"
-            name="textArea"
-            required
-            placeholder="text"
-            value={text}
-            onChange={handleTextarea}
-          />
-          <button className="auth-button" type="submit">
-            Submit
-          </button>
-        </form>
-      </div>
-      <div className="admin-users-section">
-        <div className="admin-users-container">
-          {users.map((singleUser) => {
-            const { name, token, user } = singleUser;
-            return (
-              <div key={name} className="admin-users-user">
-                <div className="user-profile-container">
-                  {token === "admin" ? <AdminProfile /> : <UserProfile />}
-                </div>
-                <h5 className="user-name">{name}</h5>
-                <p className="user-username">{user}</p>
-                <button
-                  className="user-token"
-                  onClick={() => handleChangeRank(user)}
-                >
-                  {token === "admin" ? "admin" : "user"}
-                </button>
-                {token !== "admin" && (
-                  <button
-                    className="delete-fav"
-                    onClick={() => handleDeleteUser(user)}
-                  >
-                    <DeleteButton />
-                  </button>
-                )}
-              </div>
-            );
-          })}
-        </div>
-        <p className="admin-users-response">{response}</p>
+      <nav className="admin-nav">
+        <NavButton
+          active={page === "1" ? "active" : ""}
+          svg={<AddBlogIcon />}
+          dataPage="1"
+          setPage={setPage}
+        />
+        <NavButton
+          active={page === "2" ? "active" : ""}
+          svg={<BlogIcon />}
+          dataPage="2"
+          setPage={setPage}
+        />
+        <NavButton
+          active={page === "4" ? "active" : ""}
+          svg={<ArchiveIcon />}
+          dataPage="4"
+          setPage={setPage}
+        />
+        <NavButton
+          active={page === "3" ? "active" : ""}
+          svg={<UsersIcon />}
+          dataPage="3"
+          setPage={setPage}
+        />
+      </nav>
+      <div className="admin-component-container">
+        {page === "1" && <AddBlog />}
+        {page === "2" && <Blogs />}
+        {page === "3" && <Users />}
+        {page === "4" && <Archive />}
       </div>
     </section>
   );

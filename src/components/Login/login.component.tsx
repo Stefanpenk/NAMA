@@ -11,18 +11,18 @@ const Login = () => {
   const location: any = useLocation();
   const redirectPath = location.state?.path || "/";
 
-  async function loginUser(user: string, password: string) {
-    return fetch("http://localhost:8080/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ user: user, password: password }),
-    }).then((data) => data.json());
-  }
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    async function loginUser(user: string, password: string) {
+      return fetch("http://localhost:8080/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user: user, password: password }),
+      }).then((data) => data.json());
+    }
+
     const token = await loginUser(user, password);
     if (Object.keys(token).find((key) => key === "error")) {
       const value = Object.values(token).join();
