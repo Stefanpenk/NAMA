@@ -3,11 +3,11 @@ import { useContext } from "react";
 import { BlogContext } from "../../context/Blog.context";
 import "./BlogCard.styles.css";
 
+export const isToday = (date: string) =>
+  Math.round((Date.now() - Date.parse(date)) / 86400000 - 0.5) <= 3 && true;
+
 const BlogCard = () => {
   const { blog } = useContext(BlogContext);
-
-  const isToday = (date: string) =>
-    Math.round((Date.now() - Date.parse(date)) / 86400000 - 0.5) <= 3 && true;
 
   return (
     <div className="blog-articles-container">

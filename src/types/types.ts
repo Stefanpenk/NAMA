@@ -110,3 +110,18 @@ export type AdminBlogCard = {
   authorImg: string;
   imgUrl: string;
 };
+
+export type ArchiveProps = {
+  id: string;
+  title: string;
+  text: string;
+  date: string;
+  author: string;
+  authorImg: string;
+  imgUrl: string;
+  page: string;
+};
+
+export type PageProp = {
+  page: string;
+};

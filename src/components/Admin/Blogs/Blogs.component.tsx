@@ -8,8 +8,9 @@ import { ReactComponent as LinkButton } from "../../../assets/link-icon.svg";
 
 import "./blogs.styles.css";
 import AdminBlogCards from "../AdminBlogCard/AdminBlogCards.component";
+import { PageProp } from "../../../types/types";
 
-const Blogs = () => {
+const Blogs = ({ page }: PageProp) => {
   const { blog, setBlog } = useContext(BlogContext);
   const [isActive, setIsActive] = useState("");
 
@@ -59,6 +60,7 @@ const Blogs = () => {
               date={date}
               authorImg={authorImg}
               author={author}
+              page={page}
             />
           );
         })}

@@ -48,9 +48,9 @@ const Admin = () => {
       </nav>
       <div className="admin-component-container">
         {page === "1" && <AddBlog />}
-        {page === "2" && <Blogs />}
+        {page === "2" && <Blogs page={page} />}
         {page === "3" && <Users />}
-        {page === "4" && <Archive />}
+        {page === "4" && <Archive page={page} />}
       </div>
     </section>
   );

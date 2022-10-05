@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { BlogContext } from "../../../context/Blog.context";
 import { compareNumbers } from "../../../context/Blog.context";
+import { isToday } from "../../BlogCard/BlogCard.component";
 
 import { ReactComponent as DeleteButton } from "../../../assets/delete-icon.svg";
 import { ReactComponent as LinkButton } from "../../../assets/link-icon.svg";
-import { AdminBlogCard } from "../../../types/types";
+import { ReactComponent as RestoreButton } from "../../../assets/restore-icon.svg";
+import { ArchiveProps } from "../../../types/types";
 
 const AdminBlogCards = ({
   id,
@@ -15,8 +17,9 @@ const AdminBlogCards = ({
   date,
   authorImg,
   author,
-}: AdminBlogCard) => {
-  const { blog, setBlog } = useContext(BlogContext);
+  page = "0",
+}: ArchiveProps) => {
+  const { blog, setBlog, archive, setArchive } = useContext(BlogContext);
   const [isActive, setIsActive] = useState("");
 
   const handleActive = (id: string) => {
@@ -25,6 +28,26 @@ const AdminBlogCards = ({
 
   const handleDeactive = () => {
     setIsActive("");
+  };
+
+  const handleRestoreBlog = async (id: string) => {
+    async function restoreBlog(id: string) {
+      return fetch("http://localhost:8080/restoreblog", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: id,
+        }),
+      })
+        .then((data) => data.json())
+        .then((json) => {
+          setBlog(json.blog.sort(compareNumbers));
+          setArchive(json.archive.sort(compareNumbers));
+        });
+    }
+    await restoreBlog(id);
   };
 
   const handleDeleteBlog = async (id: string) => {
@@ -45,9 +68,6 @@ const AdminBlogCards = ({
     }
     await deleteBlog(id);
   };
-
-  const isToday = (date: string) =>
-    Math.round((Date.now() - Date.parse(date)) / 86400000 - 0.5) <= 3 && true;
 
   return (
     <div
@@ -90,12 +110,21 @@ const AdminBlogCards = ({
               <LinkButton />
             </Link>
           </button>
-          <button
-            className="action-button"
-            onClick={() => handleDeleteBlog(id)}
-          >
-            <DeleteButton />
-          </button>
+          {page === "4" ? (
+            <button
+              className="action-button restore"
+              onClick={() => handleRestoreBlog(id)}
+            >
+              <RestoreButton />
+            </button>
+          ) : (
+            <button
+              className="action-button"
+              onClick={() => handleDeleteBlog(id)}
+            >
+              <DeleteButton />
+            </button>
+          )}
         </div>
       )}
     </div>
