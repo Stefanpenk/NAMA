@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import useToken from "../../hooks/useToken";
+
 import { RecipeNavProps, TokenProps } from "../../types/types";
 
 import { ReactComponent as Instruction } from "../../assets/instruction-icon.svg";
@@ -9,6 +10,7 @@ import { ReactComponent as Back } from "../../assets/back-icon.svg";
 
 import SaveButton from "../SaveButton/SaveButton.component";
 import UnsaveButton from "../UnsaveButton/UnsaveButton.components";
+import LoginModalWrapper from "../LoginModal/LoginModalWrapper.component";
 
 type useTokenProps = {
   token: TokenProps;
@@ -17,6 +19,7 @@ type useTokenProps = {
 
 const RecipeNav = ({ activeTab, setActiveTab, details }: RecipeNavProps) => {
   const navigate = useNavigate();
+
   const { token, saveToken }: useTokenProps = useToken();
   const { id, readyInMinutes } = details;
   const check = !token

@@ -168,7 +168,7 @@ const Article = () => {
               isModalVisible={isModalVisible}
               onBackdropClick={toggleLoginModal}
               header="Login"
-              message="Please log in"
+              message="Please login to post a comment."
             />
           </div>
         </div>

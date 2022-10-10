@@ -6,8 +6,8 @@
   position: relative;
 }
 
-.desktop-login-modal-container {
-  background-color: #111;
+.login-modal-container {
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +20,7 @@
 }
 
 .modal-info {
-  color: #fff;
+  color: #555;
   font-size: 35px;
   line-height: 1em;
   font-weight: 300;
@@ -50,16 +50,30 @@
 
 .modal-close-button {
   position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  padding: 2px;
   width: 40px;
   height: 40px;
-  background-color: #c8c8c8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  background: transparent;
   cursor: pointer;
-}
-.modal-close-button > * {
-  opacity: 1;
+  transition: 0.2s;
 }
 
-.modal-close-button:hover > * {
-  opacity: 0.4;
+.modal-close-button:hover {
+  background: var(--primary-color);
+}
+
+.modal-close-button svg {
+  fill: var(--primary-color);
+}
+
+.modal-close-button:hover svg {
+  fill: var(--third-color);
 }

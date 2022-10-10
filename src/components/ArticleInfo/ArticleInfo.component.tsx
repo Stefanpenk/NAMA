@@ -6,16 +6,18 @@ import { useTokenTokenProps, fetchedBlogData } from "../../types/types";
 import React, { useState, useContext } from "react";
 import { getData } from "../../utils/data.utils";
 import { BlogContext } from "../../context/Blog.context";
+import LoginModalWrapper from "../LoginModal/LoginModalWrapper.component";
 
 const ArticleInfo = ({ article }: ArticleInfoProps) => {
   const { blog, setBlog } = useContext(BlogContext);
   const [rate, setRate] = useState<number>(0);
   const [hover, setHover] = useState<number>(0);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const { token }: useTokenTokenProps = useToken();
   const { author, date, authorImg, rating, id } = article;
 
   const searchUserInComments =
-    token !== null && rating.find((rate) => rate.user === token.username);
+    token && rating.find((rate) => rate.user === token.username);
 
   const style = (ratingValue: number, rate: number, hover: number) =>
     ratingValue <= (rate || hover) ? { fill: "rgb(219, 186, 36)" } : {};
@@ -34,6 +36,10 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
     const lastScore = (score / 5) * 100;
     const styles = { transform: `translate(${lastScore}%)` };
     return styles;
+  };
+
+  const toggleLoginModal = () => {
+    setIsModalVisible((prevState) => !prevState);
   };
 
   async function sendScore(articleId: string, user: string, number: number) {
@@ -90,29 +96,40 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
           </>
         )}
         <div className="stars-container">
-          {searchUserInComments === undefined &&
-            [...Array(5)].map((star, index) => {
-              const ratingValue = index + 1;
-              return (
-                <label key={index} className="star-container">
-                  <input
-                    className="star-input"
-                    type="radio"
-                    name="raiting"
-                    value={ratingValue}
-                    onClick={handleSetRating}
-                  />
-                  <Star
-                    className="star"
-                    style={style(ratingValue, rate, hover)}
-                    onMouseEnter={() => setHover(ratingValue)}
-                    onMouseLeave={() => setHover(0)}
-                  />
-                </label>
-              );
-            })}
+          {token == null
+            ? [...Array(5)].map((star, index) => (
+                <Star key={index} className="star" onClick={toggleLoginModal} />
+              ))
+            : searchUserInComments === undefined
+            ? [...Array(5)].map((star, index) => {
+                const ratingValue = index + 1;
+                return (
+                  <label key={index} className="star-container">
+                    <input
+                      className="star-input"
+                      type="radio"
+                      name="raiting"
+                      value={ratingValue}
+                      onClick={handleSetRating}
+                    />
+                    <Star
+                      className="star"
+                      style={style(ratingValue, rate, hover)}
+                      onMouseEnter={() => setHover(ratingValue)}
+                      onMouseLeave={() => setHover(0)}
+                    />
+                  </label>
+                );
+              })
+            : "Your rate is already added."}
         </div>
       </div>
+      <LoginModalWrapper
+        isModalVisible={isModalVisible}
+        onBackdropClick={toggleLoginModal}
+        header="Login"
+        message="Please login to add score."
+      />
     </div>
   );
 };

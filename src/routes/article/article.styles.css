@@ -231,6 +231,8 @@
 }
 
 .stars-container {
+  text-align: center;
+  color: #c8c8c8;
   margin-left: 10px;
   width: 150px;
   display: flex;
@@ -246,6 +248,10 @@
   cursor: pointer;
   transition: 0.2s;
   fill: rgba(219, 186, 36, 0.2);
+}
+
+.star:hover {
+  fill: rgb(219, 186, 36);
 }
 
 .star-input {
