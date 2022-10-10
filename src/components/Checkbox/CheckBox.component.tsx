@@ -2,14 +2,14 @@ interface CheckboxProps {
   name: string;
   className: string;
   onChange: (e: React.FormEvent<HTMLInputElement>) => void;
-  svg: any;
+  svg: React.SVGProps<SVGSVGElement>;
 }
 
 const Checkbox = ({ name, svg, className, onChange }: CheckboxProps) => {
   return (
     <>
       <label htmlFor={name} className="label-icons">
-        {svg}
+        <>{svg}</>
       </label>
       <input
         type="checkbox"

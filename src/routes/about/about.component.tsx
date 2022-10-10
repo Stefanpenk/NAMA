@@ -16,6 +16,23 @@ const About = () => {
         />
       </div>
       <div className="about-info-container nav-padding">
+        <div className="nama-meaning">
+          <div className="nama-letter-container">
+            <p className="nama-letter">n</p>
+            <div className="nama-line"></div>
+            <p className="nama-word">noll</p>
+          </div>
+          <div className="nama-letter-container">
+            <p className="nama-letter">a</p>
+            <div className="nama-line"></div>
+            <p className="nama-word">avfall</p>
+          </div>
+          <div className="nama-letter-container">
+            <p className="nama-letter">ma</p>
+            <div className="nama-line"></div>
+            <p className="nama-word">mat</p>
+          </div>
+        </div>
         <h3 className="about-title">Our Mission</h3>
         <p className="about-text">
           Our aim is to make your journey towards living a Zero Waste Lifestyle

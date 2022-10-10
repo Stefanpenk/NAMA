@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import CardList from "../../components/CardList/CardList.component";
-import HeroSection from "../../components/HeroSection/hero-section.component";
+import CardList from "../../components/Home/CardList/CardList.component";
+import HeroSection from "../../components/Home/HeroSection/hero-section.component";
 
 import { getData } from "../../utils/data.utils";
 
@@ -21,7 +21,7 @@ const Home = () => {
       setPopular(JSON.parse(check));
     } else {
       const api = await getData<Response>(
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
+        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY_POPULAR}&number=9`
       );
       localStorage.setItem("popular", JSON.stringify(api.recipes));
       setPopular(api.recipes);
@@ -35,7 +35,7 @@ const Home = () => {
       setDeserts(JSON.parse(check));
     } else {
       const api = await getData<Response>(
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9&tags=dessert`
+        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY_DESSERT}&number=9&tags=dessert`
       );
       localStorage.setItem("deserts", JSON.stringify(api.recipes));
       setDeserts(api.recipes);

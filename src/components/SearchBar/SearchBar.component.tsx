@@ -18,6 +18,7 @@ import Checkbox from "../Checkbox/CheckBox.component";
 import { SearchBarProps } from "../../types/types";
 
 import "./searchBard.styles.css";
+import { getDataSearchBar } from "../../utils/changeKeyForSearchBar.utils";
 
 function SearchBar({
   Button1,
@@ -63,8 +64,8 @@ function SearchBar({
       intolerances: string,
       cuisine: string
     ) => {
-      const api = await getData<Responses>(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=${number}&addRecipeInformation=true&cuisine=${cuisine}&diet=${diets}&type=${type}&intolerances=${intolerances}&includeIngredients=${ingredients}`
+      const api = await getDataSearchBar<Responses>(
+        `https://api.spoonacular.com/recipes/complexSearch?number=${number}&addRecipeInformation=true&cuisine=${cuisine}&diet=${diets}&type=${type}&intolerances=${intolerances}&includeIngredients=${ingredients}`
       );
       setMeals(api.results);
     };
@@ -86,7 +87,7 @@ function SearchBar({
     setInputValue(e.target.value);
   };
 
-  console.log(meals);
+  // console.log(meals);
 
   const handleSubmitValue = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

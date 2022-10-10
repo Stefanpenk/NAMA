@@ -1,7 +1,63 @@
 .about-section {
+  margin: 0 auto;
   display: flex;
-  width: 100%;
-  height: 100vh;
+  width: 100vw;
+  min-height: 100vh;
+  max-width: 1440px;
+}
+
+.nama-meaning {
+  display: flex;
+  align-items: flex-end;
+  flex-grow: 1;
+}
+
+.nama-letter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nama-letter {
+  position: relative;
+  margin: 0 10px;
+  padding: 4px;
+  border-bottom: var(--border-thickness) solid var(--border-color);
+  font-size: 90px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.nama-line {
+  width: var(--border-thickness);
+  height: 20px;
+  background-color: var(--border-color);
+}
+
+.nama-word {
+  font-size: 30px;
+  color: var(--border-color);
+}
+
+.nama-letter::after,
+.nama-letter::before {
+  width: var(--border-thickness);
+  height: 20px;
+  position: absolute;
+  content: "";
+  display: block;
+  background-color: var(--border-color);
+}
+
+.nama-letter::before {
+  bottom: 0;
+  left: 0;
+}
+
+.nama-letter::after {
+  bottom: 0;
+  right: 0;
 }
 
 .about-img-container img {
@@ -14,7 +70,7 @@
   position: relative;
   padding: 0 50px;
   width: 50%;
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,31 +92,36 @@
 
 .about-img-container {
   width: 50%;
-  height: 100%;
+  min-height: 100vh;
   overflow: hidden;
 }
 
 .about-contact {
-  margin: 0 10px 20px;
+  margin: 0 5px 20px;
+  width: 75px;
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
 .about-contact-container {
   padding-bottom: 10px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  /* position: absolute; */
+  /* bottom: 0; */
+  /* left: 0; */
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  flex-grow: 1;
+  align-content: flex-end;
 }
 
 .about-contact-title {
   margin: 10px 50px;
   padding-bottom: 10px;
   width: 100%;
+  height: fit-content;
   font-size: 25px;
   text-align: center;
   color: var(--primary-color);

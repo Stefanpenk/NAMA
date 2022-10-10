@@ -16,7 +16,7 @@ const NavButton = ({ active, svg, dataPage, setPage }: NavButtonProps) => {
       data-page={dataPage}
       onClick={handleChangePage}
     >
-      {svg}
+      <>{svg}</>
     </button>
   );
 };

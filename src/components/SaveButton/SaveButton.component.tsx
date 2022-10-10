@@ -10,6 +10,7 @@ type SaveProps = {
 
 const SaveButton = ({ details, username, saveToken }: SaveProps) => {
   const handleSave = () => {
+    if (username === "no") alert("login");
     saveToFavourite({
       details: details,
       username: username,

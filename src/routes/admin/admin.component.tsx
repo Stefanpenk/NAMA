@@ -1,5 +1,4 @@
-import { useState, useContext } from "react";
-import { BlogContext } from "../../context/Blog.context";
+import { useState } from "react";
 
 import AddBlog from "../../components/Admin/AddBlog/AddBlog.component";
 import Users from "../../components/Admin/Users/Users.component";
@@ -15,7 +14,6 @@ import { ReactComponent as ArchiveIcon } from "../../assets/archive-icon.svg";
 import "./admin.styles.css";
 
 const Admin = () => {
-  const { blog, setBlog } = useContext(BlogContext);
   const [page, setPage] = useState("1");
 
   return (

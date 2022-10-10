@@ -1,6 +1,6 @@
 import { ReactComponent as ScrollDown } from "../../assets/scroll-down-icon.svg";
 
-import BlogCard from "../../components/BlogCard/BlogCard.component";
+import BlogCards from "../../components/Blog/BlogCards/BlogCards.component";
 
 import "./blog.styles.css";
 
@@ -46,7 +46,7 @@ const Blog = () => {
           </p>
         </div>
       </div>
-      <BlogCard />
+      <BlogCards />
     </section>
   );
 };

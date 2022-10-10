@@ -1,0 +1,65 @@
+.login-modal-container {
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.desktop-login-modal-container {
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  border-radius: 7px;
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  width: 450px;
+  font-size: 26px;
+}
+
+.modal-info {
+  color: #fff;
+  font-size: 35px;
+  line-height: 1em;
+  font-weight: 300;
+  margin: 5px 0 10px;
+  text-align: center;
+}
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-message {
+  color: #aaa;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0 0 36px;
+  text-align: center;
+}
+
+.modal-close-button {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #c8c8c8;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.modal-close-button > * {
+  opacity: 1;
+}
+
+.modal-close-button:hover > * {
+  opacity: 0.4;
+}

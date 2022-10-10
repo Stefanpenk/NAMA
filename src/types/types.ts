@@ -48,10 +48,10 @@ export type MealListProps = {
 };
 
 export interface SearchBarProps {
-  Button1: any;
-  Button2: any;
-  Button3: any;
-  Button4: any;
+  Button1: React.SVGProps<SVGSVGElement>;
+  Button2: React.SVGProps<SVGSVGElement>;
+  Button3: React.SVGProps<SVGSVGElement>;
+  Button4: React.SVGProps<SVGSVGElement>;
   title1: string;
   title2: string;
   title3: string;
@@ -96,7 +96,7 @@ export type fetchedBlogData = {
 
 export interface NavButtonProps {
   active: string;
-  svg: any;
+  svg: React.SVGProps<SVGSVGElement>;
   dataPage: string;
   setPage: (value: string) => void;
 }

@@ -54,7 +54,6 @@ export const BlogContextProvider: React.FC<Props> = ({ children }) => {
     };
     getArchiveBlogs();
   }, []);
-  console.log(archive);
 
   const value = { blog, setBlog, archive, setArchive };
 

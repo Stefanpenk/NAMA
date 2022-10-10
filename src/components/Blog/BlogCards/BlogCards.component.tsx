@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { BlogContext } from "../../context/Blog.context";
-import "./BlogCard.styles.css";
+import { BlogContext } from "../../../context/Blog.context";
+import "./BlogCards.styles.css";
+import { isToday } from "../../../utils/isToday";
 
-export const isToday = (date: string) =>
-  Math.round((Date.now() - Date.parse(date)) / 86400000 - 0.5) <= 3 && true;
-
-const BlogCard = () => {
+const BlogCards = () => {
   const { blog } = useContext(BlogContext);
 
   return (
@@ -49,4 +47,4 @@ const BlogCard = () => {
   );
 };
 
-export default BlogCard;
+export default BlogCards;

@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 interface ChangeParamsButtonProps {
   handleSubmit: () => void;
-  svg: any;
+  svg: React.SVGProps<SVGSVGElement>;
   title: string;
   to: string;
 }
@@ -15,7 +15,7 @@ function ChangeParamsButton({
 }: ChangeParamsButtonProps) {
   return (
     <NavLink to={to} className="meals-type" onClick={handleSubmit}>
-      {svg}
+      <>{svg}</>
       <span>{title}</span>
     </NavLink>
   );

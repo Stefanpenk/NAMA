@@ -3,6 +3,7 @@
 }
 
 .article-wrapper {
+  position: relative;
   padding: 30px 100px;
   display: flex;
   flex-direction: column;
@@ -249,4 +250,14 @@
 
 .star-input {
   display: none;
+}
+
+.login-submit {
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  font-size: 30px;
+  z-index: 999;
 }

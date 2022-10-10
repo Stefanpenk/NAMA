@@ -19,8 +19,10 @@ const RecipeNav = ({ activeTab, setActiveTab, details }: RecipeNavProps) => {
   const navigate = useNavigate();
   const { token, saveToken }: useTokenProps = useToken();
   const { id, readyInMinutes } = details;
-  const check = token.recipes.find((recipe) => recipe.id === id);
-  console.log(check);
+  const check = !token
+    ? undefined
+    : token.recipes.find((recipe) => recipe.id === id);
+  // console.log(check);
   const handleGoBack = () => {
     navigate(-1);
   };
@@ -57,7 +59,7 @@ const RecipeNav = ({ activeTab, setActiveTab, details }: RecipeNavProps) => {
       {check === undefined ? (
         <SaveButton
           details={details}
-          username={token.username}
+          username={!token ? "no" : token.username}
           saveToken={saveToken}
         />
       ) : (
@@ -67,7 +69,6 @@ const RecipeNav = ({ activeTab, setActiveTab, details }: RecipeNavProps) => {
           saveToken={saveToken}
         />
       )}
-
       <button className="recipe-button" onClick={handleGoBack}>
         <Back />
       </button>

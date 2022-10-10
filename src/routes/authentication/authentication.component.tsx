@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { ReactComponent as Logo } from "../../assets/shop-logo.svg";
+import { ReactComponent as Logo } from "../../assets/logo-icon.svg";
 
 import Login from "../../components/Login/login.component";
 import Register from "../../components/Register/register.component";

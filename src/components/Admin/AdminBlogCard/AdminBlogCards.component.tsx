@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { BlogContext } from "../../../context/Blog.context";
 import { compareNumbers } from "../../../context/Blog.context";
-import { isToday } from "../../BlogCard/BlogCard.component";
+import { isToday } from "../../../utils/isToday";
 
 import { ReactComponent as DeleteButton } from "../../../assets/delete-icon.svg";
 import { ReactComponent as LinkButton } from "../../../assets/link-icon.svg";

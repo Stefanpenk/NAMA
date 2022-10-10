@@ -7,16 +7,30 @@
 }
 
 .article-mini-info {
+  position: relative;
   height: 40%;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
+.article-mini-info::after {
+  position: absolute;
+  display: block;
+  padding: 2px 5px 5px 20px;
+  width: fit-content;
+  bottom: 2px;
+  right: 25px;
+  background-color: #fff;
+  font-weight: 700;
+  content: "read more...";
+}
+
 .article-mini-title {
   margin: 15px 0;
   height: 20%;
   font-size: 20px;
+  font-weight: 600;
   text-align: center;
 }
 

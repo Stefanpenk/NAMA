@@ -10,12 +10,17 @@
   --vegeterian-color: #48aaa0;
   --glutenfree-color: #f1954a;
   --diaryfree-color: #5ebce4;
-  --nav-bgc: rgba(0, 0, 0, 0.2);
+  --nav-bgc: rgba(0, 0, 0, 0.5);
   --nav-link-color: #fff;
+  --nav-link-svg: hsl(105, 9%, 66%);
 
-  --nav-height: 70px;
+  --nav-height: 90px;
 
   --translate-star: 65%;
+
+  /* ABOUT */
+  --border-thickness: 2px;
+  --border-color: #555;
 }
 
 #root {

@@ -35,7 +35,7 @@ const Recipe = () => {
     };
     fetchDetails();
   }, [params.search]);
-
+  console.log(details);
   return (
     <section className="recipe-section">
       <div className="recipe-wrapper">
