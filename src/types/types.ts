@@ -125,3 +125,9 @@ export type ArchiveProps = {
 export type PageProp = {
   page: string;
 };
+
+export type usersProps = {
+  token: string;
+  user: string;
+  name: string;
+};

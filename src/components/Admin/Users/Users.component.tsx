@@ -4,18 +4,13 @@ import { ReactComponent as DeleteButton } from "../../../assets/delete-icon.svg"
 import { ReactComponent as AdminProfile } from "../../../assets/admin-profile-icon.svg";
 import { ReactComponent as UserProfile } from "../../../assets/comment-profile-icon.svg";
 
+import { usersProps } from "../../../types/types";
 import "./users.styles.css";
 
-type usersProps = {
-  token: string;
-  user: string;
-  name: string;
-};
-
-const defaultUsersValue = [{ token: "", user: "", name: "" }];
+export const defaultUsersValue = { token: "", user: "", name: "" };
 
 const Users = () => {
-  const [users, setUsers] = useState<usersProps[]>(defaultUsersValue);
+  const [users, setUsers] = useState<usersProps[]>([defaultUsersValue]);
   const [response, setResponse] = useState("");
 
   const handleGetUsers = () => {
@@ -46,7 +41,7 @@ const Users = () => {
   };
 
   const handleChangeRank = async (user: string) => {
-    async function deleteUser(user: string) {
+    async function changeRank(user: string) {
       return fetch("http://localhost:8080/changerank", {
         method: "POST",
         headers: {
@@ -62,7 +57,7 @@ const Users = () => {
           setTimeout(() => setResponse(""), 3000);
         });
     }
-    await deleteUser(user);
+    await changeRank(user);
     handleGetUsers();
   };
 

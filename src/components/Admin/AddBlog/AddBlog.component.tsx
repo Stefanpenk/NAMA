@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import uniqid from "uniqid";
 import { getCurrentDate } from "../../../utils/currentdate.utils";
 import { useContext } from "react";
 import { BlogContext } from "../../../context/Blog.context";
 
+import { usersProps } from "../../../types/types";
 import "./addBlog.styles.css";
 import ImageInput from "../../ImageInput/ImageInput.component";
+import { defaultUsersValue } from "../Users/Users.component";
 
 const AddBlog = () => {
   const { setBlog } = useContext(BlogContext);
@@ -15,6 +17,18 @@ const AddBlog = () => {
   const [imgUrl, setimgUrl] = useState("");
   const [text, setText] = useState("");
   const [error, setError] = useState("");
+  const [users, setUsers] = useState<usersProps[]>([defaultUsersValue]);
+  const [user, setUser] = useState("");
+
+  const handleGetUsers = () => {
+    fetch("http://localhost:8080/getusers")
+      .then((data) => data.json())
+      .then((json) => setUsers(json.users));
+  };
+
+  useEffect(() => {
+    handleGetUsers();
+  }, []);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -84,7 +98,13 @@ const AddBlog = () => {
     setText(e.target.value);
   };
 
-  console.log(imgUrl);
+  const handleSelectAuthor = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const user = e.target.value;
+    setUser(user);
+    const author = users.find((singleUser) => singleUser.user === user);
+    setAuthor(author!.name);
+  };
+
   return (
     <div className="admin-blog-form-container">
       <h3 className="admin-title">Some thoughts to share for today?</h3>
@@ -101,15 +121,22 @@ const AddBlog = () => {
           onChange={handleInput}
         />
         <h4 className="form-label">Blog's author:</h4>
-        <input
-          id="authorInput"
-          type="text"
-          placeholder="author"
-          required
-          value={author}
-          onChange={handleInput}
-        />
-
+        <select
+          className="form-select-author"
+          value={user}
+          onChange={handleSelectAuthor}
+        >
+          <option value=""></option>
+          {users.map((singleUser) => {
+            const { user, token } = singleUser;
+            if (token === "admin")
+              return (
+                <option key={user} value={user}>
+                  {user}
+                </option>
+              );
+          })}
+        </select>
         <input
           id="authorImgInput"
           type="text"

@@ -12,6 +12,7 @@
 }
 
 .file-card-container {
+  margin: 10px 0;
   padding: 10px;
   width: 100%;
   height: 300px;
@@ -43,6 +44,18 @@
   opacity: 0;
   cursor: pointer;
   z-index: 2;
+}
+
+.form-select-author {
+  margin: 10px 0;
+  padding-left: 10px;
+  height: 40px;
+  border: 4px solid var(--primary-color-transparent);
+}
+
+.form-select-author:focus {
+  border: 4px solid var(--primary-color);
+  outline-width: 0;
 }
 
 .file-card-form .file-button {
