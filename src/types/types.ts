@@ -130,4 +130,5 @@ export type usersProps = {
   token: string;
   user: string;
   name: string;
+  profileImg: string;
 };

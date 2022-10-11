@@ -7,7 +7,12 @@ import { ReactComponent as UserProfile } from "../../../assets/comment-profile-i
 import { usersProps } from "../../../types/types";
 import "./users.styles.css";
 
-export const defaultUsersValue = { token: "", user: "", name: "" };
+export const defaultUsersValue = {
+  token: "",
+  user: "",
+  name: "",
+  profileImg: "",
+};
 
 const Users = () => {
   const [users, setUsers] = useState<usersProps[]>([defaultUsersValue]);

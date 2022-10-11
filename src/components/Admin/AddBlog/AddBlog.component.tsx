@@ -10,6 +10,8 @@ import ImageInput from "../../ImageInput/ImageInput.component";
 import { defaultUsersValue } from "../Users/Users.component";
 
 const AddBlog = () => {
+  const defaultProfilePicture =
+    "https://firebasestorage.googleapis.com/v0/b/foocoding-react-project.appspot.com/o/ProfileImages%2Fframe_25_delay-0.15s.jpg?alt=media&token=5b42d5c0-9f69-4203-8461-d7ce88773e84";
   const { setBlog } = useContext(BlogContext);
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -81,15 +83,6 @@ const AddBlog = () => {
       case "titleInput":
         setTitle(value);
         break;
-      case "authorInput":
-        setAuthor(value);
-        break;
-      case "authorImgInput":
-        setAuthorImg(value);
-        break;
-      case "imgUrlInput":
-        setimgUrl(value);
-        break;
       default:
         console.log(`don't know ${id}`);
     }
@@ -101,10 +94,15 @@ const AddBlog = () => {
   const handleSelectAuthor = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const user = e.target.value;
     setUser(user);
+    if (user === "") return;
     const author = users.find((singleUser) => singleUser.user === user);
     setAuthor(author!.name);
+    setAuthorImg(
+      author!.profileImg == "" ? defaultProfilePicture : author!.profileImg
+    );
   };
 
+  console.log(user);
   return (
     <div className="admin-blog-form-container">
       <h3 className="admin-title">Some thoughts to share for today?</h3>
@@ -125,8 +123,12 @@ const AddBlog = () => {
           className="form-select-author"
           value={user}
           onChange={handleSelectAuthor}
+          required
+          placeholder="choose author"
         >
-          <option value=""></option>
+          <option value="" disabled>
+            Select author
+          </option>
           {users.map((singleUser) => {
             const { user, token } = singleUser;
             if (token === "admin")
@@ -137,14 +139,6 @@ const AddBlog = () => {
               );
           })}
         </select>
-        <input
-          id="authorImgInput"
-          type="text"
-          placeholder="author image"
-          required
-          value={authorImg}
-          onChange={handleInput}
-        />
         <h4 className="form-label">Blog's body:</h4>
         <textarea
           id="textTextarea"

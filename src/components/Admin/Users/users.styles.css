@@ -20,6 +20,7 @@
   margin: calc(10% / 8);
   padding: 20px;
   width: calc(90% / 4);
+  height: 285px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,10 +35,11 @@
 }
 
 .user-profile-container {
+  flex-grow: 1;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .user-profile-container svg {
@@ -75,8 +77,10 @@
 }
 
 .admin-users-response {
-  width: 100%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
   font-size: 20px;
   text-transform: uppercase;
 }
