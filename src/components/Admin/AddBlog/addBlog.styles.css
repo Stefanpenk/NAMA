@@ -1,3 +1,129 @@
+.admin-blog-form-container {
+  width: 100%;
+}
+
 #textTextarea {
   height: 200px;
+}
+
+.form-label {
+  margin: 15px 0 2px 0;
+  font-size: 22px;
+}
+
+.file-card-container {
+  padding: 10px;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  border: 3px solid var(--primary-color-transparent);
+}
+
+.file-card {
+  padding: 40px 20px 20px 20px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color-transparent);
+}
+
+.file-card-form {
+  flex-grow: 1;
+  width: 80%;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.file-card-form input {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.file-card-form .file-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-color);
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 700;
+  font-size: 18px;
+  z-index: 1;
+  box-shadow: 0 0 10px 1px rgba(105, 129, 114, 0.2);
+}
+
+.file-card-form:hover .file-button {
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
+}
+
+.file-main-text {
+  font-size: 20px;
+}
+
+.file-info-text {
+  margin-top: 5px;
+  color: #999;
+  font-weight: 700;
+}
+
+.file-card-preview {
+  margin-left: 10px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.file-card-preview img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-color-transparent);
+}
+
+.image-preview svg {
+  width: 100%;
+  fill: var(--primary-color-transparent);
+}
+
+.image-preview-text {
+  padding: 15px;
+  font-size: 35px;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #ebedea;
+}
+
+.file-upload-progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  width: 100%;
+  height: 40px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.submit-error {
+  font-size: 20px;
+  color: red;
 }

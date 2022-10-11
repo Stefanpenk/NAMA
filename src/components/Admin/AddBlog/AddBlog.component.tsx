@@ -1,10 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import uniqid from "uniqid";
 import { getCurrentDate } from "../../../utils/currentdate.utils";
 import { useContext } from "react";
 import { BlogContext } from "../../../context/Blog.context";
 
 import "./addBlog.styles.css";
+import ImageInput from "../../ImageInput/ImageInput.component";
 
 const AddBlog = () => {
   const { setBlog } = useContext(BlogContext);
@@ -13,9 +14,11 @@ const AddBlog = () => {
   const [authorImg, setAuthorImg] = useState("");
   const [imgUrl, setimgUrl] = useState("");
   const [text, setText] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (imgUrl === "") return setError("You must upload image first");
     const id = uniqid();
     const date = getCurrentDate("/");
 
@@ -77,15 +80,18 @@ const AddBlog = () => {
         console.log(`don't know ${id}`);
     }
   };
-
   const handleTextarea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
   };
 
+  console.log(imgUrl);
   return (
     <div className="admin-blog-form-container">
       <h3 className="admin-title">Some thoughts to share for today?</h3>
+      <h4 className="form-label">Upload background image</h4>
+      <ImageInput url={imgUrl} setUrl={setimgUrl} />
       <form className="auth-form" onSubmit={handleSubmit}>
+        <h4 className="form-label">Blog's title:</h4>
         <input
           id="titleInput"
           type="text"
@@ -94,6 +100,7 @@ const AddBlog = () => {
           value={title}
           onChange={handleInput}
         />
+        <h4 className="form-label">Blog's author:</h4>
         <input
           id="authorInput"
           type="text"
@@ -102,6 +109,7 @@ const AddBlog = () => {
           value={author}
           onChange={handleInput}
         />
+
         <input
           id="authorImgInput"
           type="text"
@@ -110,14 +118,7 @@ const AddBlog = () => {
           value={authorImg}
           onChange={handleInput}
         />
-        <input
-          id="imgUrlInput"
-          type="text"
-          placeholder="imgUrl"
-          required
-          value={imgUrl}
-          onChange={handleInput}
-        />
+        <h4 className="form-label">Blog's body:</h4>
         <textarea
           id="textTextarea"
           name="textArea"
@@ -130,6 +131,7 @@ const AddBlog = () => {
           Submit
         </button>
       </form>
+      <p className="submit-error">{error}</p>
     </div>
   );
 };
