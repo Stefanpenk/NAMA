@@ -13,10 +13,13 @@ export const getDataSearchBar = async <T>(path: string): Promise<T> => {
     return getDataSearchBar(path);
   }
   const response = await fetch(path + `&apiKey=${key[parseInt(idxString!)]}`);
-  if (response.status !== 200) {
+  if (response.status === 401) {
     const idxNumber = parseInt(idxString!);
-    idxNumber <= max && localStorage.setItem("idx", `${idxNumber + 1}`);
-    return getDataSearchBar(path);
+    if (idxNumber < max) {
+      localStorage.setItem("idx", `${idxNumber + 1}`);
+      return getDataSearchBar(path);
+    }
+    if (idxNumber === max) return response.json();
   }
   return await response.json();
 };

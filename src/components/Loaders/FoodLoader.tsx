@@ -9,6 +9,7 @@ const FoodLoader = () => {
         alt="Food loading"
         className="food-loader-image"
       />
+      <p className="food-loader-text">Loading data...</p>
     </div>
   );
 };

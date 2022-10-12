@@ -11,6 +11,10 @@ const Register = ({ handleSwitchForms }: RegisterProps) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
+  const capitalizeFirstLetter = (string: string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   async function createUser(user: string, password: string, name: string) {
     return fetch("http://localhost:8080/register", {
       method: "POST",
@@ -41,10 +45,10 @@ const Register = ({ handleSwitchForms }: RegisterProps) => {
     const value = e.currentTarget.value;
     switch (id) {
       case "createLoginInput":
-        setUser(value);
+        setUser(value.toLocaleLowerCase());
         break;
       case "createNameInput":
-        setName(value);
+        setName(capitalizeFirstLetter(value));
         break;
       case "createPasswordInput":
         setPassword(value);
@@ -62,8 +66,8 @@ const Register = ({ handleSwitchForms }: RegisterProps) => {
       <form className="auth-form" onSubmit={handleSubmit}>
         <input
           id="createLoginInput"
-          type="text"
-          placeholder="username"
+          type="email"
+          placeholder="e-mail"
           required
           onChange={handleInput}
         />
@@ -76,14 +80,14 @@ const Register = ({ handleSwitchForms }: RegisterProps) => {
         />
         <input
           id="createPasswordInput"
-          type="text"
+          type="password"
           placeholder="password"
           required
           onChange={handleInput}
         />
         <input
           id="repeatPasswordInput"
-          type="text"
+          type="password"
           placeholder="password"
           required
           onChange={handleInput}

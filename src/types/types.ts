@@ -149,3 +149,12 @@ export type usersProps = {
   name: string;
   profileImg: string;
 };
+
+export type childrenProps = {
+  children: JSX.Element;
+};
+
+export type ContextSearchBarProps = {
+  meals: DetailsProps[] | [];
+  setMeals: (meals: DetailsProps[]) => void;
+};

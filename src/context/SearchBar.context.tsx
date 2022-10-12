@@ -1,9 +1,9 @@
 import { createContext, useState } from "react";
-import { DetailsProps, Props } from "../types/types";
+import { ContextSearchBarProps, DetailsProps, Props } from "../types/types";
 
-export const SearchBarContext = createContext<any>({
+export const SearchBarContext = createContext<ContextSearchBarProps>({
   meals: [],
-  setMeals: () => {},
+  setMeals: (meals) => {},
 });
 
 export const SearchBarProvider: React.FC<Props> = ({ children }) => {

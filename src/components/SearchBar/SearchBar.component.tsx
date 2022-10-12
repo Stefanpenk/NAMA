@@ -123,8 +123,8 @@ function SearchBar({
     }
   };
 
-  const handleDeleteProduct = (e: any) => {
-    const value = e.target.previousSibling.textContent;
+  const handleDeleteProduct = (product: string) => {
+    const value = product;
 
     setIngredients((ingredients) =>
       ingredients.filter((product) => {
@@ -209,7 +209,7 @@ function SearchBar({
               <p>{product}</p>
               <button
                 className="selectedProduct-button"
-                onClick={handleDeleteProduct}
+                onClick={() => handleDeleteProduct(product)}
               >
                 X
               </button>

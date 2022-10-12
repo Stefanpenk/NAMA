@@ -99,7 +99,7 @@ const AddBlog = () => {
     const author = users.find((singleUser) => singleUser.user === user);
     setAuthor(author!.name);
     setAuthorImg(
-      author!.profileImg == "" ? defaultProfilePicture : author!.profileImg
+      author!.profileImg === "" ? defaultProfilePicture : author!.profileImg
     );
   };
 

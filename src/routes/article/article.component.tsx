@@ -2,7 +2,7 @@ import uniqid from "uniqid";
 import { getData } from "../../utils/data.utils";
 import { useParams } from "react-router-dom";
 import useToken from "../../hooks/useToken";
-import React, { useContext, useState, useEffect, useRef } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { BlogContext } from "../../context/Blog.context";
 import { BlogProps, fetchedBlogData } from "../../types/types";
 import { ReactComponent as CommentProfile } from "../../assets/comment-profile-icon.svg";
@@ -14,7 +14,7 @@ import { ReactComponent as DeleteButton } from "../../assets/delete-icon.svg";
 import ArticleInfo from "../../components/ArticleInfo/ArticleInfo.component";
 
 import "./article.styles.css";
-import Button from "../../components/Button/Button.component";
+
 import LoginModalWrapper from "../../components/LoginModal/LoginModalWrapper.component";
 import { defaultProfilePicture } from "../../components/Admin/AddBlog/AddBlog.component";
 import FoodLoader from "../../components/Loaders/FoodLoader";

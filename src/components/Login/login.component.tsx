@@ -2,14 +2,20 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import useToken from "../../hooks/useToken";
 
+type LocationProps = {
+  state: {
+    from: Location;
+  };
+};
+
 const Login = () => {
   const { saveToken } = useToken();
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const location: any = useLocation();
-  const redirectPath = location.state?.path || "/";
+  const location = useLocation() as unknown as LocationProps;
+  const redirectPath = location.state?.from?.pathname || "/";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -55,7 +61,7 @@ const Login = () => {
         />
         <input
           id="passwordInput"
-          type="text"
+          type="password"
           placeholder="password"
           required
           onChange={handlePasswordInput}

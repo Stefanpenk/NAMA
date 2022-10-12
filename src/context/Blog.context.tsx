@@ -1,11 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { getData } from "../utils/data.utils";
-import {
-  BlogProps,
-  Props,
-  fetchedBlogData,
-  AdminBlogCard,
-} from "../types/types";
+import { BlogProps, Props, fetchedBlogData } from "../types/types";
 
 export const compareNumbers = (a: BlogProps, b: BlogProps) =>
   Date.parse(b.date) - Date.parse(a.date);

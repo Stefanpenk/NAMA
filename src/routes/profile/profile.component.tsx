@@ -22,10 +22,6 @@ const Profile = () => {
   const [progress, setProgress] = useState(0);
   const navigate = useNavigate();
 
-  const capitalizeFirstLetter = (string: string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  };
-
   const handleLogout = () => {
     removeToken();
     navigate("/");
@@ -49,7 +45,7 @@ const Profile = () => {
         user: username,
         profileImg: profileImg,
       }),
-    }).then((data) => data.json().then((json) => saveToken(json.res)));
+    }).then((data) => data.json().then((json) => saveToken(json)));
   }
 
   const handleChangeProfileImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -104,7 +100,7 @@ const Profile = () => {
             </div>
           )}
         </div>
-        <h3 className="profile-title">{capitalizeFirstLetter(name)}</h3>
+        <h3 className="profile-title">{name}</h3>
         <h4 className="profile-subtitle">{user}</h4>
         <h5 className="profile-fav-title">Your favourite recipes:</h5>
         <div className="profile-fav-recipes meals-list">
