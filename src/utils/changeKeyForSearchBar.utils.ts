@@ -10,12 +10,13 @@ export const getDataSearchBar = async <T>(path: string): Promise<T> => {
   const idxString = localStorage.getItem("idx");
   if (!idxString) {
     localStorage.setItem("idx", "0");
+    return getDataSearchBar(path);
   }
   const response = await fetch(path + `&apiKey=${key[parseInt(idxString!)]}`);
   if (response.status !== 200) {
     const idxNumber = parseInt(idxString!);
     idxNumber <= max && localStorage.setItem("idx", `${idxNumber + 1}`);
-    getDataSearchBar(path);
+    return getDataSearchBar(path);
   }
   return await response.json();
 };

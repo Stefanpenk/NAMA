@@ -44,7 +44,7 @@ function SearchBar({
   let meal: string = "";
   let cuisine: string = "";
 
-  const number = 3;
+  const number = 20;
   const val = useParams();
   const params = () => {
     if (Object.keys(val)[0] === "meal") {

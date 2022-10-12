@@ -19,7 +19,7 @@ export const BlogDefaultValue = {
   rating: [{ user: "", number: 0 }],
   author: "",
   authorImg: "",
-  comments: [{ id: "", user: "", date: "", text: "" }],
+  comments: [{ id: "", user: "", date: "", text: "", profileImg: "" }],
 };
 
 const BlogContextDefaultValue = {

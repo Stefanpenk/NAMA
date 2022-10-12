@@ -11,10 +11,12 @@ import { ReactComponent as Dinner } from "../../assets/dinner.svg";
 import { ReactComponent as Dessert } from "../../assets/dessert.svg";
 
 import "./meals.styles.css";
+import FoodLoader from "../../components/Loaders/FoodLoader";
 
 const Meals = () => {
   const { meals } = useContext(SearchBarContext);
 
+  console.log(meals);
   return (
     <section className="section-meals nav-padding">
       <SearchBar
@@ -31,7 +33,7 @@ const Meals = () => {
         to3="/meals/dinner"
         to4="/meals/dessert"
       />
-      {<Mealslist meals={meals} />}
+      {meals.length === 0 ? <FoodLoader /> : <Mealslist meals={meals} />}
     </section>
   );
 };

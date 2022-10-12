@@ -9,9 +9,10 @@ import "./addBlog.styles.css";
 import ImageInput from "../../ImageInput/ImageInput.component";
 import { defaultUsersValue } from "../Users/Users.component";
 
+export const defaultProfilePicture =
+  "https://firebasestorage.googleapis.com/v0/b/foocoding-react-project.appspot.com/o/ProfileImages%2Fframe_25_delay-0.15s.jpg?alt=media&token=5b42d5c0-9f69-4203-8461-d7ce88773e84";
+
 const AddBlog = () => {
-  const defaultProfilePicture =
-    "https://firebasestorage.googleapis.com/v0/b/foocoding-react-project.appspot.com/o/ProfileImages%2Fframe_25_delay-0.15s.jpg?alt=media&token=5b42d5c0-9f69-4203-8461-d7ce88773e84";
   const { setBlog } = useContext(BlogContext);
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -102,7 +103,6 @@ const AddBlog = () => {
     );
   };
 
-  console.log(user);
   return (
     <div className="admin-blog-form-container">
       <h3 className="admin-title">Some thoughts to share for today?</h3>

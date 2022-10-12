@@ -20,6 +20,7 @@ export type TokenProps = {
   token: string;
   name: string;
   username: string;
+  profileImg: string;
   recipes: DetailsProps[];
 };
 
@@ -75,7 +76,13 @@ export type BlogProps = {
   rating: { user: string; number: number }[];
   author: string;
   authorImg: string;
-  comments: { id: string; user: string; date: string; text: string }[];
+  comments: {
+    id: string;
+    user: string;
+    date: string;
+    text: string;
+    profileImg: string;
+  }[];
 };
 
 export interface Props {

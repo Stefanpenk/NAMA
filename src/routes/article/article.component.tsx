@@ -16,6 +16,7 @@ import ArticleInfo from "../../components/ArticleInfo/ArticleInfo.component";
 import "./article.styles.css";
 import Button from "../../components/Button/Button.component";
 import LoginModalWrapper from "../../components/LoginModal/LoginModalWrapper.component";
+import { defaultProfilePicture } from "../../components/Admin/AddBlog/AddBlog.component";
 
 const Article = () => {
   const params = useParams();
@@ -34,7 +35,7 @@ const Article = () => {
     };
     getArticle();
   }, [blog]);
-
+  // console.log(article);
   const handleDeleteComment = async (id: string) => {
     const articleId = article.id === undefined ? "0" : article.id;
     async function deleteComment(articleId: string, id: string) {
@@ -66,7 +67,8 @@ const Article = () => {
       user: string,
       articleId: string,
       comment: string,
-      date: string
+      date: string,
+      profileImg: string
     ) {
       return fetch("http://localhost:8080/sendcomment", {
         method: "POST",
@@ -75,7 +77,13 @@ const Article = () => {
         },
         body: JSON.stringify({
           articleId: articleId,
-          comment: { id: id, user: user, date: date, text: comment },
+          comment: {
+            id: id,
+            user: user,
+            date: date,
+            text: comment,
+            profileImg: profileImg,
+          },
         }),
       }).then((data) => data.json());
     }
@@ -85,7 +93,8 @@ const Article = () => {
     const articleId = article.id === undefined ? "0" : article.id;
     const comment = textareaValue;
     const date = getCurrentDate("/");
-    await sendComment(id, user, articleId, comment, date);
+    const profileImg = token.profileImg;
+    await sendComment(id, user, articleId, comment, date, profileImg);
     const api = await getData<fetchedBlogData>("http://localhost:8080/blog");
     setBlog(api.blog);
     setTextareaValue("");
@@ -118,21 +127,35 @@ const Article = () => {
               </p>
             ) : (
               article.comments.map((comment) => {
+                const { user, id, text, date, profileImg } = comment;
                 return (
                   <div key={comment.id} className="comment-single">
-                    {token && comment.user === token.username && (
+                    {token && user === token.username && (
                       <button
                         className="delete-fav"
-                        onClick={() => handleDeleteComment(comment.id)}
+                        onClick={() => handleDeleteComment(id)}
                       >
                         <DeleteButton />
                       </button>
                     )}
-                    <p className="comment-author">
-                      <span className="comment-date">{comment.date}</span>
-                      {comment.user}
-                    </p>
-                    <div className="comment-text">{comment.text}</div>
+
+                    <div className="comment-author">
+                      <div
+                        className="comment-profile-img"
+                        style={{
+                          backgroundImage: `url(${
+                            profileImg === ""
+                              ? defaultProfilePicture
+                              : profileImg
+                          })`,
+                        }}
+                      />
+                      <div className="comment-profile-info">
+                        <p className="comment-user">{user}</p>
+                        <h6 className="comment-date">{date}</h6>
+                      </div>
+                    </div>
+                    <div className="comment-text">{text}</div>
                   </div>
                 );
               })

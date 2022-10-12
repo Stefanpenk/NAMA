@@ -5,6 +5,7 @@ import { ReactComponent as Logo } from "../../assets/logo-icon.svg";
 import { ReactComponent as Login } from "../../assets/login-icon.svg";
 import { ReactComponent as Logout } from "../../assets/logout-icon.svg";
 import { ReactComponent as Profile } from "../../assets/profile-icon.svg";
+import { ReactComponent as Admin } from "../../assets/admin-icon.svg";
 
 import useToken from "../../hooks/useToken";
 
@@ -54,6 +55,11 @@ const Navigation = () => {
             <span>CUISINES</span>
           </NavLink>
           <div className="nav-icons-container">
+            {token && token.token === "admin" && (
+              <NavLink className="nav-link different-position" to="/admin">
+                <Admin />
+              </NavLink>
+            )}
             <NavLink className="nav-link different-position" to="/profile">
               <Profile />
             </NavLink>

@@ -150,9 +150,21 @@
 }
 
 .comment-author {
+  display: flex;
   padding-bottom: 30px;
   font-size: 20px;
   font-weight: 800;
+}
+
+.comment-profile-img {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 15px;
+  box-shadow: 0 0 10px 1px rgb(0 0 0 / 20%);
 }
 
 .comment-author .comment-date {
