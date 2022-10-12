@@ -1,4 +1,4 @@
-import FoodLoaderImg from "../../assets/food-loader.gif";
+import FoodLoaderImg from "../../assets/meals-loader.gif";
 import "./foodLoader.styles.css";
 
 const FoodLoader = () => {

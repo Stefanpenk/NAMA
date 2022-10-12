@@ -4,6 +4,7 @@ import { SearchBarContext } from "../../context/SearchBar.context";
 
 import Mealslist from "../../components/MealsList/Mealslist";
 import SearchBar from "../../components/SearchBar/SearchBar.component";
+import FoodLoader from "../../components/Loaders/FoodLoader";
 
 import { ReactComponent as Breakfast } from "../../assets/breakfast.svg";
 import { ReactComponent as Lunch } from "../../assets/lunch.svg";
@@ -11,12 +12,10 @@ import { ReactComponent as Dinner } from "../../assets/dinner.svg";
 import { ReactComponent as Dessert } from "../../assets/dessert.svg";
 
 import "./meals.styles.css";
-import FoodLoader from "../../components/Loaders/FoodLoader";
 
 const Meals = () => {
   const { meals } = useContext(SearchBarContext);
 
-  console.log(meals);
   return (
     <section className="section-meals nav-padding">
       <SearchBar

@@ -87,8 +87,6 @@ function SearchBar({
     setInputValue(e.target.value);
   };
 
-  // console.log(meals);
-
   const handleSubmitValue = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const value = inputValue;

@@ -1,5 +1,5 @@
 import { useState, useContext, createContext } from "react";
-import { TokenProps, Props } from "../types/types";
+import { TokenProps, TokenProps2, Props } from "../types/types";
 
 const TokenContext = createContext(null as any);
 
@@ -15,9 +15,9 @@ export const TokenProvider: React.FC<Props> = ({ children }) => {
 
   const [token, setToken] = useState<TokenProps | null>(getToken());
 
-  const saveToken = (userToken: TokenProps | null) => {
-    localStorage.setItem("token", JSON.stringify(userToken));
-    setToken(userToken);
+  const saveToken = (userToken: TokenProps2 | null) => {
+    localStorage.setItem("token", JSON.stringify(userToken!.res));
+    setToken(userToken!.res);
   };
 
   const removeToken = () => {

@@ -25,7 +25,6 @@ const ImageInput = ({ url, setUrl }: ImageInputProps) => {
           const progress = Math.round(
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           );
-
           setProgress(progress);
         },
         (err) => console.log(err),

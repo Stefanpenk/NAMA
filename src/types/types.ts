@@ -19,9 +19,19 @@ export type DetailsProps = {
 export type TokenProps = {
   token: string;
   name: string;
-  username: string;
+  user: string;
   profileImg: string;
   recipes: DetailsProps[];
+};
+
+export type TokenProps2 = {
+  res: {
+    token: string;
+    name: string;
+    user: string;
+    profileImg: string;
+    recipes: DetailsProps[];
+  };
 };
 
 export type RecipeNavProps = {

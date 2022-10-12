@@ -2,36 +2,121 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
+  max-width: 1440px;
+  min-height: 100vh;
+}
+
+.profile-background {
+  width: 100%;
+  height: 300px;
+  background-image: url("../../assets/profile-background.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.profile-container {
+  width: 100%;
+  position: relative;
+  margin-top: -100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-picture {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 5px 5px 5px rgba(136, 136, 136, 0.2);
+  cursor: pointer;
+}
+
+.profile-picture-mask {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.profile-picture-edit {
+  width: 50%;
+  fill: #fff;
+}
+
+.profile-picture-text {
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 600;
+}
+
+.profile-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  cursor: pointer;
+  border-radius: 50%;
+  opacity: 0;
+  z-index: 2;
 }
 
 .profile-title {
-  margin-top: 50px;
+  width: 100%;
+  padding-top: 100px;
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   font-family: "Montserrat", sans-serif;
+  font-weight: 400;
   color: var(--primary-color);
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0px -10px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
-.profile-fav-container {
-  display: flex;
-  flex-direction: column;
+.profile-subtitle {
+  font-size: 20px;
+  color: #b3b3b3;
 }
 
-.profile-fav-recipes {
-  padding: 30px 0;
+.profile-fav-title {
+  width: 100%;
+  padding: 100px 0 0 100px;
+  font-size: 25px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+.profile-fav-recipes.meals-list {
+  margin: 0px 0px;
+  padding: 30px 100px;
+  width: 100%;
   border-top: 1px solid var(--primary-color);
   border-bottom: 1px solid var(--primary-color);
 }
 
-.profile-fav-title {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 30px;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 300;
-}
-
 .profile-logout-button {
+  margin-top: 50px;
   width: 100px;
   height: 50px;
   background-color: var(--third-color);
@@ -51,4 +136,24 @@
   border: 2px solid var(--primary-color);
   color: var(--third-color);
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.2);
+}
+
+.fav-recipes-no-recipes {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.fav-recipes-no-recipes p {
+  margin-top: 10px;
+  font-size: 40px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #111;
+  text-align: center;
 }

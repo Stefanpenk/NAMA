@@ -17,6 +17,7 @@ import "./article.styles.css";
 import Button from "../../components/Button/Button.component";
 import LoginModalWrapper from "../../components/LoginModal/LoginModalWrapper.component";
 import { defaultProfilePicture } from "../../components/Admin/AddBlog/AddBlog.component";
+import FoodLoader from "../../components/Loaders/FoodLoader";
 
 const Article = () => {
   const params = useParams();
@@ -35,7 +36,7 @@ const Article = () => {
     };
     getArticle();
   }, [blog]);
-  // console.log(article);
+
   const handleDeleteComment = async (id: string) => {
     const articleId = article.id === undefined ? "0" : article.id;
     async function deleteComment(articleId: string, id: string) {
@@ -89,7 +90,7 @@ const Article = () => {
     }
 
     const id = uniqid();
-    const user = token.username;
+    const user = token.user;
     const articleId = article.id === undefined ? "0" : article.id;
     const comment = textareaValue;
     const date = getCurrentDate("/");
@@ -106,96 +107,102 @@ const Article = () => {
 
   return (
     <section className="section-article nav-padding">
-      <div
-        className="article-img"
-        style={{
-          backgroundImage: `url(${article.imgUrl})`,
-        }}
-      />
-      <div className="article-wrapper">
-        <ArticleInfo article={article} />
-        <div className="article-title">{article.title}</div>
-        <div className="article-text">{article.text}</div>
-        <div className="article-comment-section">
-          <div className="comment-counter">
-            <span>{article.comments.length}</span> Comments
-          </div>
-          <div className="comments-wrapper">
-            {article.comments.length === 0 ? (
-              <p className="comment-single text-align-center">
-                There are no comments yet.
-              </p>
-            ) : (
-              article.comments.map((comment) => {
-                const { user, id, text, date, profileImg } = comment;
-                return (
-                  <div key={comment.id} className="comment-single">
-                    {token && user === token.username && (
-                      <button
-                        className="delete-fav"
-                        onClick={() => handleDeleteComment(id)}
-                      >
-                        <DeleteButton />
-                      </button>
-                    )}
+      {blog[0].id === "" ? (
+        <FoodLoader />
+      ) : (
+        <>
+          <div
+            className="article-img"
+            style={{
+              backgroundImage: `url(${article.imgUrl})`,
+            }}
+          />
+          <div className="article-wrapper">
+            <ArticleInfo article={article} />
+            <div className="article-title">{article.title}</div>
+            <div className="article-text">{article.text}</div>
+            <div className="article-comment-section">
+              <div className="comment-counter">
+                <span>{article.comments.length}</span> Comments
+              </div>
+              <div className="comments-wrapper">
+                {article.comments.length === 0 ? (
+                  <p className="comment-single text-align-center">
+                    There are no comments yet.
+                  </p>
+                ) : (
+                  article.comments.map((comment) => {
+                    const { user, id, text, date, profileImg } = comment;
+                    return (
+                      <div key={comment.id} className="comment-single">
+                        {token && user === token.user && (
+                          <button
+                            className="delete-fav"
+                            onClick={() => handleDeleteComment(id)}
+                          >
+                            <DeleteButton />
+                          </button>
+                        )}
 
-                    <div className="comment-author">
-                      <div
-                        className="comment-profile-img"
-                        style={{
-                          backgroundImage: `url(${
-                            profileImg === ""
-                              ? defaultProfilePicture
-                              : profileImg
-                          })`,
-                        }}
-                      />
-                      <div className="comment-profile-info">
-                        <p className="comment-user">{user}</p>
-                        <h6 className="comment-date">{date}</h6>
+                        <div className="comment-author">
+                          <div
+                            className="comment-profile-img"
+                            style={{
+                              backgroundImage: `url(${
+                                profileImg === ""
+                                  ? defaultProfilePicture
+                                  : profileImg
+                              })`,
+                            }}
+                          />
+                          <div className="comment-profile-info">
+                            <p className="comment-user">{user}</p>
+                            <h6 className="comment-date">{date}</h6>
+                          </div>
+                        </div>
+                        <div className="comment-text">{text}</div>
                       </div>
-                    </div>
-                    <div className="comment-text">{text}</div>
-                  </div>
-                );
-              })
-            )}
-          </div>
-          <div className="comment-add-wrapper">
-            <div className="comment-icon">
-              <CommentProfile />
+                    );
+                  })
+                )}
+              </div>
+              <div className="comment-add-wrapper">
+                <div className="comment-icon">
+                  <CommentProfile />
+                </div>
+                <form className="comment-form" onSubmit={handleSubmitComment}>
+                  <textarea
+                    className="comment-write-text"
+                    placeholder="write your comment"
+                    onChange={handleTextareaValue}
+                    value={!token ? "login to write a comment." : textareaValue}
+                    required
+                    disabled={!token && true}
+                  ></textarea>
+                  {token ? (
+                    <button className="comment-submit-button" type="submit">
+                      Submit
+                    </button>
+                  ) : (
+                    <button
+                      className="comment-submit-button comment-login"
+                      onClick={toggleLoginModal}
+                    >
+                      Login
+                    </button>
+                  )}
+                </form>
+                <LoginModalWrapper
+                  isModalVisible={isModalVisible}
+                  onBackdropClick={toggleLoginModal}
+                  header="Login"
+                  message="Please login to post a comment."
+                />
+              </div>
             </div>
-            <form className="comment-form" onSubmit={handleSubmitComment}>
-              <textarea
-                className="comment-write-text"
-                placeholder="write your comment"
-                onChange={handleTextareaValue}
-                value={!token ? "login to write a comment." : textareaValue}
-                required
-                disabled={!token && true}
-              ></textarea>
-              {token ? (
-                <button className="comment-submit-button" type="submit">
-                  Submit
-                </button>
-              ) : (
-                <button
-                  className="comment-submit-button comment-login"
-                  onClick={toggleLoginModal}
-                >
-                  Login
-                </button>
-              )}
-            </form>
-            <LoginModalWrapper
-              isModalVisible={isModalVisible}
-              onBackdropClick={toggleLoginModal}
-              header="Login"
-              message="Please login to post a comment."
-            />
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </section>
   );
 };

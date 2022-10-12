@@ -46,7 +46,6 @@ const Home = () => {
     getPopular();
     getDeserts();
   }, []);
-  // console.log(popular);
 
   return (
     <div className="wrapper">

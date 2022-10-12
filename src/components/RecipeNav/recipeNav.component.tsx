@@ -25,7 +25,7 @@ const RecipeNav = ({ activeTab, setActiveTab, details }: RecipeNavProps) => {
   const check = !token
     ? undefined
     : token.recipes.find((recipe) => recipe.id === id);
-  // console.log(check);
+
   const handleGoBack = () => {
     navigate(-1);
   };
@@ -62,13 +62,13 @@ const RecipeNav = ({ activeTab, setActiveTab, details }: RecipeNavProps) => {
       {check === undefined ? (
         <SaveButton
           details={details}
-          username={!token ? "no" : token.username}
+          username={!token ? "no" : token.user}
           saveToken={saveToken}
         />
       ) : (
         <UnsaveButton
           details={details}
-          username={token.username}
+          username={token.user}
           saveToken={saveToken}
         />
       )}

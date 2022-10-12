@@ -33,7 +33,7 @@ export const BlogContext = createContext(BlogContextDefaultValue);
 
 export const BlogContextProvider: React.FC<Props> = ({ children }) => {
   const [blog, setBlog] = useState<BlogProps[]>([BlogDefaultValue]);
-  const [archive, setArchive] = useState<BlogProps[] | []>([BlogDefaultValue]);
+  const [archive, setArchive] = useState<BlogProps[]>([BlogDefaultValue]);
 
   useEffect(() => {
     const getBlog = async () => {

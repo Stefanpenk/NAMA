@@ -4,6 +4,7 @@ import { SearchBarContext } from "../../context/SearchBar.context";
 
 import Mealslist from "../../components/MealsList/Mealslist";
 import SearchBar from "../../components/SearchBar/SearchBar.component";
+import FoodLoader from "../../components/Loaders/FoodLoader";
 
 import { ReactComponent as American } from "../../assets/american.svg";
 import { ReactComponent as Italian } from "../../assets/italian.svg";
@@ -31,7 +32,7 @@ const Cuisines = () => {
         to3="/cuisines/korean"
         to4="/cuisines/thai"
       />
-      {<Mealslist meals={meals} />}
+      {meals.length === 0 ? <FoodLoader /> : <Mealslist meals={meals} />}
     </section>
   );
 };

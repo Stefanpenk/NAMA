@@ -1,9 +1,9 @@
-import { DetailsProps, TokenProps } from "../../types/types";
+import { DetailsProps, TokenProps2 } from "../../types/types";
 
 type DeleteProps = {
   item: DetailsProps;
   username: string;
-  saveToken: (props: TokenProps) => void;
+  saveToken: (props: TokenProps2) => void;
 };
 
 export const DeleteFromFavourite = ({
@@ -21,7 +21,7 @@ export const DeleteFromFavourite = ({
       body: JSON.stringify({ user: user, newData: deleteData }),
     })
       .then((data) => data.json())
-      .then((token) => saveToken(token));
+      .then((json) => saveToken(json));
   }
   sendData(username, deleteData);
 };

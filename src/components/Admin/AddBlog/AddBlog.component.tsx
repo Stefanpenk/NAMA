@@ -130,11 +130,11 @@ const AddBlog = () => {
             Select author
           </option>
           {users.map((singleUser) => {
-            const { user, token } = singleUser;
+            const { user, name, token } = singleUser;
             if (token === "admin")
               return (
-                <option key={user} value={user}>
-                  {user}
+                <option key={user} value={name}>
+                  {name}
                 </option>
               );
           })}

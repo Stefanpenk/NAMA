@@ -1,9 +1,9 @@
-import { DetailsProps, TokenProps } from "../../types/types";
+import { DetailsProps, TokenProps2 } from "../../types/types";
 
 type SaveProps = {
   details: DetailsProps;
   username: string;
-  saveToken: (props: TokenProps) => void;
+  saveToken: (props: TokenProps2) => void;
 };
 
 export const saveToFavourite = ({

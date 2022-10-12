@@ -22,7 +22,7 @@ const MealCard = ({ item }: CardProps) => {
   const handleDeleteFromFavourite = () => {
     DeleteFromFavourite({
       item: item,
-      username: token.username,
+      username: token.user,
       saveToken: saveToken,
     });
   };

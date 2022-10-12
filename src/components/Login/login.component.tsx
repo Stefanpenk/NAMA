@@ -48,8 +48,8 @@ const Login = () => {
       <form className="auth-form" onSubmit={handleSubmit}>
         <input
           id="loginInput"
-          type="text"
-          placeholder="username"
+          type="email"
+          placeholder="e-mail"
           required
           onChange={handleLoginInput}
         />

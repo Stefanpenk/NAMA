@@ -17,7 +17,7 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
   const { author, date, authorImg, rating, id } = article;
 
   const searchUserInComments =
-    token && rating.find((rate) => rate.user === token.username);
+    token && rating.find((rate) => rate.user === token.user);
 
   const style = (ratingValue: number, rate: number, hover: number) =>
     ratingValue <= (rate || hover) ? { fill: "rgb(219, 186, 36)" } : {};
@@ -58,7 +58,7 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
   const handleSetRating = async (e: React.MouseEvent<HTMLInputElement>) => {
     const number = parseInt(e.currentTarget.value, 10);
     const articleId = id;
-    const user = token.username;
+    const user = token.user;
     await sendScore(articleId, user, number);
     const api = await getData<fetchedBlogData>("http://localhost:8080/blog");
     setBlog(api.blog);

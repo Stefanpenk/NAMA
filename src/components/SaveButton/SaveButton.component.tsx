@@ -3,14 +3,14 @@ import { useState } from "react";
 import LoginModalWrapper from "../LoginModal/LoginModalWrapper.component";
 import { saveToFavourite } from "../../utils/HandlingSaveDeleteFavourite/saveToFavourite";
 
-import { DetailsProps, TokenProps } from "../../types/types";
+import { DetailsProps, TokenProps2 } from "../../types/types";
 
 import { ReactComponent as Save } from "../../assets/save-icon.svg";
 
 type SaveProps = {
   details: DetailsProps;
   username: string;
-  saveToken: (props: TokenProps) => void;
+  saveToken: (props: TokenProps2) => void;
 };
 
 const SaveButton = ({ details, username, saveToken }: SaveProps) => {

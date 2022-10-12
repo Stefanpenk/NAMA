@@ -9,4 +9,5 @@
 .food-loader-image {
   width: 50%;
   object-fit: contain;
+  border-radius: 50%;
 }
