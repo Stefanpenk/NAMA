@@ -135,7 +135,6 @@
 }
 
 .comment-single {
-  position: relative;
   margin-bottom: 20px;
   padding: 30px;
   background-color: var(--primary-color-transparent);
