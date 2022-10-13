@@ -104,7 +104,7 @@ export type ArticleInfoProps = {
 };
 
 export type useTokenTokenProps = {
-  token: TokenProps;
+  token: TokenProps | null;
 };
 
 export type fetchedBlogData = {

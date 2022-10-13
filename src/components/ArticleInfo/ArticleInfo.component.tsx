@@ -6,7 +6,7 @@ import { useTokenTokenProps, fetchedBlogData } from "../../types/types";
 import React, { useState, useContext } from "react";
 import { getData } from "../../utils/data.utils";
 import { BlogContext } from "../../context/Blog.context";
-import LoginModalWrapper from "../LoginModal/LoginModalWrapper.component";
+import LoginPopupModal from "../LoginModal/LoginPopupModal.component";
 
 const ArticleInfo = ({ article }: ArticleInfoProps) => {
   const { blog, setBlog } = useContext(BlogContext);
@@ -30,16 +30,12 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
       return Math.round((number + Number.EPSILON) * 100) / 100;
     }
   };
-
+  /*  console.log(isModalVisible); */
   const createScore = () => {
     const score = getNumber();
     const lastScore = (score / 5) * 100;
     const styles = { transform: `translate(${lastScore}%)` };
     return styles;
-  };
-
-  const toggleLoginModal = () => {
-    setIsModalVisible((prevState) => !prevState);
   };
 
   async function sendScore(articleId: string, user: string, number: number) {
@@ -56,6 +52,7 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
   }
 
   const handleSetRating = async (e: React.MouseEvent<HTMLInputElement>) => {
+    if (!token) return;
     const number = parseInt(e.currentTarget.value, 10);
     const articleId = id;
     const user = token.user;
@@ -98,7 +95,11 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
         <div className="stars-container">
           {token == null
             ? [...Array(5)].map((star, index) => (
-                <Star key={index} className="star" onClick={toggleLoginModal} />
+                <Star
+                  key={index}
+                  className="star"
+                  onClick={() => setIsModalVisible(true)}
+                />
               ))
             : searchUserInComments === undefined
             ? [...Array(5)].map((star, index) => {
@@ -124,12 +125,12 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
             : "Your rate is already added."}
         </div>
       </div>
-      <LoginModalWrapper
-        isModalVisible={isModalVisible}
-        onBackdropClick={toggleLoginModal}
-        header="Login"
-        message="Please login to add score."
-      />
+      {isModalVisible && (
+        <LoginPopupModal
+          setIsModalVisible={setIsModalVisible}
+          message="Please login to post a comment."
+        />
+      )}
     </div>
   );
 };

@@ -33,8 +33,7 @@ export const BlogContextProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     const getBlog = async () => {
       const api = await getData<fetchedBlogData>("http://localhost:8080/blog");
-      api.blog.sort(compareNumbers);
-      setBlog(api.blog);
+      setBlog(api.blog.sort(compareNumbers));
     };
     getBlog();
   }, []);
@@ -44,8 +43,7 @@ export const BlogContextProvider: React.FC<Props> = ({ children }) => {
       const api = await getData<fetchedBlogData>(
         "http://localhost:8080/archiveblogs"
       );
-      api.blog.sort(compareNumbers);
-      setArchive(api.blog);
+      setArchive(api.blog.sort(compareNumbers));
     };
     getArchiveBlogs();
   }, []);

@@ -20,6 +20,7 @@ const MealCard = ({ item }: CardProps) => {
   const gluten = item.glutenFree === true ? { fill: "#A4B0A0" } : {};
 
   const handleDeleteFromFavourite = () => {
+    if (!token) return;
     DeleteFromFavourite({
       item: item,
       username: token.user,

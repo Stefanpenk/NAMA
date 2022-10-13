@@ -8,6 +8,7 @@ import { usersProps } from "../../../types/types";
 import "./addBlog.styles.css";
 import ImageInput from "../../ImageInput/ImageInput.component";
 import { defaultUsersValue } from "../Users/Users.component";
+import { compareNumbers } from "../../../context/Blog.context";
 
 export const defaultProfilePicture =
   "https://firebasestorage.googleapis.com/v0/b/foocoding-react-project.appspot.com/o/ProfileImages%2Fframe_25_delay-0.15s.jpg?alt=media&token=5b42d5c0-9f69-4203-8461-d7ce88773e84";
@@ -66,7 +67,7 @@ const AddBlog = () => {
         }),
       })
         .then((data) => data.json())
-        .then((result) => setBlog(result.blog));
+        .then((result) => setBlog(result.blog.sort(compareNumbers)));
     }
     sendData(id, title, text, imgUrl, date, author, authorImg);
 
@@ -93,10 +94,10 @@ const AddBlog = () => {
   };
 
   const handleSelectAuthor = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const user = e.target.value;
-    setUser(user);
-    if (user === "") return;
-    const author = users.find((singleUser) => singleUser.user === user);
+    const name = e.target.value;
+    if (name === "") return;
+    setUser(name);
+    const author = users.find((singleUser) => singleUser.name === name);
     setAuthor(author!.name);
     setAuthorImg(
       author!.profileImg === "" ? defaultProfilePicture : author!.profileImg

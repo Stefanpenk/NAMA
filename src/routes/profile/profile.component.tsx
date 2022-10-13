@@ -17,10 +17,11 @@ const Profile = () => {
   const noProfileImg =
     "https://firebasestorage.googleapis.com/v0/b/foocoding-react-project.appspot.com/o/ProfileImages%2Fno-image-profile.jpg?alt=media&token=9f1f526f-7576-4a37-979f-742f8b522108";
   const { removeToken, token, saveToken } = useToken();
-  const { profileImg, name, user, recipes } = token;
+  const { profileImg, name, user, recipes } = token!;
   const [isHovering, setIsHovering] = useState(false);
   const [progress, setProgress] = useState(0);
   const navigate = useNavigate();
+  const [imageError, setImageError] = useState("");
 
   const handleLogout = () => {
     removeToken();
@@ -50,7 +51,13 @@ const Profile = () => {
 
   const handleChangeProfileImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];
+    console.log(file);
     if (!file) return;
+    if (file.size >= 102400) {
+      setImageError("Image size can be maximum 100kb.");
+      setTimeout(() => setImageError(""), 2000);
+      return;
+    }
     const uploadImage = (file: File) => {
       const imageRef = ref(storage, `ProfileImages/${uniqid() + file.name}`);
       const uploadTask = uploadBytesResumable(imageRef, file);
@@ -90,6 +97,7 @@ const Profile = () => {
         >
           <input
             type="file"
+            accept="image/jpeg, image/png, image/webp"
             className="profile-input"
             onChange={handleChangeProfileImage}
           />
@@ -102,6 +110,7 @@ const Profile = () => {
         </div>
         <h3 className="profile-title">{name}</h3>
         <h4 className="profile-subtitle">{user}</h4>
+        <p className="profile-img-error">{imageError}</p>
         <h5 className="profile-fav-title">Your favourite recipes:</h5>
         <div className="profile-fav-recipes meals-list">
           {recipes.length === 0 && (

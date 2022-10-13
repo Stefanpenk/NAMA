@@ -15,9 +15,9 @@ import ArticleInfo from "../../components/ArticleInfo/ArticleInfo.component";
 
 import "./article.styles.css";
 
-import LoginModalWrapper from "../../components/LoginModal/LoginModalWrapper.component";
 import { defaultProfilePicture } from "../../components/Admin/AddBlog/AddBlog.component";
 import FoodLoader from "../../components/Loaders/FoodLoader";
+import LoginPopupModal from "../../components/LoginModal/LoginPopupModal.component";
 
 const Article = () => {
   const params = useParams();
@@ -63,6 +63,7 @@ const Article = () => {
 
   const handleSubmitComment = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!token) return;
     async function sendComment(
       id: string,
       user: string,
@@ -101,10 +102,7 @@ const Article = () => {
     setTextareaValue("");
   };
 
-  const toggleLoginModal = () => {
-    setIsModalVisible((prevState) => !prevState);
-  };
-
+  // console.log(isModalVisible);
   return (
     <section className="section-article nav-padding">
       {blog[0].id === "" ? (
@@ -118,7 +116,7 @@ const Article = () => {
             }}
           />
           <div className="article-wrapper">
-            <ArticleInfo article={article} />
+            {<ArticleInfo article={article} />}
             <div className="article-title">{article.title}</div>
             <div className="article-text">{article.text}</div>
             <div className="article-comment-section">
@@ -186,18 +184,19 @@ const Article = () => {
                   ) : (
                     <button
                       className="comment-submit-button comment-login"
-                      onClick={toggleLoginModal}
+                      onClick={() => setIsModalVisible(true)}
                     >
                       Login
                     </button>
                   )}
                 </form>
-                <LoginModalWrapper
-                  isModalVisible={isModalVisible}
-                  onBackdropClick={toggleLoginModal}
-                  header="Login"
-                  message="Please login to post a comment."
-                />
+                {isModalVisible && (
+                  <LoginPopupModal
+                    setIsModalVisible={setIsModalVisible}
+                    message="Please login to post a comment."
+                  />
+                )}
+                )
               </div>
             </div>
           </div>

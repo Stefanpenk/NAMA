@@ -48,6 +48,7 @@ const ImageInput = ({ url, setUrl }: ImageInputProps) => {
             id="add-image"
             type="file"
             placeholder="add image"
+            accept="image/jpeg, image/png, image/webp"
             required
             onChange={handleSubmitImage}
           />

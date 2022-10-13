@@ -10,17 +10,11 @@ import { ReactComponent as Back } from "../../assets/back-icon.svg";
 
 import SaveButton from "../SaveButton/SaveButton.component";
 import UnsaveButton from "../UnsaveButton/UnsaveButton.components";
-import LoginModalWrapper from "../LoginModal/LoginModalWrapper.component";
-
-type useTokenProps = {
-  token: TokenProps;
-  saveToken: () => void;
-};
 
 const RecipeNav = ({ activeTab, setActiveTab, details }: RecipeNavProps) => {
   const navigate = useNavigate();
 
-  const { token, saveToken }: useTokenProps = useToken();
+  const { token, saveToken } = useToken();
   const { id, readyInMinutes } = details;
   const check = !token
     ? undefined
@@ -66,11 +60,13 @@ const RecipeNav = ({ activeTab, setActiveTab, details }: RecipeNavProps) => {
           saveToken={saveToken}
         />
       ) : (
-        <UnsaveButton
-          details={details}
-          username={token.user}
-          saveToken={saveToken}
-        />
+        token && (
+          <UnsaveButton
+            details={details}
+            username={token.user}
+            saveToken={saveToken}
+          />
+        )
       )}
       <button className="recipe-button" onClick={handleGoBack}>
         <Back />

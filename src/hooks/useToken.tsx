@@ -1,7 +1,17 @@
 import { useState, useContext, createContext } from "react";
 import { TokenProps, TokenProps2, Props } from "../types/types";
 
-const TokenContext = createContext(null as any);
+type TokenContextProps = {
+  token: TokenProps | null;
+  saveToken: (userToken: TokenProps2) => void;
+  removeToken: () => void;
+};
+
+const TokenContext = createContext<TokenContextProps>({
+  token: null,
+  saveToken: (userToken) => {},
+  removeToken: () => {},
+});
 
 export const TokenProvider: React.FC<Props> = ({ children }) => {
   const getToken = () => {
