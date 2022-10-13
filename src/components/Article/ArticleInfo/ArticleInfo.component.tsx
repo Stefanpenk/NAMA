@@ -80,7 +80,9 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
           <>
             <div>
               <p className="article-score-length">
-                <span>{rating.length}</span> People has rated this article.
+                <span>{rating.length}</span>
+                {rating.length === 1 ? "Person" : "People"} has rated this
+                article.
               </p>
               <div className="article-score">
                 <p className="article-score-number">{getNumber()}</p>

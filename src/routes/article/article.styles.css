@@ -56,6 +56,7 @@
 }
 
 .article-score-length span {
+  margin-right: 10px;
   font-weight: 700;
 }
 

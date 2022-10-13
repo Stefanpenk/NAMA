@@ -70,10 +70,10 @@
   background: var(--primary-color);
 }
 
-.modal-close-button svg {
+.modal-close-button .modal-close-sign {
   fill: var(--primary-color);
 }
 
-.modal-close-button:hover svg {
+.modal-close-button:hover .modal-close-sign {
   fill: var(--third-color);
 }
