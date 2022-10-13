@@ -21,7 +21,7 @@ const Home = () => {
       setPopular(JSON.parse(check));
     } else {
       const api = await getData<Response>(
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY_POPULAR}&number=9`
+        `https://api.spoonacular.com/recipes/random?apiKey=48d4912f994842029db529317a2efa6e&number=9`
       );
       localStorage.setItem("popular", JSON.stringify(api.recipes));
       setPopular(api.recipes);
@@ -35,7 +35,7 @@ const Home = () => {
       setDeserts(JSON.parse(check));
     } else {
       const api = await getData<Response>(
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY_DESSERT}&number=9&tags=dessert`
+        `https://api.spoonacular.com/recipes/random?apiKey=f0039d77677947b8b23326fea1699dd4&number=9&tags=dessert`
       );
       localStorage.setItem("deserts", JSON.stringify(api.recipes));
       setDeserts(api.recipes);
