@@ -8,12 +8,9 @@ import { ReactComponent as ArrowRight } from "../../../assets/arrow-right.svg";
 import { CardListProps } from "../../../types/types";
 
 import "./cardlist.styles.css";
-import FoodLoader from "../../Loaders/FoodLoader";
 
 const CardList = ({ popular, title }: CardListProps) => {
   const listRef = useRef<HTMLInputElement>(null);
-
-  console.log(popular);
 
   const handleScrollLeft = () => {
     if (listRef.current) {
@@ -49,13 +46,9 @@ const CardList = ({ popular, title }: CardListProps) => {
         </p>
       </div>
       <div className="card-list_container" ref={listRef}>
-        {popular.length === 0 ? (
-          <FoodLoader />
-        ) : (
-          popular.map((item) => {
-            return <MealCard item={item} key={item.id} />;
-          })
-        )}
+        {popular.map((item) => {
+          return <MealCard item={item} key={item.id} />;
+        })}
       </div>
     </section>
   );
