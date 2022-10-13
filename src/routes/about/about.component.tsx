@@ -1,19 +1,17 @@
 import "./about.styles.css";
 
-import Button from "../../components/Button/Button.component";
+import Button from "../../components/About/Button/Button.component";
 
 import { ReactComponent as Facebook } from "../../assets/facebook.svg";
 import { ReactComponent as Instagram } from "../../assets/instagram.svg";
 import { ReactComponent as Email } from "../../assets/email.svg";
+import aboutBgc from "../../assets/about-bgc.webp";
 
 const About = () => {
   return (
     <section className="about-section">
       <div className="about-img-container">
-        <img
-          src={process.env.PUBLIC_URL + "/images/about-section(2).jpg"}
-          alt=""
-        />
+        <img src={`${aboutBgc}`} alt="" />
       </div>
       <div className="about-info-container nav-padding">
         <div className="nama-meaning">

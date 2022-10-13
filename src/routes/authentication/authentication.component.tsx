@@ -1,9 +1,10 @@
 import { useState } from "react";
 
 import { ReactComponent as Logo } from "../../assets/logo-icon.svg";
+import authBgc from "../../assets/authentication-bgc.webp";
 
-import Login from "../../components/Login/login.component";
-import Register from "../../components/Register/register.component";
+import Login from "../../components/Authentication/Login/login.component";
+import Register from "../../components/Authentication/Register/register.component";
 
 import "./authentications.styles.css";
 
@@ -41,7 +42,7 @@ const Authentication = () => {
       <div
         className="auth-img-container"
         style={{
-          backgroundImage: `url('${process.env.PUBLIC_URL}/images/about-section(1).jpg')`,
+          backgroundImage: `url(${authBgc})`,
         }}
       ></div>
     </section>

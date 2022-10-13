@@ -1,12 +1,12 @@
 import { useState } from "react";
-import uniqid from "uniqid";
 import { useNavigate } from "react-router-dom";
 import useToken from "../../hooks/useToken";
+import uniqid from "uniqid";
 import { storage } from "../../firebase.js";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import MealCard from "../../components/MealCard/MealCard";
 
-import noRecipes from "../../assets/no-recipes.jpeg";
+import noRecipes from "../../assets/no-recipes.webp";
 import { ReactComponent as Edit } from "../../assets/edit-icon.svg";
 
 import { DetailsProps } from "../../types/types";
@@ -15,7 +15,7 @@ import "./profile.styles.css";
 
 const Profile = () => {
   const noProfileImg =
-    "https://firebasestorage.googleapis.com/v0/b/foocoding-react-project.appspot.com/o/ProfileImages%2Fno-image-profile.jpg?alt=media&token=9f1f526f-7576-4a37-979f-742f8b522108";
+    "https://firebasestorage.googleapis.com/v0/b/foocoding-react-project.appspot.com/o/ProfileImages%2Fno-image-profile.webp?alt=media&token=3a7b435a-117f-4d36-9166-4d9fe242926c";
   const { removeToken, token, saveToken } = useToken();
   const { profileImg, name, user, recipes } = token!;
   const [isHovering, setIsHovering] = useState(false);

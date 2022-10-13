@@ -6,7 +6,7 @@ const HeroSection = () => {
   return (
     <div className="hero-container">
       <video
-        src={process.env.PUBLIC_URL + "/videos/Cooking-11323.webm"}
+        src={process.env.PUBLIC_URL + "/videos/HeroSectionVideo.webm"}
         autoPlay
         loop
         muted

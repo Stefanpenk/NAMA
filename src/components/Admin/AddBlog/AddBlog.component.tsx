@@ -11,7 +11,7 @@ import { defaultUsersValue } from "../Users/Users.component";
 import { compareNumbers } from "../../../context/Blog.context";
 
 export const defaultProfilePicture =
-  "https://firebasestorage.googleapis.com/v0/b/foocoding-react-project.appspot.com/o/ProfileImages%2Fframe_25_delay-0.15s.jpg?alt=media&token=5b42d5c0-9f69-4203-8461-d7ce88773e84";
+  "https://firebasestorage.googleapis.com/v0/b/foocoding-react-project.appspot.com/o/ProfileImages%2Fno-image-profile.webp?alt=media&token=3a7b435a-117f-4d36-9166-4d9fe242926c";
 
 const AddBlog = () => {
   const { setBlog } = useContext(BlogContext);

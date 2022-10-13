@@ -1,4 +1,6 @@
 import { ReactComponent as ScrollDown } from "../../assets/scroll-down-icon.svg";
+import blogBgc from "../../assets/blog-bgc.webp";
+import profileImg from "../../assets/blog-portrait.webp";
 
 import BlogCards from "../../components/Blog/BlogCards/BlogCards.component";
 
@@ -10,7 +12,7 @@ const Blog = () => {
       <div
         className="blog-header-container"
         style={{
-          backgroundImage: `url('${process.env.PUBLIC_URL}/images/blog-bgc.jpg')`,
+          backgroundImage: `url(${blogBgc})`,
         }}
       ></div>
       <div className="blog-intro-container">
@@ -18,7 +20,7 @@ const Blog = () => {
           <div
             className="blog-profile-img"
             style={{
-              backgroundImage: `url('${process.env.PUBLIC_URL}/images/blog-profile1.jpg')`,
+              backgroundImage: `url(${profileImg})`,
             }}
           ></div>
         </div>

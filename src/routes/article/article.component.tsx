@@ -11,11 +11,11 @@ import { getCurrentDate } from "../../utils/currentdate.utils";
 import { BlogDefaultValue } from "../../context/Blog.context";
 import { ReactComponent as DeleteButton } from "../../assets/delete-icon.svg";
 
-import ArticleInfo from "../../components/ArticleInfo/ArticleInfo.component";
+import ArticleInfo from "../../components/Article/ArticleInfo/ArticleInfo.component";
+import noProfilePicture from "../../assets/no-image-profile.webp";
 
 import "./article.styles.css";
 
-import { defaultProfilePicture } from "../../components/Admin/AddBlog/AddBlog.component";
 import FoodLoader from "../../components/Loaders/FoodLoader";
 import LoginPopupModal from "../../components/LoginModal/LoginPopupModal.component";
 
@@ -102,7 +102,6 @@ const Article = () => {
     setTextareaValue("");
   };
 
-  // console.log(isModalVisible);
   return (
     <section className="section-article nav-padding">
       {blog[0].id === "" ? (
@@ -148,7 +147,7 @@ const Article = () => {
                             style={{
                               backgroundImage: `url(${
                                 profileImg === ""
-                                  ? defaultProfilePicture
+                                  ? noProfilePicture
                                   : profileImg
                               })`,
                             }}

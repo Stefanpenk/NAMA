@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
-
-import { CardProps } from "../../types/types";
+import useToken from "../../hooks/useToken";
 
 import { ReactComponent as Vegeterian } from "../../assets/vegeterian.svg";
 import { ReactComponent as Vegan } from "../../assets/vegan.svg";
 import { ReactComponent as DairyFree } from "../../assets/diaryfree.svg";
 import { ReactComponent as GlutenFree } from "../../assets/glutenfree.svg";
 import { ReactComponent as DeleteButton } from "../../assets/delete-icon.svg";
-import useToken from "../../hooks/useToken";
+import noRecipeImg from "../../assets/no-recipe-img.webp";
 import { DeleteFromFavourite } from "../../utils/HandlingSaveDeleteFavourite/deleteFromFavourite.utils";
 
+import { CardProps } from "../../types/types";
 import "./MealCard.styles.css";
 
 const MealCard = ({ item }: CardProps) => {
@@ -35,11 +35,7 @@ const MealCard = ({ item }: CardProps) => {
         <p className="meal-time">preparation time: {item.readyInMinutes}min</p>
         <div className="image-container">
           <img
-            src={
-              item.image
-                ? item.image
-                : `${process.env.PUBLIC_URL}/images/noImage.jpg`
-            }
+            src={item.image ? item.image : `${noRecipeImg}`}
             alt={item.title}
           />
         </div>

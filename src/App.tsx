@@ -5,7 +5,7 @@ import Navigation from "./routes/navigation/navigation.component";
 import About from "./routes/about/about.component";
 import Authentication from "./routes/authentication/authentication.component";
 import Cuisines from "./routes/cuisines/cuisines.component";
-import Recipe from "./components/Recipe/recipe.component";
+import Recipe from "./routes/recipe/recipe.component";
 import Meals from "./routes/meals/meals.component";
 import Profile from "./routes/profile/profile.component";
 import RequireAuth from "./components/RequireAuth/RequireAuth.component";
