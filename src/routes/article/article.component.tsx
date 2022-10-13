@@ -21,7 +21,7 @@ import LoginPopupModal from "../../components/LoginModal/LoginPopupModal.compone
 
 const Article = () => {
   const params = useParams();
-  const { blog, setBlog } = useContext(BlogContext);
+  const { archive, blog, setBlog } = useContext(BlogContext);
   const { token } = useToken();
   const [article, setArticle] = useState<BlogProps>(BlogDefaultValue);
   const [textareaValue, setTextareaValue] = useState("");
@@ -29,10 +29,13 @@ const Article = () => {
 
   useEffect(() => {
     const getArticle = () => {
+      const archiveArticle = archive.find((obj) => obj.id === params.id);
       const singleArticle = blog.find((obj) => obj.id === params.id);
-      setArticle(
-        singleArticle === undefined ? BlogDefaultValue : singleArticle
-      );
+      if (archiveArticle !== undefined) return setArticle(archiveArticle);
+      if (archiveArticle === undefined)
+        return setArticle(
+          singleArticle === undefined ? BlogDefaultValue : singleArticle
+        );
     };
     getArticle();
   }, [blog]);
