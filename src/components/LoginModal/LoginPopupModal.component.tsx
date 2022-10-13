@@ -75,7 +75,7 @@ const LoginPopupModal = ({
               />
               <input
                 id="passwordInput"
-                type="text"
+                type="password"
                 placeholder="password"
                 required
                 onChange={handlePasswordInput}
