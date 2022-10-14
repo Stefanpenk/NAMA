@@ -1,4 +1,4 @@
-import Button from "../../components/About/Button/Button.component";
+import Button from "../../components/_About/Button/Button.component";
 
 import { ReactComponent as Facebook } from "../../assets/facebook.svg";
 import { ReactComponent as Instagram } from "../../assets/instagram.svg";

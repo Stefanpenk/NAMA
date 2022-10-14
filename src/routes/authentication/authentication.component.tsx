@@ -3,8 +3,8 @@ import { useState } from "react";
 import { ReactComponent as Logo } from "../../assets/logo-icon.svg";
 import authBgc from "../../assets/authentication-bgc.webp";
 
-import Login from "../../components/Authentication/Login/login.component";
-import Register from "../../components/Authentication/Register/register.component";
+import Login from "../../components/_Authentication/Login/login.component";
+import Register from "../../components/_Authentication/Register/register.component";
 
 import "./authentications.styles.css";
 

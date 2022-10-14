@@ -1,4 +1,4 @@
-import BlogCards from "../../components/Blog/BlogCards/BlogCards.component";
+import BlogCards from "../../components/_Blog/BlogCards/BlogCards.component";
 
 import { ReactComponent as ScrollDown } from "../../assets/scroll-down-icon.svg";
 import profileImg from "../../assets/blog-portrait.webp";

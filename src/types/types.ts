@@ -169,3 +169,13 @@ export type ArticleObj = {
   comments?: string;
   imgUrl?: string;
 };
+
+export type ProfileImageProps = {
+  token: TokenProps;
+  saveToken: (userToken: TokenProps2) => void;
+};
+
+export type ImageInputProps = {
+  url: string;
+  setUrl: (url: string) => void;
+};

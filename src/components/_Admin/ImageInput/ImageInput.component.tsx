@@ -1,13 +1,11 @@
 import { useState } from "react";
 import uniqid from "uniqid";
-import { storage } from "../../firebase.js";
+import { storage } from "../../../firebase.js";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-import { ReactComponent as ImageIcon } from "../../assets/image-icon.svg";
 
-type ImageInputProps = {
-  url: string;
-  setUrl: (url: string) => void;
-};
+import { ReactComponent as ImageIcon } from "../../../assets/image-icon.svg";
+
+import { ImageInputProps } from "../../../types/types.js";
 
 const ImageInput = ({ url, setUrl }: ImageInputProps) => {
   const [progress, setProgress] = useState(0);

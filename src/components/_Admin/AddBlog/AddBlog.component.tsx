@@ -6,7 +6,7 @@ import { BlogContext } from "../../../context/Blog.context";
 
 import { usersProps } from "../../../types/types";
 import "./addBlog.styles.css";
-import ImageInput from "../../ImageInput/ImageInput.component";
+import ImageInput from "../ImageInput/ImageInput.component";
 import { defaultUsersValue } from "../Users/Users.component";
 import { compareNumbers } from "../../../context/Blog.context";
 

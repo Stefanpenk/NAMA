@@ -6,7 +6,7 @@ import { ReactComponent as CommentProfile } from "../../../assets/comment-profil
 import { getData } from "../../../utils/data.utils";
 import { CommentProps, fetchedBlogData } from "../../../types/types";
 import { BlogContext } from "../../../context/Blog.context";
-import LoginPopupModal from "../../../components/LoginModal/LoginPopupModal.component";
+import LoginPopupModal from "../../LoginModal/LoginPopupModal.component";
 
 import "./addComment.styles.css";
 

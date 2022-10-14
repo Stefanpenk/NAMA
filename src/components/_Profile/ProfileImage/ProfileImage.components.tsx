@@ -5,13 +5,8 @@ import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 
 import { ReactComponent as Edit } from "../../../assets/edit-icon.svg";
 
-import { TokenProps, TokenProps2 } from "../../../types/types";
+import { ProfileImageProps } from "../../../types/types";
 import "./ProfileImage.styles.css";
-
-type ProfileImageProps = {
-  token: TokenProps;
-  saveToken: (userToken: TokenProps2) => void;
-};
 
 const ProfileImage = ({ token, saveToken }: ProfileImageProps) => {
   const noProfileImg =

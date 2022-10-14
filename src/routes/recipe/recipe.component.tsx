@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-import RecipeNav from "../../components/Recipe/RecipeNav/recipeNav.component";
+import RecipeNav from "../../components/_Recipe/RecipeNav/recipeNav.component";
 
 import { DetailsProps } from "../../types/types";
 

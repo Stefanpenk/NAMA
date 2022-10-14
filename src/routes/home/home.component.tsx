@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getData } from "../../utils/data.utils";
 
-import CardList from "../../components/Home/CardList/CardList.component";
-import HeroSection from "../../components/Home/HeroSection/hero-section.component";
+import CardList from "../../components/_Home/CardList/CardList.component";
+import HeroSection from "../../components/_Home/HeroSection/hero-section.component";
 
 import { DetailsProps, Response } from "../../types/types";
 

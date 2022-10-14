@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import AddBlog from "../../components/Admin/AddBlog/AddBlog.component";
-import Users from "../../components/Admin/Users/Users.component";
-import Blogs from "../../components/Admin/Blogs/Blogs.component";
-import Archive from "../../components/Admin/Archive/Archive.component";
-import NavButton from "../../components/Admin/NavButton/NavButton.components";
+import AddBlog from "../../components/_Admin/AddBlog/AddBlog.component";
+import Users from "../../components/_Admin/Users/Users.component";
+import Blogs from "../../components/_Admin/Blogs/Blogs.component";
+import Archive from "../../components/_Admin/Archive/Archive.component";
+import NavButton from "../../components/_Admin/NavButton/NavButton.components";
 
 import { ReactComponent as UsersIcon } from "../../assets/users-icon.svg";
 import { ReactComponent as BlogIcon } from "../../assets/blog-icon.svg";

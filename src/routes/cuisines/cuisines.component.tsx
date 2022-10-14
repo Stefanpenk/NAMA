@@ -2,8 +2,8 @@ import { useContext } from "react";
 
 import { SearchBarContext } from "../../context/SearchBar.context";
 
-import Mealslist from "../../components/Meals&Cuisines/MealsList/Mealslist";
-import SearchBar from "../../components/Meals&Cuisines/SearchBar/SearchBar.component";
+import Mealslist from "../../components/_Meals&Cuisines/MealsList/Mealslist";
+import SearchBar from "../../components/_Meals&Cuisines/SearchBar/SearchBar.component";
 import FoodLoader from "../../components/Loaders/FoodLoader";
 
 import { ReactComponent as American } from "../../assets/american.svg";

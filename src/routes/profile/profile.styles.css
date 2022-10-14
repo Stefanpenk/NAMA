@@ -52,6 +52,7 @@
   width: 100%;
   border-top: 1px solid var(--primary-color);
   border-bottom: 1px solid var(--primary-color);
+  justify-content: center;
 }
 
 .profile-logout-button {
