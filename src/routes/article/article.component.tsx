@@ -1,18 +1,17 @@
-import { useParams } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
-import { BlogContext } from "../../context/Blog.context";
-import { ArticleObj, BlogProps } from "../../types/types";
+import { useParams } from "react-router-dom";
 
+import { BlogContext } from "../../context/Blog.context";
 import { BlogDefaultValue } from "../../context/Blog.context";
 
 import ArticleInfo from "../../components/Article/ArticleInfo/ArticleInfo.component";
-
-import "./article.styles.css";
-
 import FoodLoader from "../../components/Loaders/FoodLoader";
 import AddComment from "../../components/Article/AddComment/AddComment.component";
 import ArticleComments from "../../components/Article/ArticleComments/ArticleComments.component";
 import OopsPage from "../../components/OopsPage/OopsPage.component";
+
+import { ArticleObj, BlogProps } from "../../types/types";
+import "./article.styles.css";
 
 const Article = () => {
   const params = useParams();

@@ -1,8 +1,8 @@
-import { ReactComponent as ScrollDown } from "../../assets/scroll-down-icon.svg";
-import blogBgc from "../../assets/blog-bgc.webp";
-import profileImg from "../../assets/blog-portrait.webp";
-
 import BlogCards from "../../components/Blog/BlogCards/BlogCards.component";
+
+import { ReactComponent as ScrollDown } from "../../assets/scroll-down-icon.svg";
+import profileImg from "../../assets/blog-portrait.webp";
+import blogBgc from "../../assets/blog-bgc.webp";
 
 import "./blog.styles.css";
 
