@@ -158,3 +158,14 @@ export type ContextSearchBarProps = {
   meals: DetailsProps[] | [];
   setMeals: (meals: DetailsProps[]) => void;
 };
+
+export type CommentProps = {
+  article: BlogProps;
+};
+
+export type ArticleObj = {
+  title?: string;
+  text?: string;
+  comments?: string;
+  imgUrl?: string;
+};

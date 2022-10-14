@@ -47,7 +47,10 @@ const MealCard = ({ item }: CardProps) => {
         </div>
       </Link>
       {window.location.pathname === "/profile" ? (
-        <button className="delete-fav" onClick={handleDeleteFromFavourite}>
+        <button
+          className="delete-fav"
+          onClick={() => handleDeleteFromFavourite()}
+        >
           <DeleteButton />
         </button>
       ) : null}

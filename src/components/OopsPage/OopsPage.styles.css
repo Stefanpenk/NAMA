@@ -1,0 +1,27 @@
+.oops-container {
+  max-width: 1440px;
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-container {
+  width: 70%;
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.oops-header {
+  margin: 20px 0;
+  font-size: 30px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.oops-text {
+  margin-top: 5px;
+  font-size: 20px;
+}

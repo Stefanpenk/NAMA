@@ -8,6 +8,8 @@ import { getData } from "../../../utils/data.utils";
 import { BlogContext } from "../../../context/Blog.context";
 import LoginPopupModal from "../../LoginModal/LoginPopupModal.component";
 
+import "./articleInfo.styles.css";
+
 const ArticleInfo = ({ article }: ArticleInfoProps) => {
   const { blog, setBlog } = useContext(BlogContext);
   const [rate, setRate] = useState<number>(0);
@@ -30,7 +32,7 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
       return Math.round((number + Number.EPSILON) * 100) / 100;
     }
   };
-  /*  console.log(isModalVisible); */
+
   const createScore = () => {
     const score = getNumber();
     const lastScore = (score / 5) * 100;
@@ -75,7 +77,7 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
       </div>
       <div className="article-score-container">
         {getNumber() === 0 ? (
-          <p className="isZero">Nobody has rated this article yet.</p>
+          <p className="rateIsZero">Nobody has rated this article yet.</p>
         ) : (
           <>
             <div>
@@ -130,7 +132,7 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
       {isModalVisible && (
         <LoginPopupModal
           setIsModalVisible={setIsModalVisible}
-          message="Please login to post a comment."
+          message="Please login to rate this article."
         />
       )}
     </div>

@@ -33,7 +33,7 @@ const SaveButton = ({ details, username, saveToken }: SaveProps) => {
       {isModalVisible && (
         <LoginPopupModal
           setIsModalVisible={setIsModalVisible}
-          message="Please login to post a comment."
+          message="Please login to add this recipe to your favourite."
         />
       )}
     </>
