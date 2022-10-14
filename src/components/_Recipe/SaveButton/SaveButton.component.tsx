@@ -1,17 +1,11 @@
 import { useState } from "react";
-
 import { saveToFavourite } from "../../../utils/HandlingSaveDeleteFavourite/saveToFavourite";
 
-import { DetailsProps, TokenProps2 } from "../../../types/types";
-
-import { ReactComponent as Save } from "../../../assets/save-icon.svg";
 import LoginPopupModal from "../../LoginModal/LoginPopupModal.component";
 
-type SaveProps = {
-  details: DetailsProps;
-  username: string;
-  saveToken: (props: TokenProps2) => void;
-};
+import { ReactComponent as Save } from "../../../assets/save-icon.svg";
+
+import { SaveProps } from "../../../types/types";
 
 const SaveButton = ({ details, username, saveToken }: SaveProps) => {
   const [isModalVisible, setIsModalVisible] = useState(false);

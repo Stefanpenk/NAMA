@@ -1,28 +1,33 @@
-import { ReactComponent as Stars } from "../../../assets/stars-icon.svg";
-import { ReactComponent as Star } from "../../../assets/star-icon.svg";
-import { ArticleInfoProps } from "../../../types/types";
-import useToken from "../../../hooks/useToken";
-import { useTokenTokenProps, fetchedBlogData } from "../../../types/types";
 import React, { useState, useContext } from "react";
+import useToken from "../../../hooks/useToken";
 import { getData } from "../../../utils/data.utils";
+
 import { BlogContext } from "../../../context/Blog.context";
+
 import LoginPopupModal from "../../LoginModal/LoginPopupModal.component";
 
+import { ReactComponent as Stars } from "../../../assets/stars-icon.svg";
+import { ReactComponent as Star } from "../../../assets/star-icon.svg";
+
+import {
+  useTokenTokenProps,
+  fetchedBlogData,
+  ArticleInfoProps,
+} from "../../../types/types";
 import "./articleInfo.styles.css";
 
 const ArticleInfo = ({ article }: ArticleInfoProps) => {
-  const { blog, setBlog } = useContext(BlogContext);
-  const [rate, setRate] = useState<number>(0);
   const [hover, setHover] = useState<number>(0);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const { setBlog } = useContext(BlogContext);
   const { token }: useTokenTokenProps = useToken();
   const { author, date, authorImg, rating, id } = article;
 
   const searchUserInComments =
     token && rating.find((rate) => rate.user === token.user);
 
-  const style = (ratingValue: number, rate: number, hover: number) =>
-    ratingValue <= (rate || hover) ? { fill: "rgb(219, 186, 36)" } : {};
+  const style = (ratingValue: number, hover: number) =>
+    ratingValue <= hover ? { fill: "rgb(219, 186, 36)" } : {};
 
   const getNumber = () => {
     if (rating.length === 0 || rating === undefined) {
@@ -119,7 +124,7 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
                     />
                     <Star
                       className="star"
-                      style={style(ratingValue, rate, hover)}
+                      style={style(ratingValue, hover)}
                       onMouseEnter={() => setHover(ratingValue)}
                       onMouseLeave={() => setHover(0)}
                     />

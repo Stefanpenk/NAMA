@@ -1,9 +1,4 @@
-interface CheckboxProps {
-  name: string;
-  className: string;
-  onChange: (e: React.FormEvent<HTMLInputElement>) => void;
-  svg: React.SVGProps<SVGSVGElement>;
-}
+import { CheckboxProps } from "../../../types/types";
 
 const Checkbox = ({ name, svg, className, onChange }: CheckboxProps) => {
   return (

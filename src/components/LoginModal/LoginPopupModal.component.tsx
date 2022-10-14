@@ -1,13 +1,10 @@
 import { useState } from "react";
-import { ReactComponent as CloseButton } from "../../assets/delete-icon.svg";
 import useToken from "../../hooks/useToken";
 
-import "./LoginPopupModal.styles.css";
+import { ReactComponent as CloseButton } from "../../assets/delete-icon.svg";
 
-type LoginPopupModalProps = {
-  setIsModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  message: string;
-};
+import { LoginPopupModalProps } from "../../types/types";
+import "./LoginPopupModal.styles.css";
 
 const LoginPopupModal = ({
   setIsModalVisible,

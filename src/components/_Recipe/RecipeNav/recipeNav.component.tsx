@@ -1,15 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import useToken from "../../../hooks/useToken";
 
-import { RecipeNavProps, TokenProps } from "../../../types/types";
+import SaveButton from "../SaveButton/SaveButton.component";
+import UnsaveButton from "../UnsaveButton/UnsaveButton.components";
 
 import { ReactComponent as Instruction } from "../../../assets/instruction-icon.svg";
 import { ReactComponent as Ingredients } from "../../../assets/ingredients-icon.svg";
 import { ReactComponent as Time } from "../../../assets/time-icon.svg";
 import { ReactComponent as Back } from "../../../assets/back-icon.svg";
 
-import SaveButton from "../SaveButton/SaveButton.component";
-import UnsaveButton from "../UnsaveButton/UnsaveButton.components";
+import { RecipeNavProps } from "../../../types/types";
+import "./RecipeNav.styles.css";
 
 const RecipeNav = ({ activeTab, setActiveTab, details }: RecipeNavProps) => {
   const navigate = useNavigate();

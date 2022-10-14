@@ -1,7 +1,6 @@
 import MealCard from "../../MealCard/MealCard";
 
 import { MealListProps } from "../../../types/types";
-
 import "./Mealslist.styles.css";
 
 const Mealslist = ({ meals }: MealListProps) => {

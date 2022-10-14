@@ -2,11 +2,7 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import useToken from "../../../hooks/useToken";
 
-type LocationProps = {
-  state: {
-    from: Location;
-  };
-};
+import { LocationProps } from "../../../types/types";
 
 const Login = () => {
   const { saveToken } = useToken();

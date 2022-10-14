@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { BlogContext } from "../../../context/Blog.context";
-import "./BlogCards.styles.css";
+import { Link } from "react-router-dom";
 import { isToday } from "../../../utils/isToday";
+
+import { BlogContext } from "../../../context/Blog.context";
+
 import FoodLoader from "../../Loaders/FoodLoader";
+
+import "./BlogCards.styles.css";
 
 const BlogCards = () => {
   const { blog } = useContext(BlogContext);

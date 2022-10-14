@@ -2,12 +2,15 @@ import { useState, useContext } from "react";
 import useToken from "../../../hooks/useToken";
 import uniqid from "uniqid";
 import { getCurrentDate } from "../../../utils/currentdate.utils";
-import { ReactComponent as CommentProfile } from "../../../assets/comment-profile-icon.svg";
 import { getData } from "../../../utils/data.utils";
-import { CommentProps, fetchedBlogData } from "../../../types/types";
+
 import { BlogContext } from "../../../context/Blog.context";
+
 import LoginPopupModal from "../../LoginModal/LoginPopupModal.component";
 
+import { ReactComponent as CommentProfile } from "../../../assets/comment-profile-icon.svg";
+
+import { CommentProps, fetchedBlogData } from "../../../types/types";
 import "./addComment.styles.css";
 
 const AddComment = ({ article }: CommentProps) => {
@@ -19,6 +22,7 @@ const AddComment = ({ article }: CommentProps) => {
   const handleSubmitComment = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!token) return;
+
     async function sendComment(
       id: string,
       user: string,
@@ -51,6 +55,7 @@ const AddComment = ({ article }: CommentProps) => {
     const comment = textareaValue;
     const date = getCurrentDate("/");
     const profileImg = token.profileImg;
+
     await sendComment(id, user, articleId, comment, date, profileImg);
     const api = await getData<fetchedBlogData>("http://localhost:8080/blog");
     setBlog(api.blog);

@@ -1,4 +1,5 @@
 import FoodLoaderImg from "../../assets/meals-loader.gif";
+
 import "./foodLoader.styles.css";
 
 const FoodLoader = () => {

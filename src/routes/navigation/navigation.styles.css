@@ -1,27 +1,28 @@
 .navigation {
+  position: fixed;
   margin: 0 auto;
-  height: var(--nav-height);
   width: 100%;
   max-width: 1440px;
+  height: var(--nav-height);
   display: flex;
   justify-content: center;
-  position: fixed;
   top: 0;
+  left: 0;
   z-index: 999;
   background-color: var(--nav-bgc);
   box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.2);
 }
 
 .logo-container {
-  padding: 10px;
   position: absolute;
+  padding: 10px;
+  height: var(--nav-height);
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: var(--nav-height);
 }
 
 .logo-container svg {
@@ -58,20 +59,29 @@
   border: none;
 }
 
-.nav-link.different-position {
-  padding: 25px 0px;
-  margin-right: 15px;
-}
-
 .nav-icons-container {
   display: flex;
   flex-grow: 1;
   justify-content: flex-end;
 }
 
-.nav-icons-container svg {
-  fill: var(--nav-link-svg);
+.different-position {
+  position: relative;
+  margin-right: 15px;
+  padding: 25px 0px;
+  width: 40px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.different-position svg {
+  position: absolute;
+  width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
+  fill: var(--nav-link-svg);
 }
 
 .button-frame {

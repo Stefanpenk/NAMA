@@ -1,11 +1,14 @@
+import { useContext } from "react";
+import { getData } from "../../../utils/data.utils";
+import useToken from "../../../hooks/useToken";
+
+import { BlogContext } from "../../../context/Blog.context";
+
 import { ReactComponent as DeleteSvg } from "../../../assets/delete-icon.svg";
 import noProfilePicture from "../../../assets/no-image-profile.webp";
-import { getData } from "../../../utils/data.utils";
-import "./ArticleComments.styles.css";
+
 import { CommentProps, fetchedBlogData } from "../../../types/types";
-import useToken from "../../../hooks/useToken";
-import { useContext } from "react";
-import { BlogContext } from "../../../context/Blog.context";
+import "./ArticleComments.styles.css";
 
 const ArticleComments = ({ article }: CommentProps) => {
   const { token } = useToken();

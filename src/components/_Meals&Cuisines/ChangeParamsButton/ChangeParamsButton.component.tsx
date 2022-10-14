@@ -1,11 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-interface ChangeParamsButtonProps {
-  handleSubmit: () => void;
-  svg: React.SVGProps<SVGSVGElement>;
-  title: string;
-  to: string;
-}
+import { ChangeParamsButtonProps } from "../../../types/types";
 
 function ChangeParamsButton({
   handleSubmit,

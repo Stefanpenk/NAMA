@@ -60,18 +60,15 @@ const Navigation = () => {
                 <Admin />
               </NavLink>
             )}
-            <NavLink className="nav-link different-position" to="/profile">
+            <NavLink className="different-position" to="/profile">
               <Profile />
             </NavLink>
             {token ? (
-              <button
-                className="nav-link different-position"
-                onClick={handleLogout}
-              >
+              <button className="different-position" onClick={handleLogout}>
                 <Logout className="nav-link-icon " />
               </button>
             ) : (
-              <NavLink className="nav-link different-position" to="/auth">
+              <NavLink className="different-position" to="/auth">
                 <Login className="nav-link-icon" />
               </NavLink>
             )}

@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import RecipeNav from "../../components/_Recipe/RecipeNav/recipeNav.component";
+import FoodLoader from "../../components/Loaders/FoodLoader";
 
 import { DetailsProps } from "../../types/types";
-
 import "./recipe.styles.css";
-import FoodLoader from "../../components/Loaders/FoodLoader";
 
 const Recipe = () => {
   let params = useParams();
@@ -30,9 +29,8 @@ const Recipe = () => {
 
   return (
     <section className="recipe-section">
-      {details === null ? (
-        <FoodLoader />
-      ) : (
+      {details === null && <FoodLoader />}
+      {details !== null && (
         <div className="recipe-wrapper">
           <h4 className="recipe-title">{details.title}</h4>
           <h5 className="recipe-subtitle">{details.diets.join(" | ")}</h5>

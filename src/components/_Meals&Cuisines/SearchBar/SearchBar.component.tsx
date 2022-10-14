@@ -1,22 +1,19 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-
-import { ReactComponent as Vegeterian } from "../../../assets/vegeterian.svg";
-import { ReactComponent as Vegan } from "../../../assets/vegan.svg";
-import { ReactComponent as DairyFree } from "../../../assets/diaryfree.svg";
-import { ReactComponent as GlutenFree } from "../../../assets/glutenfree.svg";
-
-import { Responses } from "../../../types/types";
+import { getDataSearchBar } from "../../../utils/changeKeyForSearchBar.utils";
 
 import { SearchBarContext } from "../../../context/SearchBar.context";
 
 import ChangeParamsButton from "../ChangeParamsButton/ChangeParamsButton.component";
 import Checkbox from "../Checkbox/CheckBox.component";
 
-import { SearchBarProps } from "../../../types/types";
+import { ReactComponent as Vegeterian } from "../../../assets/vegeterian.svg";
+import { ReactComponent as Vegan } from "../../../assets/vegan.svg";
+import { ReactComponent as DairyFree } from "../../../assets/diaryfree.svg";
+import { ReactComponent as GlutenFree } from "../../../assets/glutenfree.svg";
 
+import { Responses, SearchBarProps } from "../../../types/types";
 import "./searchBard.styles.css";
-import { getDataSearchBar } from "../../../utils/changeKeyForSearchBar.utils";
 
 function SearchBar({
   Button1,
@@ -32,7 +29,7 @@ function SearchBar({
   to3,
   to4,
 }: SearchBarProps) {
-  const { meals, setMeals } = useContext(SearchBarContext);
+  const { setMeals } = useContext(SearchBarContext);
   const [inputValue, setInputValue] = useState("");
   const [ingredients, setIngredients] = useState<string[]>([]);
   const [intolerances, setIntolerances] = useState<string[]>([]);

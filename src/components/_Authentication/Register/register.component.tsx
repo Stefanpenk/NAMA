@@ -1,8 +1,6 @@
 import { useState } from "react";
 
-type RegisterProps = {
-  handleSwitchForms: () => void;
-};
+import { RegisterProps } from "../../../types/types";
 
 const Register = ({ handleSwitchForms }: RegisterProps) => {
   const [user, setUser] = useState("");

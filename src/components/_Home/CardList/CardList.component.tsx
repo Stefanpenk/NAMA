@@ -1,6 +1,7 @@
 import { useRef } from "react";
 
 import MealCard from "../../MealCard/MealCard";
+import FoodLoader from "../../Loaders/FoodLoader";
 
 import { ReactComponent as ArrowLeft } from "../../../assets/arrow-left.svg";
 import { ReactComponent as ArrowRight } from "../../../assets/arrow-right.svg";
@@ -8,7 +9,6 @@ import { ReactComponent as ArrowRight } from "../../../assets/arrow-right.svg";
 import { CardListProps } from "../../../types/types";
 
 import "./cardlist.styles.css";
-import FoodLoader from "../../Loaders/FoodLoader";
 
 const CardList = ({ popular, title }: CardListProps) => {
   const listRef = useRef<HTMLInputElement>(null);

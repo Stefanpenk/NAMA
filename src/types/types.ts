@@ -173,3 +173,44 @@ export type ImageInputProps = {
   url: string;
   setUrl: (url: string) => void;
 };
+
+export type LocationProps = {
+  state: {
+    from: Location;
+  };
+};
+
+export type RegisterProps = {
+  handleSwitchForms: () => void;
+};
+
+export interface ChangeParamsButtonProps {
+  handleSubmit: () => void;
+  svg: React.SVGProps<SVGSVGElement>;
+  title: string;
+  to: string;
+}
+
+export interface CheckboxProps {
+  name: string;
+  className: string;
+  onChange: (e: React.FormEvent<HTMLInputElement>) => void;
+  svg: React.SVGProps<SVGSVGElement>;
+}
+
+export type SaveProps = {
+  details: DetailsProps;
+  username: string;
+  saveToken: (props: TokenProps2) => void;
+};
+
+export type LoginPopupModalProps = {
+  setIsModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  message: string;
+};
+
+export type TokenContextProps = {
+  token: TokenProps | null;
+  saveToken: (userToken: TokenProps2) => void;
+  removeToken: () => void;
+};
