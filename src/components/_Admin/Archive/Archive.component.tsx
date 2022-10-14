@@ -28,18 +28,10 @@ const Archive = ({ page }: PageProp) => {
           <p>Archive is empty</p>
         ) : (
           archive.map((singleBlog) => {
-            const { id, imgUrl, title, text, date, authorImg, author } =
-              singleBlog;
             return (
               <AdminBlogCards
-                key={id}
-                id={id}
-                imgUrl={imgUrl}
-                title={title}
-                text={text}
-                date={date}
-                authorImg={authorImg}
-                author={author}
+                key={singleBlog.id}
+                article={singleBlog}
                 page={page}
               />
             );

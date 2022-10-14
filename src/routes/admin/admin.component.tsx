@@ -32,23 +32,23 @@ const Admin = () => {
           setPage={setPage}
         />
         <NavButton
-          active={page === "4" ? "active" : ""}
+          active={page === "3" ? "active" : ""}
           svg={<ArchiveIcon />}
-          dataPage="4"
+          dataPage="3"
           setPage={setPage}
         />
         <NavButton
-          active={page === "3" ? "active" : ""}
+          active={page === "4" ? "active" : ""}
           svg={<UsersIcon />}
-          dataPage="3"
+          dataPage="4"
           setPage={setPage}
         />
       </nav>
       <div className="admin-component-container">
         {page === "1" && <AddBlog />}
         {page === "2" && <Blogs page={page} />}
-        {page === "3" && <Users />}
-        {page === "4" && <Archive page={page} />}
+        {page === "3" && <Archive page={page} />}
+        {page === "4" && <Users />}
       </div>
     </section>
   );

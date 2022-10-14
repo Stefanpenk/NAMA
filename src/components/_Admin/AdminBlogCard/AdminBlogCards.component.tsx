@@ -9,17 +9,9 @@ import { ReactComponent as LinkButton } from "../../../assets/link-icon.svg";
 import { ReactComponent as RestoreButton } from "../../../assets/restore-icon.svg";
 import { ArchiveProps } from "../../../types/types";
 
-const AdminBlogCards = ({
-  id,
-  imgUrl,
-  title,
-  text,
-  date,
-  authorImg,
-  author,
-  page = "0",
-}: ArchiveProps) => {
-  const { blog, setBlog, archive, setArchive } = useContext(BlogContext);
+const AdminBlogCards = ({ article, page = "0" }: ArchiveProps) => {
+  const { id, imgUrl, title, text, date, authorImg, author } = article;
+  const { setBlog, setArchive } = useContext(BlogContext);
   const [isActive, setIsActive] = useState("");
 
   const handleActive = (id: string) => {
@@ -110,7 +102,7 @@ const AdminBlogCards = ({
               <LinkButton />
             </Link>
           </button>
-          {page === "4" ? (
+          {page === "3" ? (
             <button
               className="action-button restore"
               onClick={() => handleRestoreBlog(id)}

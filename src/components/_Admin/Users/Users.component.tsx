@@ -6,16 +6,10 @@ import { ReactComponent as UserProfile } from "../../../assets/comment-profile-i
 
 import { usersProps } from "../../../types/types";
 import "./users.styles.css";
-
-export const defaultUsersValue = {
-  token: "",
-  user: "",
-  name: "",
-  profileImg: "",
-};
+import FoodLoader from "../../Loaders/FoodLoader";
 
 const Users = () => {
-  const [users, setUsers] = useState<usersProps[]>([defaultUsersValue]);
+  const [users, setUsers] = useState<usersProps[]>([]);
   const [response, setResponse] = useState("");
 
   const handleGetUsers = () => {
@@ -69,39 +63,45 @@ const Users = () => {
   useEffect(() => {
     handleGetUsers();
   }, []);
+
   return (
-    <div className="admin-users-section">
-      <h5 className="admin-title">Registered users:</h5>
-      <div className="admin-users-container">
-        {users.map((singleUser) => {
-          const { name, token, user } = singleUser;
-          return (
-            <div key={name} className="admin-users-user">
-              <div className="user-profile-container">
-                {token === "admin" ? <AdminProfile /> : <UserProfile />}
-              </div>
-              <h5 className="user-name">{name}</h5>
-              <p className="user-username">{user}</p>
-              <button
-                className="user-token"
-                onClick={() => handleChangeRank(user)}
-              >
-                {token === "admin" ? "admin" : "user"}
-              </button>
-              {token !== "admin" && (
-                <button
-                  className="delete-fav"
-                  onClick={() => handleDeleteUser(user)}
-                >
-                  <DeleteButton />
-                </button>
-              )}
-            </div>
-          );
-        })}
-      </div>
-      <p className="admin-users-response">{response}</p>
-    </div>
+    <>
+      {users.length === 0 && <FoodLoader />}
+      {users.length > 0 && (
+        <div className="admin-users-section">
+          <h5 className="admin-title">Registered users:</h5>
+          <div className="admin-users-container">
+            {users.map((singleUser) => {
+              const { name, token, user } = singleUser;
+              return (
+                <div key={name} className="admin-users-user">
+                  <div className="user-profile-container">
+                    {token === "admin" ? <AdminProfile /> : <UserProfile />}
+                  </div>
+                  <h5 className="user-name">{name}</h5>
+                  <p className="user-username">{user}</p>
+                  <button
+                    className="user-token"
+                    onClick={() => handleChangeRank(user)}
+                  >
+                    {token === "admin" ? "admin" : "user"}
+                  </button>
+                  {token !== "admin" && (
+                    <button
+                      className="delete-fav"
+                      onClick={() => handleDeleteUser(user)}
+                    >
+                      <DeleteButton />
+                    </button>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+          <p className="admin-users-response">{response}</p>
+        </div>
+      )}
+    </>
   );
 };
 

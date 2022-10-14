@@ -1,5 +1,4 @@
 import { NavButtonProps } from "../../../types/types";
-import { useState } from "react";
 
 const NavButton = ({ active, svg, dataPage, setPage }: NavButtonProps) => {
   const handleChangePage = (e: React.MouseEvent<HTMLButtonElement>) => {

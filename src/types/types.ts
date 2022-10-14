@@ -129,13 +129,7 @@ export type AdminBlogCard = {
 };
 
 export type ArchiveProps = {
-  id: string;
-  title: string;
-  text: string;
-  date: string;
-  author: string;
-  authorImg: string;
-  imgUrl: string;
+  article: BlogProps;
   page: string;
 };
 

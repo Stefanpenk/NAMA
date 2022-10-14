@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { BlogContext } from "../../../context/Blog.context";
 
 import "./blogs.styles.css";
@@ -13,19 +13,8 @@ const Blogs = ({ page }: PageProp) => {
       <h5 className="admin-title">Actual blogs:</h5>
       <div className="blogs-articles-container">
         {blog.map((article) => {
-          const { id, imgUrl, title, text, date, authorImg, author } = article;
           return (
-            <AdminBlogCards
-              key={id}
-              id={id}
-              imgUrl={imgUrl}
-              title={title}
-              text={text}
-              date={date}
-              authorImg={authorImg}
-              author={author}
-              page={page}
-            />
+            <AdminBlogCards key={article.id} article={article} page={page} />
           );
         })}
       </div>

@@ -1,17 +1,24 @@
-import React, { useState, useEffect } from "react";
-import uniqid from "uniqid";
+import { useState, useEffect, useContext } from "react";
 import { getCurrentDate } from "../../../utils/currentdate.utils";
-import { useContext } from "react";
+import uniqid from "uniqid";
+
 import { BlogContext } from "../../../context/Blog.context";
+import { compareNumbers } from "../../../context/Blog.context";
+
+import ImageInput from "../ImageInput/ImageInput.component";
 
 import { usersProps } from "../../../types/types";
 import "./addBlog.styles.css";
-import ImageInput from "../ImageInput/ImageInput.component";
-import { defaultUsersValue } from "../Users/Users.component";
-import { compareNumbers } from "../../../context/Blog.context";
 
 export const defaultProfilePicture =
   "https://firebasestorage.googleapis.com/v0/b/foocoding-react-project.appspot.com/o/ProfileImages%2Fno-image-profile.webp?alt=media&token=3a7b435a-117f-4d36-9166-4d9fe242926c";
+
+export const defaultUsersValue = {
+  token: "",
+  user: "",
+  name: "",
+  profileImg: "",
+};
 
 const AddBlog = () => {
   const { setBlog } = useContext(BlogContext);
@@ -24,13 +31,13 @@ const AddBlog = () => {
   const [users, setUsers] = useState<usersProps[]>([defaultUsersValue]);
   const [user, setUser] = useState("");
 
-  const handleGetUsers = () => {
-    fetch("http://localhost:8080/getusers")
-      .then((data) => data.json())
-      .then((json) => setUsers(json.users));
-  };
-
   useEffect(() => {
+    const handleGetUsers = () => {
+      fetch("http://localhost:8080/getusers")
+        .then((data) => data.json())
+        .then((json) => setUsers(json.users));
+    };
+
     handleGetUsers();
   }, []);
 
