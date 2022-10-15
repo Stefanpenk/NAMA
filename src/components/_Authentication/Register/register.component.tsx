@@ -26,7 +26,8 @@ const Register = ({ handleSwitchForms }: RegisterProps) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      console.log("different passwords");
+      setError("different passwords");
+      setTimeout(() => setError(""), 3000);
     } else {
       const create = await createUser(user, password, name);
       const value = Object.values(create).join();

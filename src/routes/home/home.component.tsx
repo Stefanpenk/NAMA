@@ -11,6 +11,8 @@ import "./home.styles.css";
 const Home = () => {
   const [popular, setPopular] = useState<DetailsProps[]>([]);
   const [deserts, setDeserts] = useState<DetailsProps[]>([]);
+  const [codePopular, setCodePopular] = useState(0);
+  const [codeDesserts, setCodeDesserts] = useState(0);
 
   const getPopular = async () => {
     const check = localStorage.getItem("popular");
@@ -19,8 +21,10 @@ const Home = () => {
       setPopular(JSON.parse(check));
     } else {
       const api = await getData<Response>(
-        `https://api.spoonacular.com/recipes/random?apiKey=48d4912f994842029db529317a2efa6e&number=9`
+        `https://api.spoonacular.com/recipes/random?apiKey=f0039d77677947b8b23326fea1699dd4&number=9`
       );
+      if (api.code && api.code >= 300) return setCodePopular(api.code);
+      setCodePopular(0);
       localStorage.setItem("popular", JSON.stringify(api.recipes));
       setPopular(api.recipes);
     }
@@ -35,6 +39,8 @@ const Home = () => {
       const api = await getData<Response>(
         `https://api.spoonacular.com/recipes/random?apiKey=f0039d77677947b8b23326fea1699dd4&number=9&tags=dessert`
       );
+      if (api.code && api.code >= 300) return setCodeDesserts(api.code);
+      setCodeDesserts(0);
       localStorage.setItem("deserts", JSON.stringify(api.recipes));
       setDeserts(api.recipes);
     }
@@ -49,8 +55,12 @@ const Home = () => {
     <div className="wrapper">
       <HeroSection />
       <div className="sections-container nav-padding">
-        <CardList popular={popular} title="Popular Picks" />
-        <CardList popular={deserts} title="Something Sweet" />
+        <CardList popular={popular} title="Popular Picks" code={codePopular} />
+        <CardList
+          popular={deserts}
+          title="Something Sweet"
+          code={codeDesserts}
+        />
       </div>
     </div>
   );

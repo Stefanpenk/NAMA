@@ -1,9 +1,10 @@
 .wrapper {
   margin: 0% auto;
+  width: 100%;
   max-width: 1440px;
 }
 
 .sections-container {
   background-color: #fff;
-  min-height: 100vh;
+  min-height: calc(100vh - var(--nav-height));
 }

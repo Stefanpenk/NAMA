@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 import MealCard from "../../MealCard/MealCard";
-import FoodLoader from "../../Loaders/FoodLoader";
+import FoodLoader from "../../Loaders/FoodLoader/FoodLoader";
 
 import { ReactComponent as ArrowLeft } from "../../../assets/arrow-left.svg";
 import { ReactComponent as ArrowRight } from "../../../assets/arrow-right.svg";
@@ -9,8 +9,11 @@ import { ReactComponent as ArrowRight } from "../../../assets/arrow-right.svg";
 import { CardListProps } from "../../../types/types";
 
 import "./cardlist.styles.css";
+import OopsPage from "../../Loaders/OopsPage/OopsPage.component";
+import NoResults from "../../Loaders/NoResults/NoResults";
+import NoMoreSearch from "../../Loaders/NoMoreSearch/NoMoreSearch";
 
-const CardList = ({ popular, title }: CardListProps) => {
+const CardList = ({ popular, title, code }: CardListProps) => {
   const listRef = useRef<HTMLInputElement>(null);
 
   const handleScrollLeft = () => {
@@ -47,7 +50,9 @@ const CardList = ({ popular, title }: CardListProps) => {
         </p>
       </div>
       <div className="card-list_container" ref={listRef}>
-        {popular.length === 0 && <FoodLoader />}
+        {code >= 300 && code < 500 && <NoMoreSearch />}
+        {code >= 500 && <OopsPage />}
+        {code < 300 && popular.length === 0 && <FoodLoader />}
         {popular.map((item) => {
           return <MealCard item={item} key={item.id} />;
         })}

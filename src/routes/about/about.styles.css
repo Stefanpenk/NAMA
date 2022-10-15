@@ -1,8 +1,8 @@
 .about-section {
   margin: 0 auto;
   display: flex;
-  width: 100vw;
-  min-height: 100vh;
+  width: 100%;
+  min-height: calc(100vh - var(--nav-height));
   max-width: 1440px;
 }
 
@@ -70,7 +70,7 @@
   position: relative;
   padding: 0 50px;
   width: 50%;
-  min-height: 100vh;
+  min-height: calc(100vh - var(--nav-height));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -92,7 +92,7 @@
 
 .about-img-container {
   width: 50%;
-  min-height: 100vh;
+  min-height: calc(100vh - var(--nav-height));
   overflow: hidden;
 }
 

@@ -1,4 +1,4 @@
-import OopsImg from "../../assets/oops-page.webp";
+import OopsImg from "../../../assets/oops-page.webp";
 
 import "./OopsPage.styles.css";
 

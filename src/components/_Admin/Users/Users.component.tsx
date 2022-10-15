@@ -6,7 +6,7 @@ import { ReactComponent as UserProfile } from "../../../assets/comment-profile-i
 
 import { usersProps } from "../../../types/types";
 import "./users.styles.css";
-import FoodLoader from "../../Loaders/FoodLoader";
+import FoodLoader from "../../Loaders/FoodLoader/FoodLoader";
 
 const Users = () => {
   const [users, setUsers] = useState<usersProps[]>([]);

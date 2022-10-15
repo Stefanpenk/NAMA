@@ -4,7 +4,7 @@ import { isToday } from "../../../utils/isToday";
 
 import { BlogContext } from "../../../context/Blog.context";
 
-import FoodLoader from "../../Loaders/FoodLoader";
+import FoodLoader from "../../Loaders/FoodLoader/FoodLoader";
 
 import "./BlogCards.styles.css";
 

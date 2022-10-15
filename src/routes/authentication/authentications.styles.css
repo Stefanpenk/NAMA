@@ -1,9 +1,10 @@
 .section-auth {
-  display: flex;
+  margin: 0 auto;
   position: relative;
-  width: 100vw;
+  width: 100%;
   max-width: 1440px;
-  height: 100vh;
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
 }
 
 .auth-login-container {
@@ -47,11 +48,8 @@
 }
 
 .auth-img-container {
-  /* position: absolute;
-  top: 0;
-  right: 0; */
   width: 50%;
-  height: 100%;
+  min-height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -66,7 +64,6 @@
   font-weight: 400;
   font-family: "Lato", sans-serif;
   text-transform: uppercase;
-  /* border-radius: 10px; */
   background-color: var(--primary-color);
   border: 2px solid var(--primary-color);
   color: var(--third-color);

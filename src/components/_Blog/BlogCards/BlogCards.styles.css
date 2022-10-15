@@ -39,12 +39,7 @@
   height: 80%;
   overflow: hidden;
   border-bottom: 1px solid var(--primary-color);
-  /* overflow-y: scroll; */
 }
-
-/* .article-mini-text::-webkit-scrollbar {
-  display: none;
-} */
 
 .article-mini-footer {
   padding: 5px 25px;

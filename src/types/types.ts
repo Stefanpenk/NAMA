@@ -43,6 +43,9 @@ export type RecipeNavProps = {
 
 export type Response = {
   recipes: DetailsProps[];
+  status?: string;
+  code?: number;
+  message?: string;
 };
 
 export type CardProps = {
@@ -52,6 +55,7 @@ export type CardProps = {
 export type CardListProps = {
   popular: DetailsProps[];
   title: string;
+  code: number;
 };
 
 export type MealListProps = {
@@ -76,6 +80,9 @@ export interface SearchBarProps {
 export type Responses = {
   results: DetailsProps[];
   totalResults?: number;
+  status?: string;
+  code?: number;
+  message?: string;
 };
 
 export type BlogProps = {

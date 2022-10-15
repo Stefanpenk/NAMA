@@ -1,11 +1,10 @@
 .section-admin {
   padding: 50px;
   width: 100%;
-  min-height: 100vh;
-  /* height: 100vh; */
+  min-height: calc(100vh - var(--nav-height));
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .section-admin .blog-articles-container {
@@ -25,8 +24,8 @@
 }
 
 .admin-nav {
-  height: 100vh;
   margin: 20px;
+  align-self: flex-start;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,7 +36,6 @@
 .admin-component-container {
   margin-left: 50px;
   width: 100%;
-  min-height: 100vh;
   flex-grow: 1;
   display: flex;
   flex-direction: column;

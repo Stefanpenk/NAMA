@@ -6,9 +6,10 @@ import "./Mealslist.styles.css";
 const Mealslist = ({ meals }: MealListProps) => {
   return (
     <div className="meals-list">
-      {meals.map((item) => {
-        return <MealCard item={item} key={item.id} />;
-      })}
+      {meals &&
+        meals.map((item) => {
+          return <MealCard item={item} key={item.id} />;
+        })}
     </div>
   );
 };

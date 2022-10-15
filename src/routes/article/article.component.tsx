@@ -5,10 +5,10 @@ import { BlogContext } from "../../context/Blog.context";
 import { BlogDefaultValue } from "../../context/Blog.context";
 
 import ArticleInfo from "../../components/_Article/ArticleInfo/ArticleInfo.component";
-import FoodLoader from "../../components/Loaders/FoodLoader";
+import FoodLoader from "../../components/Loaders/FoodLoader/FoodLoader";
 import AddComment from "../../components/_Article/AddComment/AddComment.component";
 import ArticleComments from "../../components/_Article/ArticleComments/ArticleComments.component";
-import OopsPage from "../../components/OopsPage/OopsPage.component";
+import OopsPage from "../../components/Loaders/OopsPage/OopsPage.component";
 
 import { ArticleObj, BlogProps } from "../../types/types";
 import "./article.styles.css";

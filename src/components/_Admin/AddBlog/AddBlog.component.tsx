@@ -9,7 +9,7 @@ import ImageInput from "../ImageInput/ImageInput.component";
 
 import { usersProps } from "../../../types/types";
 import "./addBlog.styles.css";
-import FoodLoader from "../../Loaders/FoodLoader";
+import FoodLoader from "../../Loaders/FoodLoader/FoodLoader";
 
 const defaultProfilePicture =
   "https://firebasestorage.googleapis.com/v0/b/foocoding-react-project.appspot.com/o/ProfileImages%2Fno-image-profile.webp?alt=media&token=3a7b435a-117f-4d36-9166-4d9fe242926c";

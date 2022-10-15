@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import RecipeNav from "../../components/_Recipe/RecipeNav/recipeNav.component";
-import FoodLoader from "../../components/Loaders/FoodLoader";
+import OopsPage from "../../components/Loaders/OopsPage/OopsPage.component";
+import NoMoreSearch from "../../components/Loaders/NoMoreSearch/NoMoreSearch";
+import FoodLoader from "../../components/Loaders/FoodLoader/FoodLoader";
 
 import { DetailsProps } from "../../types/types";
 import "./recipe.styles.css";
@@ -12,6 +14,7 @@ const Recipe = () => {
 
   const [activeTab, setActiveTab] = useState("instructions");
   const [details, setDetails] = useState<DetailsProps | null>(null);
+  const [code, setCode] = useState(0);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -21,7 +24,9 @@ const Recipe = () => {
       const data = await fetch(
         `https://api.spoonacular.com/recipes/${params.search}/information?apiKey=${apiKey}`
       );
+      if (data.status >= 400) return setCode(data.status);
       const detailData = await data.json();
+      setCode(0);
       setDetails(detailData);
     };
     fetchDetails();
@@ -29,7 +34,9 @@ const Recipe = () => {
 
   return (
     <section className="recipe-section">
-      {details === null && <FoodLoader />}
+      {(code === 401 || code === 402) && <NoMoreSearch />}
+      {code >= 400 && code !== 401 && code !== 402 && <OopsPage />}
+      {details === null && code < 300 && <FoodLoader />}
       {details !== null && (
         <div className="recipe-wrapper">
           <h4 className="recipe-title">{details.title}</h4>

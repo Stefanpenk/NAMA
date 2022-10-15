@@ -31,14 +31,14 @@ function SearchBar({
 }: SearchBarProps) {
   const { cuisine } = useParams();
   const { type } = useParams();
-  const { setMeals, setZeroTotalResults } = useContext(SearchBarContext);
+  const { setMeals, setZeroTotalResults, setStatus } =
+    useContext(SearchBarContext);
   const [inputValue, setInputValue] = useState("");
   const [ingredients, setIngredients] = useState<string[]>([]);
   const [intolerances, setIntolerances] = useState<string[]>([]);
   const [diets, setDiets] = useState<string[]>([]);
   const [submit, setSubmit] = useState<boolean>(true);
 
-  // console.log(totalResults);
   useEffect(() => {
     const number = 3;
     const typeParam = type === undefined ? "" : type;
@@ -54,8 +54,11 @@ function SearchBar({
       const api = await getDataSearchBar<Responses>(
         `https://api.spoonacular.com/recipes/complexSearch?number=${number}&addRecipeInformation=true&cuisine=${cuisine}&diet=${diets}&type=${type}&intolerances=${intolerances}&includeIngredients=${ingredients}`
       );
+      console.log(api);
+      if (api.results) setMeals(api.results);
       setZeroTotalResults(api.totalResults === 0);
-      setMeals(api.results);
+      if (api.code && api.code >= 300) return setStatus(api.code);
+      setStatus(0);
     };
     getMeals(
       typeParam,

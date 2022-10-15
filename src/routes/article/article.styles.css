@@ -1,5 +1,5 @@
 .section-article {
-  min-height: calc(100vh - var(--nav-height));
+  min-height: 100vh;
 }
 
 .article-wrapper {

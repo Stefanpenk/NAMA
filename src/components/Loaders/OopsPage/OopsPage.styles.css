@@ -1,6 +1,7 @@
 .oops-container {
+  width: 100%;
   max-width: 1440px;
-  min-height: calc(100vh - var(--nav-height));
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,13 +18,17 @@
 
 .oops-header {
   margin: 20px 0;
+  padding: 0 50px;
   font-size: 30px;
+  text-align: center;
   font-family: "Montserrat", sans-serif;
 }
 
 .oops-text {
   margin-top: 5px;
+  padding: 0 50px;
   font-size: 20px;
+  text-align: center;
 }
 
 .oops-img-author {

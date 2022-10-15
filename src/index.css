@@ -64,7 +64,6 @@ svg {
 }
 
 .nav-padding {
-  padding-top: var(--nav-height);
   max-width: 1440px;
   margin: 0 auto;
 }

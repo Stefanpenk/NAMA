@@ -4,7 +4,7 @@ import { SearchBarContext } from "../../context/SearchBar.context";
 
 import Mealslist from "../../components/_Meals&Cuisines/MealsList/Mealslist";
 import SearchBar from "../../components/_Meals&Cuisines/SearchBar/SearchBar.component";
-import FoodLoader from "../../components/Loaders/FoodLoader";
+import FoodLoader from "../../components/Loaders/FoodLoader/FoodLoader";
 
 import { ReactComponent as American } from "../../assets/american.svg";
 import { ReactComponent as Italian } from "../../assets/italian.svg";
@@ -12,9 +12,12 @@ import { ReactComponent as Japanese } from "../../assets/japanese.svg";
 import { ReactComponent as Thai } from "../../assets/thai.svg";
 
 import "./cuisines.styles.css";
+import NoResults from "../../components/Loaders/NoResults/NoResults";
+import NoMoreSearch from "../../components/Loaders/NoMoreSearch/NoMoreSearch";
+import OopsPage from "../../components/Loaders/OopsPage/OopsPage.component";
 
 const Cuisines = () => {
-  const { meals } = useContext(SearchBarContext);
+  const { meals, zeroTotalResults, status } = useContext(SearchBarContext);
 
   return (
     <section className="section-meals nav-padding">
@@ -32,7 +35,14 @@ const Cuisines = () => {
         to3="/cuisines/korean"
         to4="/cuisines/thai"
       />
-      {meals.length === 0 ? <FoodLoader /> : <Mealslist meals={meals} />}
+      {status >= 500 && <OopsPage />}
+      {localStorage.getItem("tries") && <NoMoreSearch />}
+      {zeroTotalResults && <NoResults />}
+      {!localStorage.getItem("tries") &&
+        !zeroTotalResults &&
+        meals.length === 0 &&
+        status <= 299 && <FoodLoader />}
+      {!zeroTotalResults && meals.length !== 0 && <Mealslist meals={meals} />}
     </section>
   );
 };
