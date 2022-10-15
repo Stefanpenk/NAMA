@@ -60,6 +60,7 @@ function SearchBar({
       if (api.code && api.code >= 300) return setStatus(api.code);
       setStatus(0);
     };
+
     getMeals(
       typeParam,
       cuisineParam,

@@ -6,7 +6,7 @@ const key = [
 ];
 
 export const getDataSearchBar = async <T>(path: string): Promise<T> => {
-  const max = key.length - 1;
+  const lastKey = key.length - 1;
   const idxString = localStorage.getItem("idx");
   if (!idxString) {
     localStorage.setItem("idx", "0");
@@ -16,11 +16,11 @@ export const getDataSearchBar = async <T>(path: string): Promise<T> => {
   // if(response.status >= 500) return await response
   if (response.status === 401 || response.status === 402) {
     const idxNumber = parseInt(idxString!);
-    if (idxNumber < max) {
+    if (idxNumber < lastKey) {
       localStorage.setItem("idx", `${idxNumber + 1}`);
       return getDataSearchBar(path);
     }
-    if (idxNumber === max) {
+    if (idxNumber === lastKey) {
       localStorage.setItem("tries", "1");
       return response.json();
     }

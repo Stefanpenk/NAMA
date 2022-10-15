@@ -20,10 +20,11 @@ const Home = () => {
     if (check) {
       setPopular(JSON.parse(check));
     } else {
-      const api = await getData<Response>(
+      const data = await fetch(
         `https://api.spoonacular.com/recipes/random?apiKey=f0039d77677947b8b23326fea1699dd4&number=9`
       );
-      if (api.code && api.code >= 300) return setCodePopular(api.code);
+      if (data.status >= 400) return setCodePopular(data.status);
+      const api = await data.json();
       setCodePopular(0);
       localStorage.setItem("popular", JSON.stringify(api.recipes));
       setPopular(api.recipes);
@@ -36,10 +37,11 @@ const Home = () => {
     if (check) {
       setDeserts(JSON.parse(check));
     } else {
-      const api = await getData<Response>(
+      const data = await fetch(
         `https://api.spoonacular.com/recipes/random?apiKey=f0039d77677947b8b23326fea1699dd4&number=9&tags=dessert`
       );
-      if (api.code && api.code >= 300) return setCodeDesserts(api.code);
+      if (data.status >= 400) return setCodeDesserts(data.status);
+      const api = await data.json();
       setCodeDesserts(0);
       localStorage.setItem("deserts", JSON.stringify(api.recipes));
       setDeserts(api.recipes);
