@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { getDataSearchBar } from "../../../utils/changeKeyForSearchBar.utils";
 
 import { SearchBarContext } from "../../../context/SearchBar.context";
 
@@ -12,8 +11,15 @@ import { ReactComponent as Vegan } from "../../../assets/vegan.svg";
 import { ReactComponent as DairyFree } from "../../../assets/diaryfree.svg";
 import { ReactComponent as GlutenFree } from "../../../assets/glutenfree.svg";
 
-import { Responses, SearchBarProps } from "../../../types/types";
+import { SearchBarProps } from "../../../types/types";
 import "./searchBard.styles.css";
+
+const key = [
+  "81a0a83025df44898b4483e411597804",
+  "e97a800aec024e56a67074d3a06d6470",
+  "2f667881858a4acabd9f3cc1359e4826",
+  "11e30b29cb6d47c082e3b57e8efdc467",
+];
 
 function SearchBar({
   Button1,
@@ -51,13 +57,36 @@ function SearchBar({
       diets: string,
       intolerances: string
     ) => {
-      const api = await getDataSearchBar<Responses>(
-        `https://api.spoonacular.com/recipes/complexSearch?number=${number}&addRecipeInformation=true&cuisine=${cuisine}&diet=${diets}&type=${type}&intolerances=${intolerances}&includeIngredients=${ingredients}`
-      );
-      console.log(api);
+      const path = `https://api.spoonacular.com/recipes/complexSearch?number=${number}&addRecipeInformation=true&cuisine=${cuisine}&diet=${diets}&type=${type}&intolerances=${intolerances}&includeIngredients=${ingredients}`;
+
+      const getDataSearchBar: any = async (path: string) => {
+        const lastKey = key.length - 1;
+        const idxString = localStorage.getItem("idx");
+        if (!idxString) {
+          localStorage.setItem("idx", "0");
+          return getDataSearchBar(path);
+        }
+        const response = await fetch(
+          path + `&apiKey=${key[parseInt(idxString!)]}`
+        );
+        if (response.status === 401 || response.status === 402) {
+          const idxNumber = parseInt(idxString!);
+          if (idxNumber < lastKey) {
+            localStorage.setItem("idx", `${idxNumber + 1}`);
+            return getDataSearchBar(path);
+          }
+          if (idxNumber === lastKey) {
+            localStorage.setItem("tries", "1");
+            return response;
+          }
+        }
+        return response;
+      };
+      const data = await getDataSearchBar(path);
+      if (data.status >= 400) return setStatus(data.status);
+      const api = await data.json();
       if (api.results) setMeals(api.results);
       setZeroTotalResults(api.totalResults === 0);
-      if (api.code && api.code >= 300) return setStatus(api.code);
       setStatus(0);
     };
 

@@ -35,8 +35,8 @@ const Cuisines = () => {
         to3="/cuisines/korean"
         to4="/cuisines/thai"
       />
-      {status >= 500 && <OopsPage />}
       {localStorage.getItem("tries") && <NoMoreSearch />}
+      {status >= 400 && status !== 401 && status !== 402 && <OopsPage />}
       {zeroTotalResults && <NoResults />}
       {!localStorage.getItem("tries") &&
         !zeroTotalResults &&
