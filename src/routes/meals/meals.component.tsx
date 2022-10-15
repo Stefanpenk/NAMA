@@ -12,9 +12,10 @@ import { ReactComponent as Dinner } from "../../assets/dinner.svg";
 import { ReactComponent as Dessert } from "../../assets/dessert.svg";
 
 import "./meals.styles.css";
+import NoResults from "../../components/Loaders/NoResults/NoResults";
 
 const Meals = () => {
-  const { meals } = useContext(SearchBarContext);
+  const { meals, zeroTotalResults } = useContext(SearchBarContext);
 
   return (
     <section className="section-meals nav-padding">
@@ -32,7 +33,12 @@ const Meals = () => {
         to3="/meals/dinner"
         to4="/meals/dessert"
       />
-      {meals.length === 0 ? <FoodLoader /> : <Mealslist meals={meals} />}
+      {zeroTotalResults && <NoResults />}
+      {!zeroTotalResults && meals.length === 0 ? (
+        <FoodLoader />
+      ) : (
+        <Mealslist meals={meals} />
+      )}
     </section>
   );
 };

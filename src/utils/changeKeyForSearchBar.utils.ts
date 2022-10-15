@@ -6,7 +6,7 @@ const key = [
 ];
 
 export const getDataSearchBar = async <T>(path: string): Promise<T> => {
-  const max = 3;
+  const max = key.length - 1;
   const idxString = localStorage.getItem("idx");
   if (!idxString) {
     localStorage.setItem("idx", "0");

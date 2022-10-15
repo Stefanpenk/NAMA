@@ -75,6 +75,7 @@ export interface SearchBarProps {
 
 export type Responses = {
   results: DetailsProps[];
+  totalResults?: number;
 };
 
 export type BlogProps = {
@@ -150,6 +151,10 @@ export type childrenProps = {
 
 export type ContextSearchBarProps = {
   meals: DetailsProps[] | [];
+  status: number;
+  zeroTotalResults: boolean;
+  setStatus: (number: number) => void;
+  setZeroTotalResults: (boolean: boolean) => void;
   setMeals: (meals: DetailsProps[]) => void;
 };
 
