@@ -1,10 +1,17 @@
 .wrapper {
-  margin: 0% auto;
+  margin: calc(var(--nav-height) * -1) auto 0 auto;
   width: 100%;
   max-width: 1440px;
 }
 
 .sections-container {
-  background-color: #fff;
+  padding-bottom: 30px;
   min-height: calc(100vh - var(--nav-height));
+  background-color: #fff;
+}
+
+@media (max-width: 481px) {
+  .wrapper {
+    margin: 0 auto 100px auto;
+  }
 }

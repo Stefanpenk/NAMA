@@ -73,12 +73,14 @@
   display: flex;
   flex-wrap: wrap;
   background-color: var(--primary-color);
+  justify-content: center;
 }
 
 .blog-article {
   position: relative;
   margin: calc(10% / 6);
   width: 30%;
+  min-width: 278px;
   min-height: 400px;
   display: flex;
   flex-direction: column;
@@ -118,4 +120,22 @@
   background-color: rgb(176, 226, 159);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+@media (max-width: 1025px) {
+  .blog-articles-container {
+    padding: 30px;
+  }
+
+  .blog-article {
+    margin: calc(10% / 4);
+    width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-article {
+    margin: 5%;
+    width: 95%;
+  }
 }

@@ -48,3 +48,35 @@
 .card-list_container::-webkit-scrollbar {
   display: none;
 }
+
+@media (max-width: 768px) {
+  .card-list_header {
+    height: 70px;
+  }
+
+  .card-list_title {
+    font-size: 25px;
+  }
+
+  .card-list_container {
+    height: 350px;
+  }
+}
+
+@media (max-width: 481px) {
+  .card-list_header {
+    height: 70px;
+  }
+
+  .card-list_title {
+    font-size: 20px;
+  }
+
+  .card-list_header {
+    padding: 15px 15px;
+  }
+
+  .card-list_header p span {
+    width: 20px;
+  }
+}

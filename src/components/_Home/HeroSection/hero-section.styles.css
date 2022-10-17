@@ -17,6 +17,7 @@ video {
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
   object-fit: contain;
   color: #fff;
+  overflow-x: hidden;
 }
 
 .hero_text {
@@ -62,4 +63,63 @@ video {
 
 .button-solid a {
   color: var(--third-color);
+}
+
+@media (max-width: 1025px) {
+  .hero_text > h1 {
+    font-size: 60px;
+  }
+
+  .hero_text > h3 {
+    margin-top: 10px;
+    font-size: 30px;
+  }
+
+  .hero_text > p {
+    margin-top: 10px;
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/foocoding-react-project.appspot.com/o/WebsiteImgs%2Fhero-img.webp?alt=media&token=29c495d6-d2af-4f52-bbe0-53c7a46e11b0");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  video {
+    display: none;
+  }
+
+  .hero_text > h1 {
+    font-size: 45px;
+  }
+
+  .hero_text > h3 {
+    font-size: 25px;
+  }
+
+  .hero_text > p {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 481px) {
+  .hero_text > h1 {
+    font-size: 30px;
+  }
+
+  .hero_text > h3 {
+    font-size: 20px;
+  }
+
+  .hero_text > p {
+    font-size: 20px;
+  }
+
+  .button-solid {
+    font-size: 15px;
+  }
 }

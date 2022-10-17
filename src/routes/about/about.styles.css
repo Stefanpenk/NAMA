@@ -82,6 +82,7 @@
   font-family: "Montserrat", sans-serif;
   font-size: 50px;
   color: var(--primary-color);
+  text-align: center;
 }
 
 .about-text {
@@ -155,4 +156,81 @@
   width: 80px;
   padding: 15px 0;
   cursor: pointer;
+}
+
+@media (max-width: 1025px) {
+  .nama-letter {
+    font-size: 70px;
+  }
+  .nama-word {
+    font-size: 25px;
+  }
+
+  .about-title {
+    margin: 30px 0;
+    font-size: 40px;
+  }
+
+  .about-contact {
+    width: 60px;
+  }
+
+  .about-contact {
+    font-size: 12px;
+  }
+
+  .about-icon-container {
+    margin: 0;
+    width: 25px;
+  }
+
+  .about-contact-title {
+    font-size: 20px;
+  }
+
+  .button-next.about {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column;
+  }
+
+  .about-img-container {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .about-info-container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 481px) {
+  .about-info-container {
+    padding: 0 30px;
+  }
+
+  .nama-letter {
+    font-size: 50px;
+  }
+  .nama-word {
+    font-size: 20px;
+  }
+
+  .about-title {
+    margin: 25px 0;
+    font-size: 30px;
+  }
+
+  .about-text {
+    margin: 10px 0;
+    font-size: 15px;
+  }
+
+  .about-contact-container {
+    padding-bottom: var(--nav-height);
+  }
 }

@@ -6,6 +6,10 @@ import { ReactComponent as Login } from "../../assets/login-icon.svg";
 import { ReactComponent as Logout } from "../../assets/logout-icon.svg";
 import { ReactComponent as Profile } from "../../assets/profile-icon.svg";
 import { ReactComponent as Admin } from "../../assets/admin-icon.svg";
+import { ReactComponent as About } from "../../assets/about-icon.svg";
+import { ReactComponent as Blog } from "../../assets/blog-icon.svg";
+import { ReactComponent as Meal } from "../../assets/meal-icon.svg";
+import { ReactComponent as Cusine } from "../../assets/cusine-icon.svg";
 
 import useToken from "../../hooks/useToken";
 
@@ -42,17 +46,21 @@ const Navigation = () => {
         <div className="nav-left">
           <NavLink className="nav-link" to="/about">
             <span>ABOUT</span>
+            <About className="nav-swap-icon" />
           </NavLink>
           <NavLink className="nav-link" to="/blog">
             <span>BLOG</span>
+            <Blog className="nav-swap-icon" />
           </NavLink>
         </div>
         <div className="nav-right">
           <NavLink className="nav-link" to="/meals/breakfast">
             <span>MEALS</span>
+            <Meal className="nav-swap-icon" />
           </NavLink>
           <NavLink className="nav-link" to="/cuisines/american">
             <span>CUISINES</span>
+            <Cusine className="nav-swap-icon" />
           </NavLink>
           <div className="nav-icons-container">
             {token && token.token === "admin" && (

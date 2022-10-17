@@ -21,7 +21,8 @@
 }
 
 .sections-container .meal-card {
-  min-width: calc(92% / 3);
+  width: calc(92% / 3);
+  min-width: 300px;
   margin-right: calc(8% / 2 / 3);
   margin-left: calc(8% / 2 / 3);
   -moz-osx-font-smoothing: grayscale;
