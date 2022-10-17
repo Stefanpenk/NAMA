@@ -16,17 +16,17 @@ const About = () => {
       <div className="about-info-container nav-padding">
         <div className="nama-meaning">
           <div className="nama-letter-container">
-            <p className="nama-letter">n</p>
+            <p className="nama-letter">N</p>
             <div className="nama-line"></div>
             <p className="nama-word">noll</p>
           </div>
           <div className="nama-letter-container">
-            <p className="nama-letter">a</p>
+            <p className="nama-letter">A</p>
             <div className="nama-line"></div>
             <p className="nama-word">avfall</p>
           </div>
           <div className="nama-letter-container">
-            <p className="nama-letter">ma</p>
+            <p className="nama-letter">MA</p>
             <div className="nama-line"></div>
             <p className="nama-word">mat</p>
           </div>

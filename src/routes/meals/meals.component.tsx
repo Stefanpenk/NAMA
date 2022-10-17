@@ -34,14 +34,15 @@ const Meals = () => {
         to3="/meals/dinner"
         to4="/meals/dessert"
       />
-      {localStorage.getItem("tries") && <NoMoreSearch />}
+      {(status === 401 || status === 402) && <NoMoreSearch />}
       {status >= 400 && status !== 401 && status !== 402 && <OopsPage />}
       {zeroTotalResults && <NoResults />}
-      {!localStorage.getItem("tries") &&
-        !zeroTotalResults &&
-        meals.length === 0 &&
-        status < 300 && <FoodLoader />}
-      {!zeroTotalResults && meals.length !== 0 && <Mealslist meals={meals} />}
+      {!zeroTotalResults && meals.length === 0 && status < 300 && (
+        <FoodLoader />
+      )}
+      {!zeroTotalResults && meals.length !== 0 && status < 300 && (
+        <Mealslist meals={meals} />
+      )}
     </section>
   );
 };
