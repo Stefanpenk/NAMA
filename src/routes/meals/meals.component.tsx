@@ -18,9 +18,6 @@ import OopsPage from "../../components/Loaders/OopsPage/OopsPage.component";
 
 const Meals = () => {
   const { meals, zeroTotalResults, status } = useContext(SearchBarContext);
-  console.log(meals);
-  console.log(zeroTotalResults);
-  console.log(status);
   return (
     <section className="section-meals nav-padding">
       <SearchBar
