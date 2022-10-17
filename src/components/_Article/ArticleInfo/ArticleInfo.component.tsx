@@ -46,7 +46,7 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
   };
 
   async function sendScore(articleId: string, user: string, number: number) {
-    return fetch("http://localhost:8080/sendrating", {
+    return fetch("https://namaserver.onrender.com/sendrating", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -64,7 +64,9 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
     const articleId = id;
     const user = token.user;
     await sendScore(articleId, user, number);
-    const api = await getData<fetchedBlogData>("http://localhost:8080/blog");
+    const api = await getData<fetchedBlogData>(
+      "https://namaserver.onrender.com/blog"
+    );
     setBlog(api.blog);
   };
 

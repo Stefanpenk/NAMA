@@ -24,7 +24,7 @@ const AdminBlogCards = ({ article, page = "0" }: ArchiveProps) => {
 
   const handleRestoreBlog = async (id: string) => {
     async function restoreBlog(id: string) {
-      return fetch("http://localhost:8080/restoreblog", {
+      return fetch("https://namaserver.onrender.com/restoreblog", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,7 +44,7 @@ const AdminBlogCards = ({ article, page = "0" }: ArchiveProps) => {
 
   const handleDeleteBlog = async (id: string) => {
     async function deleteBlog(id: string) {
-      return fetch("http://localhost:8080/deleteblog", {
+      return fetch("https://namaserver.onrender.com/deleteblog", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

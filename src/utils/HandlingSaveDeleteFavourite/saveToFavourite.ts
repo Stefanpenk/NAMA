@@ -13,7 +13,7 @@ export const saveToFavourite = ({
 }: SaveProps) => {
   const newData = details;
   async function sendData(user: string, newData: DetailsProps) {
-    return fetch("http://localhost:8080/add", {
+    return fetch("https://namaserver.onrender.com/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

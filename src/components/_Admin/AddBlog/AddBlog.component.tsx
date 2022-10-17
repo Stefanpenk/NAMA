@@ -27,7 +27,7 @@ const AddBlog = () => {
 
   useEffect(() => {
     const handleGetUsers = () => {
-      fetch("http://localhost:8080/getusers")
+      fetch("https://namaserver.onrender.com/getusers")
         .then((data) => data.json())
         .then((json) => setUsers(json.users));
     };
@@ -50,7 +50,7 @@ const AddBlog = () => {
       author: string,
       authorImg: string
     ) {
-      return fetch("http://localhost:8080/addblog", {
+      return fetch("https://namaserver.onrender.com/addblog", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

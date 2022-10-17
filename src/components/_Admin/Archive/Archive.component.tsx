@@ -12,7 +12,7 @@ const Archive = ({ page }: PageProp) => {
   useEffect(() => {
     const getArchiveBlogs = async () => {
       const api = await getData<fetchedBlogData>(
-        "http://localhost:8080/archiveblogs"
+        "https://namaserver.onrender.com/archiveblogs"
       );
       api.blog.sort(compareNumbers);
       setArchive(api.blog);

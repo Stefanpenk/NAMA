@@ -31,7 +31,7 @@ const AddComment = ({ article }: CommentProps) => {
       date: string,
       profileImg: string
     ) {
-      return fetch("http://localhost:8080/sendcomment", {
+      return fetch("https://namaserver.onrender.com/sendcomment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -57,7 +57,9 @@ const AddComment = ({ article }: CommentProps) => {
     const profileImg = token.profileImg;
 
     await sendComment(id, user, articleId, comment, date, profileImg);
-    const api = await getData<fetchedBlogData>("http://localhost:8080/blog");
+    const api = await getData<fetchedBlogData>(
+      "https://namaserver.onrender.com/blog"
+    );
     setBlog(api.blog);
     setTextareaValue("");
   };
