@@ -143,5 +143,4 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
     </div>
   );
 };
-
 export default ArticleInfo;
