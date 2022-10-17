@@ -46,7 +46,7 @@ function SearchBar({
   const [submit, setSubmit] = useState<boolean>(true);
 
   useEffect(() => {
-    const number = 3;
+    const number = 10;
     const typeParam = type === undefined ? "" : type;
     const cuisineParam = cuisine === undefined ? "" : cuisine;
 
