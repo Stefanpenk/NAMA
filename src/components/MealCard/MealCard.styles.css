@@ -121,3 +121,48 @@
 .delete-fav:hover svg {
   fill: var(--third-color);
 }
+
+@media (max-width: 1025px) {
+  .meal-card {
+    width: 45%;
+    margin: 15px calc(10% / 4);
+  }
+}
+
+@media (max-width: 768px) {
+  .meal-card {
+    width: 45%;
+    margin: 15px calc(10% / 4);
+  }
+
+  .meal-title {
+    margin: 5px;
+  }
+
+  .icons-container {
+    margin: 10px 0;
+  }
+
+  .meal-icon {
+    width: 15%;
+  }
+}
+
+@media (max-width: 481px) {
+  .meal-card {
+    width: 95%;
+    margin: 15px calc(5% / 2);
+  }
+
+  .meal-title {
+    margin: 5px;
+  }
+
+  .icons-container {
+    margin: 10px 0;
+  }
+
+  .meal-icon {
+    width: 15%;
+  }
+}

@@ -91,29 +91,6 @@ function SearchBar({
     setInputValue("");
   };
 
-  const handleChangeInput = (e: React.FormEvent<HTMLInputElement>) => {
-    const value = e.currentTarget.getAttribute("name");
-    const classList = e.currentTarget.classList;
-
-    if (classList.contains("intolerances")) {
-      e.currentTarget.checked === true
-        ? setIntolerances((prevState) => [...prevState, value!])
-        : setIntolerances((intolerances) =>
-            intolerances.filter((intolerance) => {
-              return intolerance !== value;
-            })
-          );
-    } else if (classList.contains("diet")) {
-      e.currentTarget.checked === true
-        ? setDiets((prevState) => [...prevState, value!])
-        : setDiets((diets) =>
-            diets.filter((diet) => {
-              return diet !== value;
-            })
-          );
-    }
-  };
-
   const handleDeleteProduct = (product: string) => {
     const value = product;
 
@@ -169,27 +146,31 @@ function SearchBar({
           name="vegan"
           svg={<Vegan />}
           className="diet"
-          onChange={handleChangeInput}
+          setIntolerances={setIntolerances}
+          setDiets={setDiets}
         />
         <Checkbox
           name="vegetarian"
           svg={<Vegeterian />}
           className="diet"
-          onChange={handleChangeInput}
+          setIntolerances={setIntolerances}
+          setDiets={setDiets}
         />
         <Checkbox
           name="Gluten"
           svg={<GlutenFree />}
           className="intolerances"
-          onChange={handleChangeInput}
+          setIntolerances={setIntolerances}
+          setDiets={setDiets}
         />
         <Checkbox
           name="Dairy"
           svg={<DairyFree />}
           className="intolerances"
-          onChange={handleChangeInput}
+          setIntolerances={setIntolerances}
+          setDiets={setDiets}
         />
-        <button className="submit-form button-frame" onClick={handleSubmit}>
+        <button className="submit-form button-submit" onClick={handleSubmit}>
           Submit
         </button>
       </div>

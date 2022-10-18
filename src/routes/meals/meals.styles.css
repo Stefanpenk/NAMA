@@ -97,26 +97,13 @@
 .search-input {
   width: 100%;
   padding: 0.5rem 2rem;
-  border: 1px solid var(--primary-color);
+  border: 2px solid var(--primary-color);
   border-radius: 10px;
 }
 
 .search-input:focus {
   background-color: var(--primary-color);
   color: var(--third-color);
-}
-
-.label-icons {
-  margin-right: 2px;
-}
-
-.label-icons svg {
-  width: 30px;
-  fill: var(--primary-color);
-}
-
-.input-icons {
-  margin-right: 10px;
 }
 
 .selectedProducts {
@@ -165,4 +152,76 @@
 
 .meals-type.active svg {
   fill: var(--third-color);
+}
+
+.button-submit {
+  margin-left: 5px;
+  padding: 0px 10px;
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+  background-color: transparent;
+  font-size: 20px;
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.button-submit:hover {
+  background-color: var(--primary-color);
+  color: var(--third-color);
+}
+
+@media (max-width: 768px) {
+  .meals-type {
+    margin: 5px;
+    width: 65px;
+  }
+
+  .meals-type span {
+    font-size: 12px;
+  }
+
+  .meals-form {
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .input-container {
+    margin: 10px 30px;
+    width: 100%;
+  }
+
+  .selectedProducts {
+    height: 36px;
+  }
+
+  .selectedProduct {
+    margin: 5px;
+  }
+
+  .selectedProduct p {
+    font-size: 15px;
+  }
+
+  .selectedProduct-button {
+    margin: 0 5px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 481px) {
+  .meals-type {
+    margin: 5px;
+    width: 55px;
+  }
+
+  .input-container form input {
+    font-size: 12px;
+  }
+
+  .button-submit {
+    padding: 0px 5px;
+    font-size: 15px;
+  }
 }

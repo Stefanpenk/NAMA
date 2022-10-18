@@ -206,8 +206,9 @@ export interface ChangeParamsButtonProps {
 export interface CheckboxProps {
   name: string;
   className: string;
-  onChange: (e: React.FormEvent<HTMLInputElement>) => void;
   svg: React.SVGProps<SVGSVGElement>;
+  setIntolerances: React.Dispatch<React.SetStateAction<string[]>>;
+  setDiets: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 export type SaveProps = {

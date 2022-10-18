@@ -3,3 +3,21 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+@media (max-width: 1025px) {
+  .meals-list {
+    margin: 50px 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .meals-list {
+    margin: 10px 20px;
+  }
+}
+
+@media (max-width: 481px) {
+  .meals-list {
+    padding-bottom: var(--nav-height);
+  }
+}
