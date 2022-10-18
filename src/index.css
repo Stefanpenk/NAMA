@@ -21,6 +21,10 @@
   /* ABOUT */
   --border-thickness: 2px;
   --border-color: #555;
+
+  /* ADMIN */
+  --nav-button-width: 70px;
+  --nav-admin-margin: 20px;
 }
 
 #root {
@@ -68,8 +72,16 @@ svg {
   margin: 0 auto;
 }
 
+@media (max-width: 1025px) {
+  :root {
+    --nav-button-width: 60px;
+    --nav-admin-margin: 15px;
+  }
+}
+
 @media (max-width: 768px) {
   :root {
     --nav-height: 70px;
+    --nav-button-width: 55px;
   }
 }

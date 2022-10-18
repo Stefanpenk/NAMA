@@ -18,7 +18,7 @@ const LoginPopupModal = ({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     async function loginUser(user: string, password: string) {
-      return fetch("https://namaserver.onrender.com/login", {
+      return fetch("https://servernama.onrender.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

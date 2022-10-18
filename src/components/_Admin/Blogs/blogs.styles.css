@@ -1,6 +1,6 @@
 .blogs-articles-container {
   width: 100%;
-  padding: 50px;
+  padding: 30px 10px 30px 10px;
   display: flex;
   flex-wrap: wrap;
   border: 3px solid var(--primary-color);
@@ -15,7 +15,6 @@
   position: relative;
   margin: calc(10% / 6);
   width: 30%;
-  min-width: 315px;
   min-height: 400px;
   display: flex;
   flex-direction: column;
@@ -158,4 +157,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 1025px) {
+  .blogs-article {
+    position: relative;
+    margin: calc(5% / 4);
+    width: 45%;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .blogs-article {
+    position: relative;
+    margin: calc(5% / 2);
+    width: 95%;
+    min-width: auto;
+  }
 }

@@ -33,7 +33,7 @@ export const BlogContextProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     const getBlog = async () => {
       const api = await getData<fetchedBlogData>(
-        "https://namaserver.onrender.com/blog"
+        "https://servernama.onrender.com/blog"
       );
       setBlog(api.blog.sort(compareNumbers));
     };
@@ -43,7 +43,7 @@ export const BlogContextProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     const getArchiveBlogs = async () => {
       const api = await getData<fetchedBlogData>(
-        "https://namaserver.onrender.com/archiveblogs"
+        "https://servernama.onrender.com/archiveblogs"
       );
       setArchive(api.blog.sort(compareNumbers));
     };

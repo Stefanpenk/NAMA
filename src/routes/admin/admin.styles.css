@@ -1,5 +1,5 @@
 .section-admin {
-  padding: 50px;
+  padding: 50px 50px 50px 0;
   width: 100%;
   min-height: calc(100vh - var(--nav-height));
   display: flex;
@@ -24,7 +24,11 @@
 }
 
 .admin-nav {
-  margin: 20px;
+  position: fixed;
+  margin: var(--nav-height) var(--nav-admin-margin) 0 var(--nav-admin-margin);
+  height: 100%;
+  top: 0;
+  left: 0;
   align-self: flex-start;
   display: flex;
   flex-direction: column;
@@ -34,7 +38,9 @@
 }
 
 .admin-component-container {
-  margin-left: 50px;
+  margin-left: calc(
+    var(--nav-button-width) + (2 * var(--nav-admin-margin)) + 10px
+  );
   width: 100%;
   flex-grow: 1;
   display: flex;
@@ -46,7 +52,7 @@
 .admin-nav-button {
   margin: 10px 0;
   padding: 12px;
-  width: 70px;
+  width: var(--nav-button-width);
   background-color: var(--primary-color);
   cursor: pointer;
   border-radius: 50%;
@@ -70,4 +76,99 @@
 
 .admin-nav-button svg {
   fill: var(--third-color);
+}
+
+@media (max-width: 1025px) {
+  .section-admin {
+    padding: 30px 30px 30px 0;
+  }
+
+  .admin-title {
+    margin: 10px 0;
+    font-size: 30px;
+  }
+
+  .form-label {
+    font-size: 20px;
+  }
+
+  .file-card {
+    width: 40%;
+  }
+
+  .file-card-preview {
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .file-card-container {
+    flex-direction: column;
+    height: 400px;
+  }
+
+  .file-card {
+    padding: 10px 20px 10px 20px;
+    width: 100%;
+  }
+
+  .file-main-text {
+    font-size: 15px;
+  }
+
+  .file-info-text {
+    font-size: 13px;
+  }
+
+  .file-upload-progress {
+    font-size: 16px;
+    height: 20px;
+  }
+
+  .file-card-preview {
+    margin-top: 5px;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .admin-title {
+    margin: 0 0;
+    padding: 0;
+    font-size: 20px;
+  }
+
+  .form-label {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 481px) {
+  .section-admin {
+    flex-direction: column;
+    padding: 10px 10px 10px 10px;
+  }
+  .admin-nav {
+    width: 100%;
+    position: relative;
+    margin: 0 0 0 0;
+    flex-direction: row;
+  }
+
+  .admin-component-container {
+    margin-left: 0;
+    padding-bottom: var(--nav-height);
+  }
+
+  .admin-nav-button {
+    margin: 10px 10px;
+  }
+
+  .file-card-container {
+    height: 300px;
+  }
+
+  .admin-title {
+    margin-top: 10px;
+    font-size: 16px;
+  }
 }

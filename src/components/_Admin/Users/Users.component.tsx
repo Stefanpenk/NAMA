@@ -13,14 +13,14 @@ const Users = () => {
   const [response, setResponse] = useState("");
 
   const handleGetUsers = () => {
-    fetch("https://namaserver.onrender.com/getusers")
+    fetch("https://servernama.onrender.com/getusers")
       .then((data) => data.json())
       .then((json) => setUsers(json.users));
   };
 
   const handleDeleteUser = async (user: string) => {
     async function deleteUser(user: string) {
-      return fetch("https://namaserver.onrender.com/deleteuser", {
+      return fetch("https://servernama.onrender.com/deleteuser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,7 +41,7 @@ const Users = () => {
 
   const handleChangeRank = async (user: string) => {
     async function changeRank(user: string) {
-      return fetch("https://namaserver.onrender.com/changerank", {
+      return fetch("https://servernama.onrender.com/changerank", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -20,8 +20,6 @@
   margin: calc(10% / 8);
   padding: 20px;
   width: calc(90% / 4);
-  min-width: 200px;
-  height: 285px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,7 +54,7 @@
 
 .user-username {
   margin: 2px;
-  font-size: 20px;
+  font-size: 15px;
 }
 .user-token {
   margin: 5px;
@@ -84,4 +82,43 @@
   height: 50px;
   font-size: 20px;
   text-transform: uppercase;
+}
+
+@media (max-width: 1025px) {
+  .admin-users-container {
+    padding: 20px;
+  }
+
+  .admin-users-user {
+    margin: calc(10% / 6);
+    width: calc(90% / 3);
+  }
+
+  .user-profile-container svg {
+    height: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-profile-container svg {
+    width: 70%;
+    height: 155px;
+  }
+
+  .admin-users-user {
+    margin: calc(10% / 4);
+    padding: 10px;
+    width: calc(90% / 2);
+  }
+}
+
+@media (max-width: 481px) {
+  .user-profile-container svg {
+    width: 100%;
+  }
+
+  .admin-users-user {
+    margin: calc(10% / 2);
+    width: 90%;
+  }
 }

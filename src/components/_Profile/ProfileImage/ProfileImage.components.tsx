@@ -25,7 +25,7 @@ const ProfileImage = ({ token, saveToken }: ProfileImageProps) => {
   };
 
   async function sendNewProfileImage(username: string, profileImg: string) {
-    return fetch("https://namaserver.onrender.com/changeprofilepicture", {
+    return fetch("https://servernama.onrender.com/changeprofilepicture", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

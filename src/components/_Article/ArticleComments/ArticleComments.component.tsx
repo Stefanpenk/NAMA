@@ -18,7 +18,7 @@ const ArticleComments = ({ article }: CommentProps) => {
     if (article.id === undefined) return;
     const articleId = article.id;
     async function deleteComment(articleId: string, id: string) {
-      return fetch("https://namaserver.onrender.com/deletecomment", {
+      return fetch("https://servernama.onrender.com/deletecomment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +31,7 @@ const ArticleComments = ({ article }: CommentProps) => {
     }
     await deleteComment(articleId, id);
     const api = await getData<fetchedBlogData>(
-      "https://namaserver.onrender.com/blog"
+      "https://servernama.onrender.com/blog"
     );
     setBlog(api.blog);
   };

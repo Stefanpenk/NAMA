@@ -27,7 +27,7 @@ const AddBlog = () => {
 
   useEffect(() => {
     const handleGetUsers = () => {
-      fetch("https://namaserver.onrender.com/getusers")
+      fetch("https://servernama.onrender.com/getusers")
         .then((data) => data.json())
         .then((json) => setUsers(json.users));
     };
@@ -50,7 +50,7 @@ const AddBlog = () => {
       author: string,
       authorImg: string
     ) {
-      return fetch("https://namaserver.onrender.com/addblog", {
+      return fetch("https://servernama.onrender.com/addblog", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -105,7 +105,7 @@ const AddBlog = () => {
       {users.length > 0 && (
         <div className="admin-blog-form-container">
           <h3 className="admin-title">Some thoughts to share for today?</h3>
-          <h4 className="form-label">Upload background image</h4>
+          <h4 className="form-label">Upload background image:</h4>
           <ImageInput url={imgUrl} setUrl={setimgUrl} />
           <form className="auth-form" onSubmit={handleSubmit}>
             <h4 className="form-label">Blog's title:</h4>

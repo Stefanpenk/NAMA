@@ -13,7 +13,7 @@ export const DeleteFromFavourite = ({
 }: DeleteProps) => {
   const deleteData = item;
   async function sendData(user: string, deleteData: DetailsProps) {
-    return fetch("https://namaserver.onrender.com/delete", {
+    return fetch("https://servernama.onrender.com/delete", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
