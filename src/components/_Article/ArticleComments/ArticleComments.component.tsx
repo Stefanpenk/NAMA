@@ -18,7 +18,7 @@ const ArticleComments = ({ article }: CommentProps) => {
     if (article.id === undefined) return;
     const articleId = article.id;
     async function deleteComment(articleId: string, id: string) {
-      return fetch("https://api.stefanpenk.comdeletecomment", {
+      return fetch("https://api.stefanpenk.com/deletecomment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +31,7 @@ const ArticleComments = ({ article }: CommentProps) => {
     }
     await deleteComment(articleId, id);
     const api = await getData<fetchedBlogData>(
-      "https://api.stefanpenk.comblog"
+      "https://api.stefanpenk.com/blog"
     );
     setBlog(api.blog);
   };

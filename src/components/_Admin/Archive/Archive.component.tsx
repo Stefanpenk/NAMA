@@ -12,7 +12,7 @@ const Archive = ({ page }: PageProp) => {
   useEffect(() => {
     const getArchiveBlogs = async () => {
       const api = await getData<fetchedBlogData>(
-        "https://api.stefanpenk.comarchiveblogs"
+        "https://api.stefanpenk.com/archiveblogs"
       );
       api.blog.sort(compareNumbers);
       setArchive(api.blog);

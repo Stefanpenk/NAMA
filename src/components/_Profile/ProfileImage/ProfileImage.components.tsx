@@ -25,7 +25,7 @@ const ProfileImage = ({ token, saveToken }: ProfileImageProps) => {
   };
 
   async function sendNewProfileImage(username: string, profileImg: string) {
-    return fetch("https://api.stefanpenk.comchangeprofilepicture", {
+    return fetch("https://api.stefanpenk.com/changeprofilepicture", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

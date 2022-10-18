@@ -13,14 +13,14 @@ const Users = () => {
   const [response, setResponse] = useState("");
 
   const handleGetUsers = () => {
-    fetch("https://api.stefanpenk.comgetusers")
+    fetch("https://api.stefanpenk.com/getusers")
       .then((data) => data.json())
       .then((json) => setUsers(json.users));
   };
 
   const handleDeleteUser = async (user: string) => {
     async function deleteUser(user: string) {
-      return fetch("https://api.stefanpenk.comdeleteuser", {
+      return fetch("https://api.stefanpenk.com/deleteuser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,7 +41,7 @@ const Users = () => {
 
   const handleChangeRank = async (user: string) => {
     async function changeRank(user: string) {
-      return fetch("https://api.stefanpenk.comchangerank", {
+      return fetch("https://api.stefanpenk.com/changerank", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

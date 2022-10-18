@@ -27,7 +27,7 @@ const AddBlog = () => {
 
   useEffect(() => {
     const handleGetUsers = () => {
-      fetch("https://api.stefanpenk.comgetusers")
+      fetch("https://api.stefanpenk.com/getusers")
         .then((data) => data.json())
         .then((json) => setUsers(json.users));
     };
@@ -50,7 +50,7 @@ const AddBlog = () => {
       author: string,
       authorImg: string
     ) {
-      return fetch("https://api.stefanpenk.comaddblog", {
+      return fetch("https://api.stefanpenk.com/addblog", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

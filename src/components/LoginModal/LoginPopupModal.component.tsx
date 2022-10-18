@@ -18,7 +18,7 @@ const LoginPopupModal = ({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     async function loginUser(user: string, password: string) {
-      return fetch("https://api.stefanpenk.comlogin", {
+      return fetch("https://api.stefanpenk.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

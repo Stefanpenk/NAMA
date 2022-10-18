@@ -13,7 +13,7 @@ export const DeleteFromFavourite = ({
 }: DeleteProps) => {
   const deleteData = item;
   async function sendData(user: string, deleteData: DetailsProps) {
-    return fetch("https://api.stefanpenk.comdelete", {
+    return fetch("https://api.stefanpenk.com/delete", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

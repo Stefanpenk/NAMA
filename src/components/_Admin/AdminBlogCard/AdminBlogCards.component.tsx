@@ -24,7 +24,7 @@ const AdminBlogCards = ({ article, page = "0" }: ArchiveProps) => {
 
   const handleRestoreBlog = async (id: string) => {
     async function restoreBlog(id: string) {
-      return fetch("https://api.stefanpenk.comrestoreblog", {
+      return fetch("https://api.stefanpenk.com/restoreblog", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,7 +44,7 @@ const AdminBlogCards = ({ article, page = "0" }: ArchiveProps) => {
 
   const handleDeleteBlog = async (id: string) => {
     async function deleteBlog(id: string) {
-      return fetch("https://api.stefanpenk.comdeleteblog", {
+      return fetch("https://api.stefanpenk.com/deleteblog", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

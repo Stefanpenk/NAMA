@@ -13,7 +13,7 @@ export const saveToFavourite = ({
 }: SaveProps) => {
   const newData = details;
   async function sendData(user: string, newData: DetailsProps) {
-    return fetch("https://api.stefanpenk.comadd", {
+    return fetch("https://api.stefanpenk.com/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

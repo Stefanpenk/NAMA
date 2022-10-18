@@ -33,7 +33,7 @@ export const BlogContextProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     const getBlog = async () => {
       const api = await getData<fetchedBlogData>(
-        "https://api.stefanpenk.comblog"
+        "https://api.stefanpenk.com/blog"
       );
       setBlog(api.blog.sort(compareNumbers));
     };
@@ -43,7 +43,7 @@ export const BlogContextProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     const getArchiveBlogs = async () => {
       const api = await getData<fetchedBlogData>(
-        "https://api.stefanpenk.comarchiveblogs"
+        "https://api.stefanpenk.com/archiveblogs"
       );
       setArchive(api.blog.sort(compareNumbers));
     };
