@@ -97,3 +97,62 @@
   color: #999;
   text-align: center;
 }
+
+@media (max-width: 1025px) {
+  .profile-background {
+    height: 250px;
+  }
+  .profile-picture {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-fav-title {
+    padding: 30px 0 0 100px;
+    font-size: 23px;
+  }
+
+  .profile-logout-button {
+    margin: 30px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-background {
+    height: 200px;
+  }
+
+  .profile-container {
+    margin-top: -90px;
+  }
+
+  .profile-img-error {
+    padding-top: 60px;
+    height: 90px;
+  }
+
+  .profile-title {
+    font-size: 30px;
+  }
+
+  .profile-fav-title {
+    padding: 20px 0 0 0;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .profile-fav-recipes.meals-list {
+    padding: 30px 30px;
+  }
+
+  .profile-logout-button {
+    margin: 20px 0;
+    height: 40px;
+  }
+}
+
+@media (max-width: 481px) {
+  .section-profile {
+    padding-bottom: var(--nav-height);
+  }
+}
