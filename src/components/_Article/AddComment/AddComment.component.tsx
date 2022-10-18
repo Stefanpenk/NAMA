@@ -31,7 +31,7 @@ const AddComment = ({ article }: CommentProps) => {
       date: string,
       profileImg: string
     ) {
-      return fetch("https://servernama.onrender.com/sendcomment", {
+      return fetch("https://api.stefanpenk.comsendcomment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -58,7 +58,7 @@ const AddComment = ({ article }: CommentProps) => {
 
     await sendComment(id, user, articleId, comment, date, profileImg);
     const api = await getData<fetchedBlogData>(
-      "https://servernama.onrender.com/blog"
+      "https://api.stefanpenk.comblog"
     );
     setBlog(api.blog);
     setTextareaValue("");

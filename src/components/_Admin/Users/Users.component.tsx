@@ -13,14 +13,14 @@ const Users = () => {
   const [response, setResponse] = useState("");
 
   const handleGetUsers = () => {
-    fetch("https://servernama.onrender.com/getusers")
+    fetch("https://api.stefanpenk.comgetusers")
       .then((data) => data.json())
       .then((json) => setUsers(json.users));
   };
 
   const handleDeleteUser = async (user: string) => {
     async function deleteUser(user: string) {
-      return fetch("https://servernama.onrender.com/deleteuser", {
+      return fetch("https://api.stefanpenk.comdeleteuser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,7 +41,7 @@ const Users = () => {
 
   const handleChangeRank = async (user: string) => {
     async function changeRank(user: string) {
-      return fetch("https://servernama.onrender.com/changerank", {
+      return fetch("https://api.stefanpenk.comchangerank", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -16,7 +16,7 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     async function loginUser(user: string, password: string) {
-      return fetch("https://servernama.onrender.com/login", {
+      return fetch("https://api.stefanpenk.comlogin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

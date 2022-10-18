@@ -46,7 +46,7 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
   };
 
   async function sendScore(articleId: string, user: string, number: number) {
-    return fetch("https://servernama.onrender.com/sendrating", {
+    return fetch("https://api.stefanpenk.comsendrating", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +65,7 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
     const user = token.user;
     await sendScore(articleId, user, number);
     const api = await getData<fetchedBlogData>(
-      "https://servernama.onrender.com/blog"
+      "https://api.stefanpenk.comblog"
     );
     setBlog(api.blog);
   };

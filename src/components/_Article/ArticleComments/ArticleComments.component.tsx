@@ -18,7 +18,7 @@ const ArticleComments = ({ article }: CommentProps) => {
     if (article.id === undefined) return;
     const articleId = article.id;
     async function deleteComment(articleId: string, id: string) {
-      return fetch("https://servernama.onrender.com/deletecomment", {
+      return fetch("https://api.stefanpenk.comdeletecomment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +31,7 @@ const ArticleComments = ({ article }: CommentProps) => {
     }
     await deleteComment(articleId, id);
     const api = await getData<fetchedBlogData>(
-      "https://servernama.onrender.com/blog"
+      "https://api.stefanpenk.comblog"
     );
     setBlog(api.blog);
   };

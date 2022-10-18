@@ -13,7 +13,7 @@ export const saveToFavourite = ({
 }: SaveProps) => {
   const newData = details;
   async function sendData(user: string, newData: DetailsProps) {
-    return fetch("https://servernama.onrender.com/add", {
+    return fetch("https://api.stefanpenk.comadd", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

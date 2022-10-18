@@ -14,7 +14,7 @@ const Register = ({ handleSwitchForms }: RegisterProps) => {
   };
 
   async function createUser(user: string, password: string, name: string) {
-    return fetch("https://servernama.onrender.com/register", {
+    return fetch("https://api.stefanpenk.comregister", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
