@@ -11,14 +11,14 @@
 
 .recipe-wrapper {
   width: 100%;
-  padding-top: 70px;
+  padding-top: 0px;
   padding-bottom: 30px;
   display: flex;
   flex-direction: column;
 }
 
 .recipe-title {
-  margin-top: 50px;
+  margin-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,7 +42,6 @@
 
 .recipe-rest {
   width: 100%;
-  margin-top: 20px;
   height: 530px;
   display: flex;
 }
@@ -214,5 +213,11 @@
     margin: 0 0;
     width: 100%;
     height: 100%;
+  }
+}
+
+@media (orientation: portrait) {
+  .recipe-section {
+    align-items: center;
   }
 }

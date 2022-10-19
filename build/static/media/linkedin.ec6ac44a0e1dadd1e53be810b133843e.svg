@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 450.1 450" style="enable-background:new 0 0 450.1 450;" xml:space="preserve">
+<style type="text/css">
+	.st100{fill:#FFFFFF}
+</style>
+<path d="M0,0v450h450.1V0H0z"/>
+<rect x="69.5" y="174" class="st100" width="67.3" height="202.6"/>
+<path class="st100" d="M103.1,146.3L103.1,146.3h-0.4c-22.6,0-37.2-15.6-37.2-35c0-19.9,15.1-35,38.1-35s37.2,15.1,37.6,35
+	C141.2,130.8,126.6,146.3,103.1,146.3z"/>
+<path class="st100" d="M379.6,376.6h-67.3V268.2c0-27.2-9.8-45.8-34.1-45.8c-18.6,0-29.7,12.5-34.6,24.6c-1.8,4.3-2.2,10.4-2.2,16.4
+	v113.1h-67.3l0,0c0,0,0.9-183.6,0-202.6h67.3v28.7c9-13.8,25-33.4,60.7-33.4c44.3,0,77.5,29,77.5,91.2L379.6,376.6L379.6,376.6z"/>
+</svg>

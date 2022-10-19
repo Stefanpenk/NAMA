@@ -98,7 +98,7 @@
 }
 
 .about-contact {
-  margin: 0 5px 20px;
+  margin: 0 0 20px;
   width: 75px;
   display: flex;
   flex-direction: column;
@@ -107,9 +107,6 @@
 
 .about-contact-container {
   padding-bottom: 10px;
-  /* position: absolute; */
-  /* bottom: 0; */
-  /* left: 0; */
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -131,9 +128,10 @@
 
 .about-icon-container {
   margin: 5px;
-  width: 30px;
+  width: 35px;
   background-color: var(--primary-color);
   border-radius: 5px;
+  overflow: hidden;
 }
 
 .about-icon-container.white {
@@ -175,13 +173,9 @@
     width: 60px;
   }
 
-  .about-contact {
-    font-size: 12px;
-  }
-
   .about-icon-container {
     margin: 0;
-    width: 25px;
+    width: 35px;
   }
 
   .about-contact-title {
@@ -205,6 +199,10 @@
 
   .about-info-container {
     width: 100%;
+  }
+
+  .about-icon-container {
+    width: 30px;
   }
 }
 

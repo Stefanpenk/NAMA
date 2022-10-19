@@ -1,6 +1,6 @@
 import Button from "../../components/_About/Button/Button.component";
 
-import { ReactComponent as Facebook } from "../../assets/facebook.svg";
+import { ReactComponent as Facebook } from "../../assets/linkedin.svg";
 import { ReactComponent as Instagram } from "../../assets/instagram.svg";
 import { ReactComponent as Email } from "../../assets/email.svg";
 import aboutBgc from "../../assets/about-bgc.webp";
@@ -31,10 +31,10 @@ const About = () => {
             <p className="nama-word">mat</p>
           </div>
         </div>
-        <h3 className="about-title">Our Mission</h3>
+        <h3 className="about-title">My Mission</h3>
         <p className="about-text">
-          Our aim is to make your journey towards living a Zero Waste Lifestyle
-          less intimidating. For us, it's not about waste jars and ultimatums.
+          My aim is to make your journey towards living a Zero Waste Lifestyle
+          less intimidating. For me, it's not about waste jars and ultimatums.
         </p>
         <p className="about-text">
           It's about making small changes every day that will leave a lasting
@@ -45,24 +45,32 @@ const About = () => {
         </p>
         <Button className="about" to="/blog" />
         <div className="about-contact-container">
-          <h3 className="about-contact-title">Contact us:</h3>
+          <h3 className="about-contact-title">Contact me:</h3>
           <div className="about-contact">
-            <div className="about-icon-container">
+            <a
+              className="about-icon-container"
+              href="https://www.instagram.com/_wildtaste/"
+              target="_blank"
+            >
               <Instagram />
-            </div>
-            Instagram
+            </a>
           </div>
           <div className="about-contact">
-            <div className="about-icon-container white">
+            <a
+              className="about-icon-container"
+              href="https://www.linkedin.com/in/stefan-penk-276a03245/"
+              target="_blank"
+            >
               <Facebook className="color" />
-            </div>
-            Facebook
+            </a>
           </div>
           <div className="about-contact">
-            <div className="about-icon-container">
+            <a
+              className="about-icon-container"
+              href="mailto:stefan.penk@gmail.com"
+            >
               <Email />
-            </div>
-            Email
+            </a>
           </div>
         </div>
       </div>
