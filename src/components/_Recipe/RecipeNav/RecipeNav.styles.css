@@ -71,3 +71,26 @@
 .recipe-button.active svg {
   fill: var(--primary-color);
 }
+
+@media (max-width: 1025px) {
+  .recipe-navigation {
+    margin-right: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .recipe-navigation {
+    margin-right: 0;
+    padding-bottom: 10px;
+    width: 100%;
+    flex-direction: row;
+    order: 0;
+  }
+
+  .recipe-button {
+    margin: 5px 5px;
+  }
+}
+
+@media (max-width: 481px) {
+}
