@@ -109,3 +109,85 @@
 .rateIsZero {
   font-size: 20px;
 }
+
+@media (max-width: 1025px) {
+  .article-author-img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .article-score-length {
+    font-size: 18px;
+  }
+
+  .article-score-number {
+    font-size: 18px;
+  }
+
+  .article-score-stars {
+    width: 130px;
+  }
+
+  .stars-container {
+    width: 130px;
+  }
+}
+
+@media (max-width: 768px) {
+  .article-author-img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .article-date {
+    font-size: 14px;
+  }
+
+  .article-score-container {
+    flex-direction: column;
+  }
+
+  .article-score-length {
+    text-align: center;
+    font-size: 15px;
+  }
+
+  .article-score {
+    margin-top: 5px;
+    justify-content: center;
+  }
+
+  .article-score-number {
+    font-size: 14px;
+  }
+
+  .article-score-stars {
+    width: 100px;
+  }
+
+  .stars-container {
+    align-self: flex-end;
+    margin-top: 10px;
+    margin-left: 0px;
+    width: 100px;
+  }
+}
+
+@media (max-width: 481px) {
+  .article-info {
+    flex-wrap: wrap;
+  }
+
+  .article-score-length {
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .article-score {
+    justify-content: left;
+  }
+
+  .article-score-length span {
+    margin-right: 5px;
+  }
+}
