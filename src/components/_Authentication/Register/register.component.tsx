@@ -35,7 +35,7 @@ const Register = ({ handleSwitchForms }: RegisterProps) => {
       key === "error" ? setError(value) : setError(value);
       setTimeout(() => {
         handleSwitchForms();
-      }, 3000);
+      }, 1000);
     }
   };
 

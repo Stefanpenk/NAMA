@@ -1,4 +1,6 @@
 .oops-container {
+  padding-top: 50px;
+  padding-bottom: 30px;
   width: 100%;
   max-width: 1440px;
   height: 100%;
@@ -6,6 +8,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-grow: 1;
 }
 
 .img-container {
