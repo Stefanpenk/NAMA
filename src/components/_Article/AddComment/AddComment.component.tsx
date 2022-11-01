@@ -28,8 +28,7 @@ const AddComment = ({ article }: CommentProps) => {
       user: string,
       articleId: string,
       comment: string,
-      date: string,
-      profileImg: string
+      date: string
     ) {
       return fetch("https://api.stefanpenk.com/sendcomment", {
         method: "POST",
@@ -43,7 +42,6 @@ const AddComment = ({ article }: CommentProps) => {
             user: user,
             date: date,
             text: comment,
-            profileImg: profileImg,
           },
         }),
       }).then((data) => data.json());
@@ -54,9 +52,8 @@ const AddComment = ({ article }: CommentProps) => {
     const articleId = article.id === undefined ? "0" : article.id;
     const comment = textareaValue;
     const date = getCurrentDate("/");
-    const profileImg = token.profileImg;
 
-    await sendComment(id, user, articleId, comment, date, profileImg);
+    await sendComment(id, user, articleId, comment, date);
     const api = await getData<fetchedBlogData>(
       "https://api.stefanpenk.com/blog"
     );

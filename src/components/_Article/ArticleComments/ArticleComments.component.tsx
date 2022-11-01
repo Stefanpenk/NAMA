@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getData } from "../../../utils/data.utils";
 import useToken from "../../../hooks/useToken";
 
@@ -7,12 +7,26 @@ import { BlogContext } from "../../../context/Blog.context";
 import { ReactComponent as DeleteSvg } from "../../../assets/delete-icon.svg";
 import noProfilePicture from "../../../assets/no-image-profile.webp";
 
-import { CommentProps, fetchedBlogData } from "../../../types/types";
+import {
+  CommentProps,
+  fetchedBlogData,
+  usersProps,
+} from "../../../types/types";
 import "./ArticleComments.styles.css";
 
 const ArticleComments = ({ article }: CommentProps) => {
   const { token } = useToken();
   const { setBlog } = useContext(BlogContext);
+  const [users, setUsers] = useState<usersProps[]>([]);
+
+  useEffect(() => {
+    const handleGetUsers = () => {
+      fetch("https://api.stefanpenk.com/getusersimg")
+        .then((data) => data.json())
+        .then((json) => setUsers(json.users));
+    };
+    handleGetUsers();
+  }, []);
 
   const handleDeleteComment = async (id: string) => {
     if (article.id === undefined) return;
@@ -44,7 +58,8 @@ const ArticleComments = ({ article }: CommentProps) => {
         </p>
       )}
       {article.comments.map((comment) => {
-        const { user, id, text, date, profileImg } = comment;
+        const { user, id, text, date } = comment;
+        const userImg = users.find((singleUser) => singleUser.user === user);
         return (
           <div key={comment.id} className="comment-single">
             {token && user === token.user && (
@@ -60,7 +75,9 @@ const ArticleComments = ({ article }: CommentProps) => {
                 className="comment-profile-img"
                 style={{
                   backgroundImage: `url(${
-                    profileImg === "" ? noProfilePicture : profileImg
+                    !userImg || userImg.profileImg === ""
+                      ? noProfilePicture
+                      : userImg.profileImg
                   })`,
                 }}
               />
