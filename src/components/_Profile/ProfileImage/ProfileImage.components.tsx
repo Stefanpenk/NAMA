@@ -19,7 +19,7 @@ const ProfileImage = ({ token, saveToken }: ProfileImageProps) => {
   const handleProfileMouseOut = () => {
     setIsHovering(false);
   };
-
+  console.log(profileImg);
   const handleChangeProfileImage = async (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
