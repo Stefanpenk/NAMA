@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.e6e04741.css",
-    "main.js": "/static/js/main.a13894a4.js",
+    "main.css": "/static/css/main.fa77622b.css",
+    "main.js": "/static/js/main.a333af0a.js",
     "static/media/profile-background.webp": "/static/media/profile-background.8b7a4c246ec5b2adf39d.webp",
     "static/media/authentication-bgc.webp": "/static/media/authentication-bgc.b08351d2f7ab7f726cad.webp",
     "static/media/about-bgc.webp": "/static/media/about-bgc.8b403f9b550ab07db143.webp",
@@ -61,11 +61,11 @@
     "static/media/login-icon.svg": "/static/media/login-icon.ae5059fc88868e3331cd8fa78234656a.svg",
     "static/media/delete-icon.svg": "/static/media/delete-icon.7459095713e7a55d88a5de39d1230de3.svg",
     "static/media/scroll-down-icon.svg": "/static/media/scroll-down-icon.7d7d028e26fd189b9ba3a50823c6ef2b.svg",
-    "main.e6e04741.css.map": "/static/css/main.e6e04741.css.map",
-    "main.a13894a4.js.map": "/static/js/main.a13894a4.js.map"
+    "main.fa77622b.css.map": "/static/css/main.fa77622b.css.map",
+    "main.a333af0a.js.map": "/static/js/main.a333af0a.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6e04741.css",
-    "static/js/main.a13894a4.js"
+    "static/css/main.fa77622b.css",
+    "static/js/main.a333af0a.js"
   ]
 }
