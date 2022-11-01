@@ -64,9 +64,7 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
     const articleId = id;
     const user = token.user;
     await sendScore(articleId, user, number);
-    const api = await getData<fetchedBlogData>(
-      "https://api.stefanpenk.com/blog"
-    );
+    const api = await getData<fetchedBlogData>("https://api.stefanpenk.com/blog");
     setBlog(api.blog);
   };
 

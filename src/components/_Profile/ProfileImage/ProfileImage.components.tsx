@@ -1,7 +1,4 @@
 import { useState } from "react";
-import uniqid from "uniqid";
-import { storage } from "../../../firebase.js";
-import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 
 import { ReactComponent as Edit } from "../../../assets/edit-icon.svg";
 
@@ -13,7 +10,6 @@ const ProfileImage = ({ token, saveToken }: ProfileImageProps) => {
     "https://firebasestorage.googleapis.com/v0/b/foocoding-react-project.appspot.com/o/ProfileImages%2Fno-image-profile.webp?alt=media&token=3a7b435a-117f-4d36-9166-4d9fe242926c";
   const [isHovering, setIsHovering] = useState(false);
   const [imageError, setImageError] = useState("");
-  const [progress, setProgress] = useState(0);
   const { profileImg, user } = token!;
 
   const handleProfileMouseOver = () => {
@@ -24,20 +20,9 @@ const ProfileImage = ({ token, saveToken }: ProfileImageProps) => {
     setIsHovering(false);
   };
 
-  async function sendNewProfileImage(username: string, profileImg: string) {
-    return fetch("https://api.stefanpenk.com/changeprofilepicture", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        user: username,
-        profileImg: profileImg,
-      }),
-    }).then((data) => data.json().then((json) => saveToken(json)));
-  }
-
-  const handleChangeProfileImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeProfileImage = async (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const file = e.target.files![0];
     if (!file) return;
     if (file.size >= 102400) {
@@ -45,27 +30,27 @@ const ProfileImage = ({ token, saveToken }: ProfileImageProps) => {
       setTimeout(() => setImageError(""), 2000);
       return;
     }
-    const uploadImage = (file: File) => {
-      const imageRef = ref(storage, `ProfileImages/${uniqid() + file.name}`);
-      const uploadTask = uploadBytesResumable(imageRef, file);
-
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          const progress = Math.round(
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          );
-          setProgress(progress);
-        },
-        (err) => console.log(err),
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-            sendNewProfileImage(user, url);
-          });
-        }
-      );
-    };
-    uploadImage(file);
+    let formData = new FormData();
+    formData.append("file", file);
+    formData.append("user", user);
+    formData.append("profile_img", profileImg);
+    const response = await fetch(
+      "https://api.stefanpenk.com/changeprofilepicture",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+    const res = await response.json();
+    if (res.res.code === "LIMIT_FILE_SIZE") {
+      setImageError("Image must be max 100kb");
+      return setTimeout(() => setImageError(""), 4000);
+    }
+    if (res.res.storageErrors) {
+      setImageError(res.message);
+      return setTimeout(() => setImageError(""), 4000);
+    }
+    saveToken(res);
   };
 
   return (

@@ -65,6 +65,7 @@
 }
 
 .article-score-stars svg {
+  width: 100%;
   fill: rgb(219, 186, 36);
 }
 

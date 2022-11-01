@@ -37,7 +37,10 @@ const AddBlog = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (imgUrl === "") return setError("You must upload image first");
+    if (imgUrl === "") {
+      setError("You must upload image first");
+      return setTimeout(() => setError(""), 2000);
+    }
     const id = uniqid();
     const date = getCurrentDate("/");
 
@@ -68,15 +71,16 @@ const AddBlog = () => {
         }),
       })
         .then((data) => data.json())
-        .then((result) => setBlog(result.blog.sort(compareNumbers)));
+        .then((result) => setBlog(result.blog.sort(compareNumbers)))
+        .then(() => {
+          setTitle("");
+          setAuthor("");
+          setAuthorImg("");
+          setimgUrl("");
+          setText("");
+        });
     }
     sendData(id, title, text, imgUrl, date, author, authorImg);
-
-    setTitle("");
-    setAuthor("");
-    setAuthorImg("");
-    setimgUrl("");
-    setText("");
   };
 
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {

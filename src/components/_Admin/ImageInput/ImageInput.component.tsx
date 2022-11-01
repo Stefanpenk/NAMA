@@ -1,41 +1,41 @@
 import { useState } from "react";
-import uniqid from "uniqid";
-import { storage } from "../../../firebase.js";
-import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 
 import { ReactComponent as ImageIcon } from "../../../assets/image-icon.svg";
 
 import { ImageInputProps } from "../../../types/types.js";
 
 const ImageInput = ({ url, setUrl }: ImageInputProps) => {
-  const [progress, setProgress] = useState(0);
+  const [error, setError] = useState("");
 
   const handleSubmitImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];
     if (!file) return;
-    const uploadImage = (file: File) => {
-      const imageRef = ref(storage, `BlogImages/${uniqid() + file.name}`);
-      const uploadTask = uploadBytesResumable(imageRef, file);
+    if (file.size >= 512000) {
+      setError("Image size can be maximum 500kb.");
+      setTimeout(() => setError(""), 2000);
+      return;
+    }
 
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          const progress = Math.round(
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          );
-          setProgress(progress);
-        },
-        (err) => console.log(err),
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-            setUrl(url);
-            setTimeout(() => setProgress(0), 2000);
-          });
-        }
-      );
+    let formData = new FormData();
+    formData.append("file", file);
+    const uploadImage = async (formData: any) => {
+      const response = await fetch("https://api.stefanpenk.com/blogpicture", {
+        method: "POST",
+        body: formData,
+      });
+      const res = await response.json();
+      const url = res.res;
+      if (res.res.code === "LIMIT_FILE_SIZE") {
+        setError("Image must be max 100kb");
+        return setTimeout(() => setError(""), 4000);
+      }
+      if (res.res.storageErrors) {
+        setError(res.message);
+        return setTimeout(() => setError(""), 4000);
+      }
+      setUrl(url);
     };
-
-    uploadImage(file);
+    uploadImage(formData);
   };
 
   return (
@@ -54,9 +54,7 @@ const ImageInput = ({ url, setUrl }: ImageInputProps) => {
         </div>
         <p className="file-main-text">Supported files:</p>
         <p className="file-info-text">PNG, JPG</p>
-        <p className="file-upload-progress">
-          {progress > 0 && `Uploaded: ${progress}%`}
-        </p>
+        <p className="file-upload-progress">{error !== "" && error}</p>
       </div>
       <div className="file-card-preview">
         {url ? (

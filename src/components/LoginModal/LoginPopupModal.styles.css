@@ -65,6 +65,7 @@
 }
 
 .modal-close-button .modal-close-sign {
+  width: 100%;
   fill: var(--primary-color);
 }
 
