@@ -12,6 +12,7 @@ export const DeleteFromFavourite = ({
   saveToken,
 }: DeleteProps) => {
   const deleteData = item;
+  // Axel - create a fetch util, still nice though
   async function sendData(user: string, deleteData: DetailsProps) {
     return fetch("https://api.stefanpenk.com/delete", {
       method: "POST",

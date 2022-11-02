@@ -104,6 +104,7 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
           </>
         )}
         <div className="stars-container">
+          {/* Axel - IMO ternarys like this are very hard to read. Rather use a function. */}
           {token == null
             ? [...Array(5)].map((star, index) => (
                 <Star

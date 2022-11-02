@@ -15,6 +15,7 @@ const defaultProfilePicture =
   "https://firebasestorage.googleapis.com/v0/b/foocoding-react-project.appspot.com/o/ProfileImages%2Fno-image-profile.webp?alt=media&token=3a7b435a-117f-4d36-9166-4d9fe242926c";
 
 const AddBlog = () => {
+  // Axel - Really cool with the admin mode!
   const { setBlog } = useContext(BlogContext);
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -27,6 +28,7 @@ const AddBlog = () => {
 
   useEffect(() => {
     const handleGetUsers = () => {
+      // Axel - more common now to use async/await
       fetch("https://api.stefanpenk.com/getusers")
         .then((data) => data.json())
         .then((json) => setUsers(json.users));
@@ -70,6 +72,7 @@ const AddBlog = () => {
         .then((data) => data.json())
         .then((result) => setBlog(result.blog.sort(compareNumbers)));
     }
+    // Axel - don't you need to await here?
     sendData(id, title, text, imgUrl, date, author, authorImg);
 
     setTitle("");
@@ -86,6 +89,7 @@ const AddBlog = () => {
 
   const handleTextarea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
+    // Axel - could be inlined
   };
 
   const handleSelectAuthor = (e: React.ChangeEvent<HTMLSelectElement>) => {

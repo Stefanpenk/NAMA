@@ -5,6 +5,8 @@ import { childrenProps } from "../../types/types";
 const RequireAdminAuth = ({ children }: childrenProps) => {
   const { token } = useToken();
   const location = useLocation();
+  // Axel - great with protected routes
+
 
   if (!token) {
     return <Navigate to="/" state={{ path: location.pathname }} />;

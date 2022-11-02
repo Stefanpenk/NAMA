@@ -71,6 +71,7 @@ function SearchBar({
   }, [submit]);
 
   const handleSubmit = () => {
+    // Axel - what does this do?
     setSubmit((prevState) => (prevState = !prevState));
   };
 

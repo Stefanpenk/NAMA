@@ -38,6 +38,7 @@ const Checkbox = ({
     }
   };
 
+  // Axel - a11y cant tab to for some reason
   return (
     <label htmlFor={name} className="label-icons" ref={labelRef}>
       <input

@@ -8,12 +8,14 @@ import { ReactComponent as ImageIcon } from "../../../assets/image-icon.svg";
 import { ImageInputProps } from "../../../types/types.js";
 
 const ImageInput = ({ url, setUrl }: ImageInputProps) => {
+  // Axel - nice touch
   const [progress, setProgress] = useState(0);
 
   const handleSubmitImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];
     if (!file) return;
     const uploadImage = (file: File) => {
+      // Axel - cool with image upload
       const imageRef = ref(storage, `BlogImages/${uniqid() + file.name}`);
       const uploadTask = uploadBytesResumable(imageRef, file);
 
